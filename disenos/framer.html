@@ -1,0 +1,654 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src data: blob:; media-src data: blob:; script-src 'unsafe-inline' https://code.iconify.design; connect-src https://api.iconify.design https://api.simplesvg.com https://api.unisvg.com; frame-src 'none'; object-src 'none'; form-action 'none'; base-uri 'none'">
+<meta name="referrer" content="no-referrer">
+
+<meta name="referrer" content="no-referrer">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Void-canvas agent noir — Design System</title>
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --background:#000000;
+  --surface:#111111;
+  --surface-alt:#1E1E1E;
+  --text-primary:#FFFFFF;
+  --text-secondary:#999999;
+  --text-muted:#666666;
+  --accent:#0099FF;
+  --accent-secondary:#00BB88;
+  --link:#0000EE;
+  --border:#767676;
+  --r-control:8px;
+  --r-control-lg:10px;
+  --r-card:15px;
+  --r-card-lg:20px;
+  --r-chip:6px;
+  --r-pill:100px;
+  --base:5px;
+  --gap:20px;
+  --section-padding:120px;
+  --display:"GT Walsheim Medium","Rubik",sans-serif;
+  --body:"Inter Variable","Inter",sans-serif;
+  --mono:"Input Mono Regular","JetBrains Mono",monospace;
+  --serif:"Times New Roman",Times,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--background);
+  color:var(--text-primary);
+  font-family:var(--body);
+  font-size:15px;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{font-family:var(--display);font-weight:500;letter-spacing:-1.8px;line-height:1.1}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+section{padding:var(--section-padding) 0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--accent)}
+.section-title{font-size:44px;letter-spacing:-1.8px;margin:12px 0 8px}
+.section-sub{color:var(--text-secondary);font-size:15px;max-width:640px}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:50;height:64px;background:rgba(0,0,0,0.6);backdrop-filter:blur(8px);display:flex;align-items:center}
+.nav .wrap{display:flex;align-items:center;width:100%;gap:24px}
+.logo{display:flex;align-items:center;gap:8px;font-family:var(--display);font-weight:500;font-size:18px;letter-spacing:-1px}
+.logo-mark{width:22px;height:22px;background:var(--accent);border-radius:6px;display:grid;place-items:center;color:#000}
+.nav-links{display:flex;gap:22px;margin:0 auto}
+.nav-links a{color:var(--text-secondary);font-size:14px;display:flex;align-items:center;gap:4px}
+.nav-links a:hover{color:var(--text-primary)}
+.nav-right{display:flex;align-items:center;gap:16px}
+.nav-login{color:var(--text-primary);font-size:14px}
+.nav-login:hover{color:var(--text-secondary)}
+.btn-nav-cta{background:#FFFFFF;color:var(--link);border-radius:8px;height:30px;padding:0 14px;font-size:13px;font-weight:500;border:none;display:inline-flex;align-items:center;font-family:var(--body);cursor:pointer;transition:opacity .3s ease-in-out}
+.btn-nav-cta:hover{opacity:.6386}
+
+/* hero */
+#hero{padding-top:80px;position:relative;overflow:hidden}
+.hero-grain{position:absolute;inset:0;opacity:.04;pointer-events:none;background-image:repeating-linear-gradient(0deg,#fff,#fff 1px,transparent 1px,transparent 3px)}
+.hero-head{font-size:54px;line-height:1;letter-spacing:-2.2px;max-width:820px;font-family:var(--display);font-weight:500}
+.hero-row{display:flex;align-items:center;gap:14px;margin-top:28px;flex-wrap:wrap}
+.btn-hero-primary{background:#DEDEDE;color:#000;border-radius:10px;height:34px;padding:0 16px;font-size:14px;font-weight:500;border:none;font-family:var(--body);cursor:pointer;display:inline-flex;align-items:center;transition:opacity .3s ease-in-out}
+.btn-hero-primary:hover{opacity:.6386}
+.btn-hero-secondary{background:#000;color:#fff;border:1px solid var(--border);border-radius:10px;height:34px;padding:0 16px;font-size:14px;font-weight:500;font-family:var(--body);cursor:pointer;display:inline-flex;align-items:center;box-shadow:rgba(0,0,0,.25) 0 0 0 0;transition:opacity .3s ease-in-out}
+.btn-hero-secondary:hover{opacity:.6355}
+.hero-stat{margin-left:auto;text-align:right;font-family:var(--mono);font-size:12px;color:var(--text-secondary)}
+.hero-stat b{color:#fff;font-size:14px}
+.hero-canvas{margin-top:48px;border:1px solid var(--accent);border-radius:15px;background:var(--surface);overflow:hidden;display:grid;grid-template-columns:1fr 320px;min-height:360px}
+.hc-view{position:relative;padding:20px;background:linear-gradient(90deg,rgba(0,153,255,0.1) 0%,rgba(28,28,28,0.5) 61%)}
+.hc-toolbar{display:flex;gap:8px;margin-bottom:16px}
+.hc-dot{width:10px;height:10px;border-radius:100px;background:var(--surface-alt);border:1px solid var(--border)}
+.hc-frame{border:1px solid var(--border);border-radius:8px;height:calc(100% - 30px);min-height:240px;background:#0a0a0a;display:grid;place-items:center}
+.hc-frame span{font-family:var(--mono);color:var(--text-muted);font-size:12px}
+.hc-chat{border-left:1px solid var(--border);background:#0a0a0a;padding:16px;font-family:var(--mono);font-size:12px;line-height:1.7}
+.hc-msg{margin-bottom:12px}
+.hc-msg .who{color:var(--accent)}
+.hc-msg .txt{color:var(--text-secondary)}
+.cursor{display:inline-block;width:7px;height:13px;background:var(--accent);vertical-align:middle;animation:blink 1s step-end infinite}
+@keyframes blink{50%{opacity:0}}
+@media(max-width:768px){
+  .hero-head{font-size:36px;letter-spacing:-1.4px}
+  .section-title{font-size:30px;letter-spacing:-1px}
+  .hero-canvas{grid-template-columns:1fr}
+  .hc-chat{border-left:none;border-top:1px solid var(--border)}
+  .nav-links{display:none}
+  :root{--section-padding:72px}
+}
+@media(max-width:640px){.hero-head{font-size:30px}.hero-stat{margin-left:0;text-align:left}}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Primary">
+  <div class="wrap">
+    <a class="logo" href="#hero"><span class="logo-mark" aria-hidden="true"><iconify-icon icon="lucide:box"></iconify-icon></span>Void</a>
+    <div class="nav-links">
+      <a href="#">Product <iconify-icon icon="lucide:chevron-down" aria-hidden="true"></iconify-icon></a>
+      <a href="#">Canvas</a>
+      <a href="#">Agents <iconify-icon icon="lucide:chevron-down" aria-hidden="true"></iconify-icon></a>
+      <a href="#">Docs</a>
+      <a href="#">Pricing</a>
+      <a href="#">Showcase</a>
+    </div>
+    <div class="nav-right">
+      <a class="nav-login" href="#">Log in</a>
+      <button class="btn-nav-cta">Sign up</button>
+    </div>
+  </div>
+</nav>
+
+<header id="hero">
+  <div class="hero-grain" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="eyebrow">The canvas is the interface</p>
+    <h1 class="hero-head">Ship real interfaces.<br>Let the agent draw the rest.</h1>
+    <div class="hero-row">
+      <button class="btn-hero-primary">Open the canvas</button>
+      <button class="btn-hero-secondary">Watch a build</button>
+      <div class="hero-stat">Shipped this week<br><b>12,480</b> live sites</div>
+    </div>
+    <div class="hero-canvas" role="img" aria-label="Simulated design-tool viewport with agent chat panel docked right">
+      <div class="hc-view">
+        <div class="hc-toolbar"><span class="hc-dot"></span><span class="hc-dot"></span><span class="hc-dot"></span></div>
+        <div class="hc-frame"><span>viewport · 1200 × 720</span></div>
+      </div>
+      <div class="hc-chat">
+        <div class="hc-msg"><span class="who">agent ›</span> <span class="txt">reading layout tokens…</span></div>
+        <div class="hc-msg"><span class="who">plan ›</span> <span class="txt">1. frame hero<br>2. wire nav<br>3. place bento grid</span></div>
+        <div class="hc-msg"><span class="who">you ›</span> <span class="txt">tighten the tracking<span class="cursor" aria-hidden="true"></span></span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<style data-section-styles="palette">
+#palette .roles{display:grid;gap:40px;margin-top:48px}
+.role-group h3{font-size:18px;color:var(--text-secondary);letter-spacing:-.5px;margin-bottom:16px;font-family:var(--body);font-weight:500}
+.swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px}
+.swatch{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}
+.swatch .chip{height:88px}
+.swatch .meta{padding:12px}
+.swatch .name{font-size:14px;font-weight:500}
+.swatch .val{font-family:var(--mono);font-size:12px;color:var(--text-secondary);margin:2px 0 6px}
+.swatch .note{font-size:12px;color:var(--text-muted);line-height:1.4}
+.checker{background-image:linear-gradient(45deg,#2a2a2a 25%,transparent 25%),linear-gradient(-45deg,#2a2a2a 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#2a2a2a 75%),linear-gradient(-45deg,transparent 75%,#2a2a2a 75%);background-size:16px 16px;background-position:0 0,0 8px,8px -8px,-8px 0}
+</style>
+<section id="palette">
+  <div class="wrap">
+    <p class="eyebrow">Palette</p>
+    <h2 class="section-title">Black does the heavy lifting.</h2>
+    <p class="section-sub">One rationed electric blue, a status green that shows up once, and a stack of neutral inks. Everything else is deliberately uncolored.</p>
+    <div class="roles">
+      <div class="role-group">
+        <h3>Surfaces</h3>
+        <div class="swatches">
+          <div class="swatch"><div class="chip" style="background:#000"></div><div class="meta"><div class="name">Background</div><div class="val">#000000</div><div class="note">~83% of the pixel field — true void black.</div></div></div>
+          <div class="swatch"><div class="chip" style="background:#111"></div><div class="meta"><div class="name">Surface</div><div class="val">#111111</div><div class="note">Chat panels, canvas frames, footer zones.</div></div></div>
+          <div class="swatch"><div class="chip" style="background:#1E1E1E"></div><div class="meta"><div class="name">Surface alt</div><div class="val">#1E1E1E</div><div class="note">Raised chrome inside panels.</div></div></div>
+        </div>
+      </div>
+      <div class="role-group">
+        <h3>Text</h3>
+        <div class="swatches">
+          <div class="swatch"><div class="chip" style="background:#fff"></div><div class="meta"><div class="name">Text primary</div><div class="val">#FFFFFF</div><div class="note">Primary ink on all dark surfaces.</div></div></div>
+          <div class="swatch"><div class="chip" style="background:#999"></div><div class="meta"><div class="name">Text secondary</div><div class="val">#999999</div><div class="note">Secondary metadata and captions.</div></div></div>
+          <div class="swatch"><div class="chip" style="background:#666"></div><div class="meta"><div class="name">Text muted</div><div class="val">#666666</div><div class="note">Tertiary labels.</div></div></div>
+        </div>
+      </div>
+      <div class="role-group">
+        <h3>Accents</h3>
+        <div class="swatches">
+          <div class="swatch"><div class="chip" style="background:#0099FF"></div><div class="meta"><div class="name">Accent</div><div class="val">#0099FF</div><div class="note">Hairlines, glass tiles, one corner wash. Never a full fill.</div></div></div>
+          <div class="swatch"><div class="chip" style="background:#00BB88"></div><div class="meta"><div class="name">Accent secondary</div><div class="val">#00BB88</div><div class="note">Status-good pill — shows up once.</div></div></div>
+          <div class="swatch"><div class="chip" style="background:#0000EE"></div><div class="meta"><div class="name">Link</div><div class="val">#0000EE</div><div class="note">Nav CTA text-on-white. A deliberate old-web wink.</div></div></div>
+          <div class="swatch"><div class="chip" style="background:#767676"></div><div class="meta"><div class="name">Border</div><div class="val">#767676</div><div class="note">Neutral hairlines on cards and strips.</div></div></div>
+          <div class="swatch"><div class="chip checker" style="position:relative"><div style="position:absolute;inset:0;background:rgba(0,153,255,0.22)"></div></div><div class="meta"><div class="name">Glass tint</div><div class="val">rgba(0,153,255,0.22)</div><div class="note">The only glassmorphic surface — blur reserved to these.</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style data-section-styles="type-scale">
+#type-scale .specimens{display:grid;gap:8px;margin-top:48px}
+.spec{border-top:1px solid var(--surface-alt);padding:28px 0;display:grid;grid-template-columns:1fr 220px;gap:24px;align-items:baseline}
+.spec .live{overflow:hidden}
+.spec .metrics{font-family:var(--mono);font-size:12px;color:var(--text-secondary);line-height:1.7}
+.d-lg{font-family:var(--display);font-size:54px;font-weight:500;line-height:1;letter-spacing:-2.2px}
+.h-md{font-family:var(--display);font-size:44px;font-weight:500;line-height:1.1;letter-spacing:-1.8px}
+.b-md{font-family:var(--body);font-size:15px;font-weight:400;line-height:1.5}
+.mono-r{font-family:var(--mono);font-size:14px}
+.mono-b{font-family:var(--mono);font-size:14px;font-weight:700}
+.serif-s{font-family:var(--serif);font-size:24px;font-style:italic}
+.weights{display:flex;gap:32px;flex-wrap:wrap;margin-top:16px}
+.weights span{font-family:var(--display);font-size:36px;letter-spacing:-1px}
+@media(max-width:640px){.spec{grid-template-columns:1fr}.d-lg{font-size:34px;letter-spacing:-1.4px}.h-md{font-size:28px}}
+</style>
+<section id="type-scale">
+  <div class="wrap">
+    <p class="eyebrow">Type scale</p>
+    <h2 class="section-title">Rounded sans up top, IDE mono underneath.</h2>
+    <p class="section-sub">GT Walsheim carries every headline at tight negative tracking. Inter runs the UI. Input Mono is the console voice.</p>
+    <div class="specimens">
+      <div class="spec"><div class="live"><div class="d-lg">Draw with intent</div></div><div class="metrics">display-lg<br>GT Walsheim Medium<br>54px · 500 · lh 1 · -2.2px</div></div>
+      <div class="spec"><div class="live"><div class="h-md">Ship what you sketched</div></div><div class="metrics">headline-md<br>GT Walsheim Medium<br>44px · 500 · lh 1.1 · -1.8px</div></div>
+      <div class="spec"><div class="live"><p class="b-md">The product itself is the hero imagery. Content floats on emptiness — an agent chat panel, a layer inspector, a CMS table — no gradient wash behind it.</p></div><div class="metrics">body-md<br>Inter Variable<br>15px · 400 · lh 1.5</div></div>
+      <div class="spec"><div class="live"><div class="mono-r">agent › resolving layout tokens…</div></div><div class="metrics">accent-mono<br>Input Mono Regular<br>14px · 400 · console text</div></div>
+      <div class="spec"><div class="live"><div class="mono-b">200ms · +4.6 CLS · PASS</div></div><div class="metrics">accent-mono-bold<br>Input Mono Bold<br>14px · 700 · data values</div></div>
+      <div class="spec"><div class="live"><div class="serif-s">a rare editorial pause</div></div><div class="metrics">accent-serif<br>Times New Roman<br>media-card interruption</div></div>
+    </div>
+    <div class="weights" aria-label="Weight ramp">
+      <span style="font-weight:400">Regular 400</span>
+      <span style="font-weight:500">Medium 500</span>
+      <span style="font-weight:700">Bold 700</span>
+    </div>
+  </div>
+</section>
+
+<style data-section-styles="components">
+#components .comp{margin-top:64px}
+#components .comp:first-of-type{margin-top:48px}
+.comp-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;border-bottom:1px solid var(--surface-alt);padding-bottom:12px;margin-bottom:24px}
+.comp-head h3{font-size:24px;letter-spacing:-1px}
+.comp-head .count{font-family:var(--mono);font-size:12px;color:var(--accent)}
+.comp-desc{color:var(--text-secondary);font-size:14px;max-width:640px;margin-bottom:20px}
+.spec-card{font-family:var(--mono);font-size:11px;color:var(--text-secondary);line-height:1.8;border:1px solid var(--surface-alt);border-radius:8px;padding:12px 14px;margin-top:20px;background:var(--surface)}
+.spec-card b{color:var(--text-primary);font-weight:400}
+.demo{background:var(--surface);border:1px solid var(--surface-alt);border-radius:15px;padding:32px}
+/* button matrix */
+.matrix{width:100%;border-collapse:collapse;font-size:12px}
+.matrix th{text-align:left;font-family:var(--mono);font-weight:400;color:var(--text-secondary);padding:10px;font-size:11px;text-transform:uppercase;letter-spacing:.5px}
+.matrix td{padding:14px 10px;border-top:1px solid var(--surface-alt);vertical-align:middle}
+.matrix .rowlabel{font-family:var(--mono);color:var(--text-secondary)}
+.b-util{background:#fff;color:#000;border:none;border-radius:8px;height:30px;padding:0 10px;font-size:13px;font-weight:500;font-family:var(--body);cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:opacity .3s ease-in-out}
+.b-util:hover{opacity:.6386}
+.st-hover{opacity:.6386}.st-active{opacity:.5}.st-disabled{opacity:.3;cursor:not-allowed}
+/* bento */
+.bento{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--surface-alt);border-radius:15px;overflow:hidden}
+.bento .tile{background:transparent;border:1px solid var(--surface-alt);display:flex;flex-direction:column}
+.tile .t-head{padding:14px 16px;font-family:var(--mono);font-size:12px;color:var(--text-secondary)}
+.tile .t-media{flex:1;min-height:90px;background:linear-gradient(rgba(0,0,0,0),#000),#0a0a0a;position:relative;padding:16px;display:flex;align-items:flex-end}
+.tile .t-media .num{font-family:var(--display);font-size:40px;font-weight:500;letter-spacing:-2px}
+.tile.tall .t-media{min-height:220px}
+.status-pill{background:var(--accent-secondary);color:#000;border-radius:100px;font-family:var(--mono);font-size:11px;font-weight:700;padding:2px 10px;display:inline-block}
+.cms-row{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;color:var(--text-secondary);padding:4px 0;border-bottom:1px solid var(--surface-alt)}
+/* masonry */
+.masonry{columns:4;column-gap:0;position:relative}
+.mcard{break-inside:avoid;position:relative;overflow:hidden}
+.mcard .mimg{background:#0a0a0a;display:grid;place-items:center;color:var(--text-muted);font-family:var(--mono);font-size:11px}
+.mcard .cap{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(rgba(0,0,0,0),#000);color:#fff;font-size:12px;font-weight:500;padding:24px 12px 10px}
+.masonry::before,.masonry::after{content:"";position:absolute;top:0;bottom:0;width:60px;z-index:2;pointer-events:none}
+.masonry::before{left:0;background:linear-gradient(90deg,#000 0%,rgba(0,0,0,0) 100%)}
+.masonry::after{right:0;background:linear-gradient(90deg,rgba(0,0,0,0) 0%,#000 100%)}
+/* glass */
+.glass-sets{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.glass-tile{background:rgba(0,153,255,0.22);backdrop-filter:blur(3px);border-radius:0;padding:0;display:grid;grid-template-columns:1fr 1fr}
+.glass-tile .inner{padding:18px;border:1px solid rgba(255,255,255,.1)}
+.glass-plain{background:rgba(0,153,255,0.22);backdrop-filter:blur(5px);padding:18px}
+.glass-tile .k{font-family:var(--mono);font-size:11px;color:#cfeaff}
+.glass-tile .v{font-family:var(--display);font-size:22px;font-weight:500}
+.glass-behind{background:linear-gradient(120deg,#0a0a0a,#1a1a1a);padding:24px;border-radius:15px}
+/* logo strip */
+.logo-strip{display:flex;gap:0;overflow-x:auto}
+.logo-strip .lcard{flex:0 0 200px;border:1px solid var(--border);padding:24px 16px;text-align:center}
+.logo-strip .mark{color:var(--text-secondary);font-family:var(--display);font-weight:500;font-size:18px;filter:grayscale(1)}
+.logo-strip .llink{font-size:12px;color:var(--text-secondary);margin-top:10px;display:inline-flex;align-items:center;gap:4px}
+/* partner row */
+.partner-row{display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
+.pcard{border:1px solid var(--surface-alt);border-radius:15px;height:72px;display:grid;place-items:center;color:var(--text-secondary);font-family:var(--display);font-weight:500}
+/* agent band */
+.agent-band{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.agent-band h3{font-size:36px;letter-spacing:-1.6px}
+.agent-panel{background:var(--surface);border:1px solid var(--border);border-radius:15px;padding:16px;font-family:var(--mono);font-size:12px;line-height:1.8}
+.agent-panel .who{color:var(--accent)}
+.agent-panel .txt{color:var(--text-secondary)}
+@media(max-width:1024px){.masonry{columns:3}.partner-row{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:768px){.masonry{columns:2}.bento{grid-template-columns:repeat(2,1fr)}.glass-sets{grid-template-columns:1fr}.agent-band{grid-template-columns:1fr}.partner-row{grid-template-columns:repeat(2,1fr)}.demo{padding:20px}}
+@media(max-width:640px){.masonry{columns:1}.bento{grid-template-columns:1fr}}
+</style>
+<section id="components">
+  <div class="wrap">
+    <p class="eyebrow">Components</p>
+    <h2 class="section-title">The inventory, flush and tool-like.</h2>
+    <p class="section-sub">Buttons keep their slight corners, cards stay at 0px radius, and blue only ever shows up in a hairline.</p>
+
+    <!-- NAVBAR -->
+    <div class="comp">
+      <div class="comp-head"><h3>Sticky Navbar</h3><span class="count">×1 · 10 items</span></div>
+      <p class="comp-desc">64px, sticky, transparent over black. Logo left, links centered, plain-text Log in beside the white CTA.</p>
+      <div class="demo" data-tier-a-component="navbar" style="padding:0;overflow:hidden">
+        <div style="height:64px;display:flex;align-items:center;gap:24px;padding:0 20px;background:#050505">
+          <a class="logo" href="#"><span class="logo-mark" aria-hidden="true"><iconify-icon icon="lucide:box"></iconify-icon></span>Void</a>
+          <div class="nav-links" style="display:flex">
+            <a href="#">Product <iconify-icon icon="lucide:chevron-down" aria-hidden="true"></iconify-icon></a>
+            <a href="#">Canvas</a>
+            <a href="#">Agents <iconify-icon icon="lucide:chevron-down" aria-hidden="true"></iconify-icon></a>
+            <a href="#">Docs</a>
+            <a href="#">Pricing</a>
+            <a href="#">Showcase</a>
+          </div>
+          <div class="nav-right"><a class="nav-login" href="#">Log in</a><button class="btn-nav-cta">Sign up</button></div>
+        </div>
+      </div>
+      <div class="spec-card">--button-nav-cta · fill <b>#FFFFFF</b> · text <b>#0000EE</b> · radius <b>r-control 8px</b> · height <b>30px</b> · type <b>body-md</b> · motion <b>ease-in-out 0.3s</b></div>
+    </div>
+
+    <!-- HERO PRIMARY -->
+    <div class="comp">
+      <div class="comp-head"><h3>Hero Primary Button</h3><span class="count">×1</span></div>
+      <p class="comp-desc">The single most emphasized control on the first screen — near-white solid, black label, 34px tall.</p>
+      <div class="demo" data-tier-a-component="hero-primary-button">
+        <table class="matrix"><thead><tr><th></th><th>Rest</th><th>Hover</th><th>Active</th></tr></thead>
+        <tbody><tr><td class="rowlabel">primary</td>
+          <td><button class="btn-hero-primary">Open the canvas</button></td>
+          <td><button class="btn-hero-primary st-hover">Open the canvas</button></td>
+          <td><button class="btn-hero-primary st-active">Open the canvas</button></td>
+        </tr></tbody></table>
+      </div>
+      <div class="spec-card">--button-hero-primary · fill <b>#DEDEDE</b> · text <b>#000000</b> · radius <b>r-control-lg 10px</b> · height <b>34px</b> · padding <b>10px</b> · hover <b>opacity 0.6386</b></div>
+    </div>
+
+    <!-- HERO SECONDARY -->
+    <div class="comp">
+      <div class="comp-head"><h3>Hero Secondary Button</h3><span class="count">×1</span></div>
+      <p class="comp-desc">Paired directly right of the primary. Solid black, white label, flat resting shadow.</p>
+      <div class="demo" data-tier-a-component="hero-secondary-button">
+        <table class="matrix"><thead><tr><th></th><th>Rest</th><th>Hover</th><th>Active</th></tr></thead>
+        <tbody><tr><td class="rowlabel">secondary</td>
+          <td><button class="btn-hero-secondary">Watch a build</button></td>
+          <td><button class="btn-hero-secondary st-hover">Watch a build</button></td>
+          <td><button class="btn-hero-secondary st-active">Watch a build</button></td>
+        </tr></tbody></table>
+      </div>
+      <div class="spec-card">--button-hero-secondary · fill <b>#000000</b> · text <b>#FFFFFF</b> · radius <b>r-control-lg 10px</b> · height <b>34px</b> · shadow <b>rgba(0,0,0,0.25) 0 0 0 0</b> · hover <b>opacity 0.6355</b></div>
+    </div>
+
+    <!-- UTILITY -->
+    <div class="comp">
+      <div class="comp-head"><h3>Utility / End-of-Section Button</h3><span class="count">×3</span></div>
+      <p class="comp-desc">Small labeled actions attached to section headers throughout mid-page. Sharper 8px corner, 30px tall.</p>
+      <div class="demo" data-tier-a-component="utility-button">
+        <table class="matrix"><thead><tr><th>Instance</th><th>Rest</th><th>Hover</th><th>Disabled</th></tr></thead>
+        <tbody>
+          <tr><td class="rowlabel">Read story</td><td><button class="b-util">Read story <iconify-icon icon="lucide:arrow-right" aria-hidden="true"></iconify-icon></button></td><td><button class="b-util st-hover">Read story <iconify-icon icon="lucide:arrow-right" aria-hidden="true"></iconify-icon></button></td><td><button class="b-util st-disabled" disabled>Read story</button></td></tr>
+          <tr><td class="rowlabel">Browse</td><td><button class="b-util">Browse</button></td><td><button class="b-util st-hover">Browse</button></td><td><button class="b-util st-disabled" disabled>Browse</button></td></tr>
+          <tr><td class="rowlabel">See sites</td><td><button class="b-util">See sites</button></td><td><button class="b-util st-hover">See sites</button></td><td><button class="b-util st-disabled" disabled>See sites</button></td></tr>
+        </tbody></table>
+      </div>
+      <div class="spec-card">--button-utility · fill <b>#FFFFFF</b> · text <b>#000000</b> · radius <b>r-control 8px</b> · height <b>30px</b> · padding <b>0 10px</b> · hover <b>opacity 0.6386</b></div>
+    </div>
+
+    <!-- BENTO -->
+    <div class="comp">
+      <div class="comp-head"><h3>Bento Tool-Preview Card</h3><span class="count">×8 · 33/100/67 grid</span></div>
+      <p class="comp-desc">Asymmetric 3-column grid, 0px gap. Heading above, tool-panel screenshot fills the remainder — flush and transparent.</p>
+      <div class="demo" data-tier-a-component="bento-tool-preview-card" style="padding:0">
+        <div class="bento">
+          <div class="tile"><div class="t-head">Performance</div><div class="t-media"><span class="status-pill">200ms · PASS</span></div></div>
+          <div class="tile tall"><div class="t-head">CMS collection</div><div class="t-media" style="align-items:stretch"><div style="width:100%"><div class="cms-row"><span>slug</span><span>status</span></div><div class="cms-row"><span>/pricing</span><span>live</span></div><div class="cms-row"><span>/docs</span><span>draft</span></div><div class="cms-row"><span>/blog</span><span>live</span></div></div></div></div>
+          <div class="tile"><div class="t-head">Hosting</div><div class="t-media"><span class="num">99.9</span></div></div>
+          <div class="tile"><div class="t-head">Requests</div><div class="t-media"><span class="mono-b">1.2M</span></div></div>
+          <div class="tile"><div class="t-head">Regions</div><div class="t-media"><span class="mono-r">12 edge</span></div></div>
+          <div class="tile"><div class="t-head">Build</div><div class="t-media"><span class="mono-r">4.6s</span></div></div>
+          <div class="tile"><div class="t-head">Bandwidth</div><div class="t-media"><span class="num">840GB</span></div></div>
+          <div class="tile"><div class="t-head">Cache hit</div><div class="t-media"><span class="mono-b">97%</span></div></div>
+        </div>
+      </div>
+      <div class="spec-card">--card-media-bottom · bg <b>transparent</b> · radius <b>0px</b> · padding <b>0px</b> · anatomy <b>heading above, media fills remainder</b> · media-base fade <b>linear-gradient(rgba(0,0,0,0),#000)</b></div>
+    </div>
+
+    <!-- MASONRY -->
+    <div class="comp">
+      <div class="comp-head"><h3>Masonry Shipped-Site Card</h3><span class="count">×12 · ×6 + ×6</span></div>
+      <p class="comp-desc">True masonry, mixed aspect ratios, content-sized. Full-bleed screenshot with a caption on a dark scrim. Edges fade to black.</p>
+      <div class="demo" data-tier-a-component="masonry-shipped-site-card" style="padding:0;overflow:hidden">
+        <div class="masonry">
+          <div class="mcard"><div class="mimg" style="height:200px">studio · portfolio</div><div class="cap">Aster Studio</div></div>
+          <div class="mcard"><div class="mimg" style="height:140px">shop</div><div class="cap">Northline</div></div>
+          <div class="mcard"><div class="mimg" style="height:240px">docs</div><div class="cap">Ledger Docs</div></div>
+          <div class="mcard"><div class="mimg" style="height:160px">agency</div><div class="cap">Field &amp; Form</div></div>
+          <div class="mcard"><div class="mimg" style="height:180px"><span class="serif-s" style="color:var(--text-secondary)">Editorial</span></div><div class="cap">The Quiet Press</div></div>
+          <div class="mcard"><div class="mimg" style="height:130px">saas</div><div class="cap">Meridian</div></div>
+          <div class="mcard"><div class="mimg" style="height:210px">landing</div><div class="cap">Halo</div></div>
+          <div class="mcard"><div class="mimg" style="height:150px">event</div><div class="cap">Signal Conf</div></div>
+          <div class="mcard"><div class="mimg" style="height:190px">app</div><div class="cap">Drift</div></div>
+          <div class="mcard"><div class="mimg" style="height:140px">blog</div><div class="cap">Longform</div></div>
+          <div class="mcard"><div class="mimg" style="height:220px">restaurant</div><div class="cap">Marrow</div></div>
+          <div class="mcard"><div class="mimg" style="height:160px">gallery</div><div class="cap">Verso</div></div>
+        </div>
+      </div>
+      <div class="spec-card">--card-media-top-bleed · bg <b>transparent</b> · radius <b>0px</b> · padding <b>0px</b> · anatomy <b>full-bleed media, caption bottom</b> · edge fade <b>linear-gradient(90deg,#000,transparent)</b></div>
+    </div>
+
+    <!-- GLASS -->
+    <div class="comp">
+      <div class="comp-head"><h3>Glass Accent Tile</h3><span class="count">×9 · 3 sets of 3</span></div>
+      <p class="comp-desc">The only glassmorphic surface in the system. Blue-tinted translucent panels — two-tile blur(3px) and plain blur(5px).</p>
+      <div class="demo" data-tier-a-component="glass-accent-tile">
+        <div class="glass-behind">
+          <div class="glass-sets">
+            <div class="glass-tile"><div class="inner"><div class="k">branch</div><div class="v">main</div></div><div class="inner"><div class="k">deploys</div><div class="v">128</div></div></div>
+            <div class="glass-tile"><div class="inner"><div class="k">locale</div><div class="v">en-US</div></div><div class="inner"><div class="k">latency</div><div class="v">42ms</div></div></div>
+            <div class="glass-plain"><div class="k">status</div><div class="v">all systems live</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="spec-card">--card-glass-tile · fill <b>rgba(0,153,255,0.22)</b> · radius <b>0px</b> · padding <b>0px</b> · backdrop <b>blur(3px)</b> &nbsp;|&nbsp; --card-glass-plain · backdrop <b>blur(5px)</b></div>
+    </div>
+
+    <!-- LOGO STRIP -->
+    <div class="comp">
+      <div class="comp-head"><h3>Logo Strip Card</h3><span class="count">×1 · scrollable</span></div>
+      <p class="comp-desc">Uniform bordered rectangles with a neutral hairline, one grayscale mark each, a small arrow link beneath.</p>
+      <div class="demo" data-tier-a-component="logo-strip-card" style="padding:0">
+        <div class="logo-strip">
+          <div class="lcard"><div class="mark">Orbit</div><a class="llink" href="#">Read story <iconify-icon icon="lucide:arrow-right" aria-hidden="true"></iconify-icon></a></div>
+          <div class="lcard"><div class="mark">Kite</div><a class="llink" href="#">Read story <iconify-icon icon="lucide:arrow-right" aria-hidden="true"></iconify-icon></a></div>
+          <div class="lcard"><div class="mark">Nimbus</div><a class="llink" href="#">Read story <iconify-icon icon="lucide:arrow-right" aria-hidden="true"></iconify-icon></a></div>
+          <div class="lcard"><div class="mark">Basalt</div><a class="llink" href="#">Read story <iconify-icon icon="lucide:arrow-right" aria-hidden="true"></iconify-icon></a></div>
+          <div class="lcard"><div class="mark">Quill</div><a class="llink" href="#">Read story <iconify-icon icon="lucide:arrow-right" aria-hidden="true"></iconify-icon></a></div>
+        </div>
+      </div>
+      <div class="spec-card">logo-strip-card · fill <b>transparent</b> · border <b>#767676</b> · marks <b>grayscale</b> · link type <b>body-md</b></div>
+    </div>
+
+    <!-- PARTNER ROW -->
+    <div class="comp">
+      <div class="comp-head"><h3>Partner Logo Card Row</h3><span class="count">×1</span></div>
+      <p class="comp-desc">A uniform card row of partner logos below the masonry band — distinct from the scrollable strip.</p>
+      <div class="demo" data-tier-a-component="partner-logo-card-row">
+        <div class="partner-row">
+          <div class="pcard">Vercel</div>
+          <div class="pcard">Linear</div>
+          <div class="pcard">Stripe</div>
+          <div class="pcard">Figma</div>
+          <div class="pcard">Notion</div>
+        </div>
+      </div>
+      <div class="spec-card">partner-logo-card-row · border <b>surface-alt</b> · radius <b>r-card 15px</b> · uniform card treatment</div>
+    </div>
+
+    <!-- HERO CANVAS MOCKUP -->
+    <div class="comp">
+      <div class="comp-head"><h3>Hero Canvas Mockup</h3><span class="count">×1</span></div>
+      <p class="comp-desc">Bordered simulated design-tool viewport with an agent chat panel docked right. Accent hairline, mono console, blinking cursor.</p>
+      <div class="demo" data-tier-a-component="hero-canvas-mockup" style="padding:0;overflow:hidden">
+        <div class="hero-canvas" style="margin:0;border-radius:0">
+          <div class="hc-view">
+            <div class="hc-toolbar"><span class="hc-dot"></span><span class="hc-dot"></span><span class="hc-dot"></span></div>
+            <div class="hc-frame"><span>artboard · agent editing</span></div>
+          </div>
+          <div class="hc-chat">
+            <div class="hc-msg"><span class="who">agent ›</span> <span class="txt">applied token r-card 15px</span></div>
+            <div class="hc-msg"><span class="who">plan ›</span> <span class="txt">step 3 of 4 · place bento</span></div>
+            <div class="hc-msg"><span class="who">you ›</span> <span class="txt">looks good<span class="cursor" aria-hidden="true"></span></span></div>
+          </div>
+        </div>
+      </div>
+      <div class="spec-card">hero-canvas-mockup · border <b>#0099FF</b> · surface <b>#111111</b> · console type <b>accent-mono</b> · corner wash <b>linear-gradient(90deg,rgba(0,153,255,0.1),rgba(28,28,28,0.5) 61%)</b></div>
+    </div>
+
+    <!-- AGENT BAND -->
+    <div class="comp">
+      <div class="comp-head"><h3>Agent-Panel Demo Band</h3><span class="count">×1 · mid-page</span></div>
+      <p class="comp-desc">A two-line GT Walsheim headline paired with an agent-panel demo — the mid-page counterpart to the hero canvas.</p>
+      <div class="demo" data-tier-a-component="agent-panel-demo-band">
+        <div class="agent-band">
+          <h3>Describe the change.<br>Watch it apply.</h3>
+          <div class="agent-panel">
+            <div><span class="who">you ›</span> <span class="txt">make the pricing table two columns</span></div>
+            <div style="margin-top:10px"><span class="who">agent ›</span> <span class="txt">restructuring grid → 2 cols · 40px gap</span></div>
+            <div style="margin-top:10px"><span class="who">agent ›</span> <span class="txt">done · <span class="mono-b" style="color:var(--accent-secondary)">PASS</span><span class="cursor" aria-hidden="true"></span></span></div>
+          </div>
+        </div>
+      </div>
+      <div class="spec-card">agent-panel-demo-band · headline <b>headline-md</b> · panel surface <b>#111111</b> · border <b>#767676</b> · console <b>accent-mono</b></div>
+    </div>
+
+    <!-- HERO STAT LINE -->
+    <div class="comp">
+      <div class="comp-head"><h3>Hero Stat Line</h3><span class="count">×1</span></div>
+      <p class="comp-desc">A small right-aligned metadata line adjacent to the hero headline row — mono metric labels, distinct from the bento stats.</p>
+      <div class="demo" data-tier-a-component="hero-stat-line">
+        <div style="display:flex;justify-content:flex-end"><div class="hero-stat" style="margin:0">Shipped this week<br><b>12,480</b> live sites</div></div>
+      </div>
+      <div class="spec-card">hero-stat-line · type <b>accent-mono 12px</b> · value <b>#FFFFFF</b> · label <b>#999999</b> · right-aligned</div>
+    </div>
+
+  </div>
+</section>
+
+<style data-section-styles="surface-depth">
+#surface-depth .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:24px;margin-top:48px}
+.depth-card{background:var(--surface);padding:24px;border:1px solid var(--surface-alt)}
+.depth-card .lbl{font-family:var(--mono);font-size:12px;color:var(--text-secondary);margin-top:14px}
+.depth-card .val{font-family:var(--mono);font-size:11px;color:var(--text-muted)}
+.rq{height:80px;background:var(--surface-alt);border:1px solid var(--border)}
+.floating{background:var(--surface);border:1px solid var(--surface-alt);padding:20px;font-size:13px;color:var(--text-secondary)}
+</style>
+<section id="surface-depth">
+  <div class="wrap">
+    <p class="eyebrow">Surface &amp; depth</p>
+    <h2 class="section-title">Corners are slight. Shadows are shy.</h2>
+    <p class="section-sub">Radii climb from chip to card-lg. Shadows only ever sit under floating panels — never under a flat card.</p>
+    <div class="grid">
+      <div class="depth-card"><div class="rq" style="border-radius:6px"></div><div class="lbl">chip</div><div class="val">6px</div></div>
+      <div class="depth-card"><div class="rq" style="border-radius:8px"></div><div class="lbl">control</div><div class="val">8px</div></div>
+      <div class="depth-card"><div class="rq" style="border-radius:10px"></div><div class="lbl">control-lg</div><div class="val">10px</div></div>
+      <div class="depth-card"><div class="rq" style="border-radius:15px"></div><div class="lbl">card</div><div class="val">15px</div></div>
+      <div class="depth-card"><div class="rq" style="border-radius:20px"></div><div class="lbl">card-lg</div><div class="val">20px</div></div>
+      <div class="depth-card"><div class="rq" style="border-radius:100px;height:40px;margin-top:20px"></div><div class="lbl">pill</div><div class="val">100px · tag chips only</div></div>
+    </div>
+    <div class="grid">
+      <div class="floating" style="border-radius:15px;box-shadow:rgba(0,0,0,.1) 0 1px 2px">Floating panel · shadow 0 1px 2px / 0.1</div>
+      <div class="floating" style="border-radius:15px;box-shadow:rgba(0,0,0,.2) 0 2px 6px">Floating panel · shadow 0 2px 6px / 0.2</div>
+      <div class="floating" style="border-radius:15px;box-shadow:rgba(0,0,0,.25) 0 4px 8px">Floating panel · shadow 0 4px 8px / 0.25</div>
+    </div>
+  </div>
+</section>
+
+<style data-section-styles="motion">
+#motion .curves{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px;margin-top:48px}
+.mcell{background:var(--surface);border:1px solid var(--surface-alt);border-radius:15px;padding:24px}
+.mcell .track{height:44px;display:flex;align-items:center;margin:16px 0}
+.mover{width:32px;height:32px;border-radius:8px;background:var(--accent)}
+.mcell.run .mover{animation:slide 1.6s ease-in-out}
+@keyframes slide{0%{transform:translateX(0)}50%{transform:translateX(160px)}100%{transform:translateX(0)}}
+.mcell .lbl{font-family:var(--mono);font-size:12px;color:var(--text-secondary)}
+.mcell button{margin-top:8px}
+.grain-demo{position:relative;height:120px;border-radius:15px;overflow:hidden;border:1px solid var(--surface-alt);display:grid;place-items:center;color:var(--text-secondary);font-family:var(--mono);font-size:12px}
+.grain-demo::after{content:"";position:absolute;inset:0;opacity:.05;background-image:repeating-linear-gradient(0deg,#fff,#fff 1px,transparent 1px,transparent 3px);animation:grain 1.2s steps(4) infinite}
+@keyframes grain{0%{transform:translateY(0)}100%{transform:translateY(-3px)}}
+</style>
+<section id="motion">
+  <div class="wrap">
+    <p class="eyebrow">Motion</p>
+    <h2 class="section-title">Uniform and unhurried.</h2>
+    <p class="section-sub">One curve governs the whole system. The only always-on motion is a subtle grain that textures the black — it never brightens it.</p>
+    <div class="curves">
+      <div class="mcell" id="m1"><div class="lbl">all · ease-in-out · 0.3s</div><div class="track"><div class="mover"></div></div><button class="b-util" onclick="this.closest('.mcell').classList.remove('run');void this.closest('.mcell').offsetWidth;this.closest('.mcell').classList.add('run')">Replay</button></div>
+      <div class="mcell"><div class="lbl">blinking console cursor</div><div class="track" style="justify-content:flex-start"><span style="font-family:var(--mono);color:var(--text-secondary)">agent ›&nbsp;</span><span class="cursor" aria-hidden="true"></span></div></div>
+      <div class="mcell"><div class="lbl">grain / film-noise loop</div><div class="grain-demo">textured black</div></div>
+    </div>
+  </div>
+</section>
+
+<style data-section-styles="composition">
+#composition .screen{margin-top:48px;border:1px solid var(--surface-alt);border-radius:20px;overflow:hidden;background:#000}
+.sc-nav{height:64px;display:flex;align-items:center;gap:20px;padding:0 20px;border-bottom:1px solid var(--surface-alt)}
+.sc-nav .links{display:flex;gap:18px;margin-left:auto}
+.sc-nav .links a{font-size:13px;color:var(--text-secondary)}
+.sc-hero{padding:56px 24px 24px}
+.sc-hero h3{font-size:44px;letter-spacing:-1.8px;line-height:1}
+.sc-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--surface-alt);border-bottom:1px solid var(--surface-alt)}
+.sc-cards .c{border-right:1px solid var(--surface-alt);padding:0}
+.sc-cards .c:last-child{border-right:none}
+.sc-cards .ch{padding:14px 16px;font-family:var(--mono);font-size:12px;color:var(--text-secondary)}
+.sc-cards .cm{height:120px;background:linear-gradient(rgba(0,0,0,0),#000),#0a0a0a;display:flex;align-items:flex-end;padding:14px}
+.sc-cta{padding:40px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.sc-cta h4{font-family:var(--display);font-size:28px;letter-spacing:-1.2px}
+@media(max-width:768px){.sc-cards{grid-template-columns:1fr}.sc-cards .c{border-right:none;border-bottom:1px solid var(--surface-alt)}.sc-hero h3{font-size:30px}.sc-nav .links{display:none}}
+</style>
+<section id="composition">
+  <div class="wrap">
+    <p class="eyebrow">In composition</p>
+    <h2 class="section-title">The whole system, one screen.</h2>
+    <p class="section-sub">Nav, a hero fragment, three tool-preview cards, and a closing CTA — assembled entirely from the tokens above.</p>
+    <div class="screen">
+      <div class="sc-nav">
+        <a class="logo" href="#"><span class="logo-mark" aria-hidden="true"><iconify-icon icon="lucide:box"></iconify-icon></span>Void</a>
+        <div class="links"><a href="#">Canvas</a><a href="#">Agents</a><a href="#">Pricing</a></div>
+        <button class="btn-nav-cta">Sign up</button>
+      </div>
+      <div class="sc-hero">
+        <h3>Ship real interfaces.<br>Let the agent draw the rest.</h3>
+        <div class="hero-row" style="margin-top:20px">
+          <button class="btn-hero-primary">Open the canvas</button>
+          <button class="btn-hero-secondary">Watch a build</button>
+          <div class="hero-stat">Shipped this week<br><b>12,480</b> live sites</div>
+        </div>
+      </div>
+      <div class="sc-cards">
+        <div class="c"><div class="ch">Performance</div><div class="cm"><span class="status-pill">200ms · PASS</span></div></div>
+        <div class="c"><div class="ch">Hosting</div><div class="cm"><span class="num" style="font-family:var(--display);font-size:36px;font-weight:500;letter-spacing:-2px">99.9</span></div></div>
+        <div class="c"><div class="ch">Regions</div><div class="cm"><span class="mono-b">12 edge</span></div></div>
+      </div>
+      <div class="sc-cta">
+        <h4>Start on an empty canvas.</h4>
+        <button class="btn-hero-primary">Open the canvas</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style data-section-styles="footer">
+#footer{background:#000;border-top:1px solid var(--surface-alt);padding:72px 0 40px}
+.foot-cols{display:grid;grid-template-columns:repeat(7,1fr);gap:24px}
+.foot-cols h4{font-family:var(--body);font-size:13px;font-weight:500;color:#fff;margin-bottom:12px}
+.foot-cols a{display:block;font-size:13px;color:var(--text-secondary);padding:3px 0}
+.foot-cols a:hover{color:#fff}
+.foot-bottom{margin-top:56px;padding-top:24px;border-top:1px solid var(--surface-alt);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.badges{display:flex;gap:14px;color:var(--text-muted);font-size:12px;align-items:center}
+.livedot{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:12px;color:var(--text-secondary)}
+.livedot span{width:8px;height:8px;border-radius:100px;background:var(--accent-secondary)}
+.credit{font-size:12px;color:var(--text-muted)}
+.credit a{color:var(--text-secondary)}
+@media(max-width:1024px){.foot-cols{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:640px){.foot-cols{grid-template-columns:repeat(2,1fr)}}
+</style>
+<footer id="footer">
+  <div class="wrap">
+    <div class="foot-cols">
+      <div><h4>Product</h4><a href="#">Canvas</a><a href="#">Agents</a><a href="#">CMS</a><a href="#">Hosting</a></div>
+      <div><h4>Resources</h4><a href="#">Docs</a><a href="#">Guides</a><a href="#">Changelog</a><a href="#">API</a></div>
+      <div><h4>Business</h4><a href="#">Enterprise</a><a href="#">Security</a><a href="#">Status</a></div>
+      <div><h4>Company</h4><a href="#">About</a><a href="#">Careers</a><a href="#">Blog</a></div>
+      <div><h4>Solutions</h4><a href="#">Agencies</a><a href="#">Startups</a><a href="#">Teams</a></div>
+      <div><h4>Compare</h4><a href="#">Alternatives</a><a href="#">Migrate</a></div>
+      <div><h4>Community</h4><a href="#">Showcase</a><a href="#">Forum</a><a href="#">Support</a></div>
+    </div>
+    <div class="foot-bottom">
+      <span class="livedot"><span></span> All systems operational</span>
+      <div class="badges">
+        <span><iconify-icon icon="lucide:shield-check" aria-hidden="true"></iconify-icon> SOC 2</span>
+        <span><iconify-icon icon="lucide:lock" aria-hidden="true"></iconify-icon> GDPR</span>
+      </div>
+    </div>
+    <div class="foot-bottom" style="border:none;padding-top:8px">
+      <span class="credit">Void-canvas agent noir · <a href="https://framer.com/">framer.com</a></span>
+      <span class="credit">Design system captured and rendered by superdesign.dev</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

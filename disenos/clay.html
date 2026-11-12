@@ -1,0 +1,931 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src data: blob:; media-src data: blob:; script-src 'unsafe-inline' https://code.iconify.design; connect-src https://api.iconify.design https://api.simplesvg.com https://api.unisvg.com; frame-src 'none'; object-src 'none'; form-action 'none'; base-uri 'none'">
+<meta name="referrer" content="no-referrer">
+
+<meta name="referrer" content="no-referrer">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claymation infrastructure — Design System</title>
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --background:#FEFDFB;
+  --surface:#F4F3F0;
+  --surface-alt:#FFFFFF;
+  --text-primary:#000000;
+  --text-secondary:#55534E;
+  --text-tertiary:#79756D;
+  --accent-lime:#EEF773;
+  --accent-lime-deep:#CBD810;
+  --ink-deep:#1B1A18;
+  --border-hairline:#D1CDC7;
+  --panel-blue:#F0F8FF;
+  --panel-coral:#FFF3ED;
+  --footer-bg:#FFFDF9;
+  --nav-hover:#282C35;
+  --r-control:12px;
+  --r-control-alt:8px;
+  --r-card:18px;
+  --r-card-lg:24px;
+  --r-card-sm:14px;
+  --r-pill:9999px;
+  --sp-base:8px;
+  --sp-tight:5px;
+  --sp-sm:10px;
+  --sp-md:16px;
+  --content-max:1280px;
+  --section-pad:64px;
+  --ease-hover:cubic-bezier(0.075,0.82,0.165,1);
+  --ease-lift:cubic-bezier(0.165,0.84,0.44,1);
+  --display-family:"Roobertvf","Onest",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--display-family);
+  background:var(--background);
+  color:var(--text-primary);
+  font-size:16px;line-height:1.5;font-weight:400;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{font-weight:500;line-height:1;letter-spacing:-2.2px}
+a{color:inherit}
+img{max-width:100%}
+.wrap{max-width:var(--content-max);margin:0 auto;padding:0 24px}
+.eyebrow{
+  display:inline-block;font-size:12px;font-weight:600;text-transform:uppercase;
+  letter-spacing:0.06em;padding:6px 12px;border-radius:var(--r-pill);
+}
+/* ---- HERO ---- */
+.hero{
+  position:relative;min-height:88vh;display:flex;flex-direction:column;
+  overflow:hidden;
+  background:linear-gradient(rgba(160,205,230,1) 0%,rgba(198,222,200,1) 42%,rgba(56,92,48,1) 100%);
+}
+.hero-diorama{position:absolute;inset:0;overflow:hidden}
+.hill{position:absolute;border-radius:50%;filter:blur(1px)}
+.hill1{width:140%;height:60%;left:-20%;bottom:-28%;background:radial-gradient(ellipse at 50% 30%,#5a8f3d,#37622f)}
+.hill2{width:90%;height:44%;right:-15%;bottom:-18%;background:radial-gradient(ellipse at 40% 30%,#6ea24a,#46783a)}
+.prop{position:absolute;border-radius:24px;box-shadow:0 18px 30px rgba(0,0,0,0.18)}
+.prop.ball{border-radius:50%}
+.p1{width:90px;height:90px;left:14%;bottom:22%;background:radial-gradient(circle at 32% 28%,#ff8a5c,#e8571f)}
+.p2{width:64px;height:64px;right:20%;bottom:30%;background:radial-gradient(circle at 32% 28%,#ffe27a,var(--accent-lime-deep))}
+.p3{width:110px;height:74px;right:9%;bottom:14%;background:linear-gradient(140deg,#9ad0ff,#4d92d1)}
+.p4{width:52px;height:52px;left:36%;bottom:16%;background:radial-gradient(circle at 32% 28%,#c9a2ff,#7a4fd1)}
+.hero-scrim{position:absolute;left:0;right:0;bottom:0;height:85%;
+  background:linear-gradient(rgba(0,0,0,0) 14%,rgba(0,0,0,0.45) 77%)}
+.hero-fade{position:absolute;left:0;right:0;bottom:0;height:6%;
+  background:linear-gradient(rgba(254,253,251,0),rgba(254,253,251,1))}
+.navbar{
+  position:sticky;top:0;z-index:20;height:59px;display:flex;align-items:center;
+  background:transparent;
+}
+.navbar .wrap{display:flex;align-items:center;gap:20px;width:100%}
+.logo{display:flex;align-items:center;gap:8px;font-weight:600;font-size:19px;letter-spacing:-0.5px;color:#fff}
+.logo .glyph{width:20px;height:20px;border-radius:50%;background:var(--accent-lime-deep);display:inline-block}
+.nav-items{display:flex;gap:20px;margin-left:14px}
+.nav-items a{font-size:14px;font-weight:500;color:#fff;text-decoration:none;opacity:.92}
+.nav-items a:hover{opacity:1}
+.nav-right{margin-left:auto;display:flex;align-items:center;gap:12px}
+.nav-icon{color:#fff;font-size:18px;display:flex}
+.nav-session{color:#fff;font-size:14px;font-weight:500;text-decoration:none}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  border:1px solid transparent;cursor:pointer;font-family:inherit;font-weight:500;
+  text-decoration:none;white-space:nowrap;
+  transition:background-color .3s var(--ease-hover),color .1s ease-out,transform .3s ease-out;
+}
+.btn-nav-secondary{
+  height:39px;padding:8px 16px;border-radius:var(--r-control);
+  background:rgba(255,255,255,0.9);color:var(--ink-deep);font-size:14px;
+}
+.btn-nav-secondary:hover{background:#fff}
+.btn-nav-cta{
+  height:39px;padding:8px 16px;border-radius:var(--r-control);
+  background:#000;color:#fff;font-size:14px;
+}
+.btn-nav-cta:hover{background:var(--nav-hover)}
+.hero-content{position:relative;z-index:10;margin-top:auto;padding-bottom:9vh}
+.hero-content .wrap{max-width:820px;margin:0}
+.hero-eyebrow{background:rgba(255,255,255,0.18);color:#fff;border:1px solid rgba(255,255,255,0.4)}
+.hero h1{
+  font-size:88px;font-weight:575;line-height:1;letter-spacing:-3.5px;color:#fff;margin:20px 0 18px;
+}
+.hero p{color:#fff;font-size:18px;max-width:520px;margin-bottom:28px;font-weight:500}
+.hero-cta-cluster{display:flex;gap:14px;flex-wrap:wrap}
+.btn-hero-primary{
+  height:47px;padding:9px 18px;border-radius:16px;
+  background:var(--accent-lime-deep);color:#000;font-size:15px;font-weight:600;
+}
+.btn-hero-primary:hover{background:var(--accent-lime)}
+.btn-hero-secondary{
+  height:47px;padding:9px 18px;border-radius:16px;background:transparent;
+  color:#fff;border:1px solid rgba(255,255,255,0.4);font-size:15px;
+}
+.btn-hero-secondary:hover{background:rgba(255,255,255,0.12)}
+@media(max-width:768px){
+  .hero h1{font-size:56px;letter-spacing:-2px}
+  .nav-items{display:none}
+}
+@media(max-width:640px){
+  .hero h1{font-size:40px;letter-spacing:-1.4px}
+  .nav-session{display:none}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="hero" id="hero">
+  <div class="hero-diorama" aria-hidden="true">
+    <div class="hill hill1"></div>
+    <div class="hill hill2"></div>
+    <div class="prop p1 ball"></div>
+    <div class="prop p2 ball"></div>
+    <div class="prop p3"></div>
+    <div class="prop p4 ball"></div>
+  </div>
+  <div class="hero-scrim" aria-hidden="true"></div>
+  <div class="hero-fade" aria-hidden="true"></div>
+
+  <nav class="navbar" aria-label="Primary">
+    <div class="wrap">
+      <a class="logo" href="#hero" aria-label="Clay home"><span class="glyph"></span>Clay</a>
+      <div class="nav-items">
+        <a href="#components">Platform</a>
+        <a href="#components">Sources</a>
+        <a href="#composition">Solutions</a>
+        <a href="#type-scale">Resources</a>
+        <a href="#palette">Pricing</a>
+        <a href="#motion">Company</a>
+      </div>
+      <div class="nav-right">
+        <button class="nav-icon" aria-label="Search"><iconify-icon icon="lucide:search" aria-hidden="true"></iconify-icon></button>
+        <a class="nav-session" href="#components">Log in</a>
+        <a class="btn btn-nav-secondary" href="#composition">Get a demo</a>
+        <a class="btn btn-nav-cta" href="#hero">Start building</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="hero-content">
+    <div class="wrap">
+      <span class="eyebrow hero-eyebrow">Go-to-market, sculpted</span>
+      <h1>Build the data engine your growth deserves</h1>
+      <p>One warm canvas, one bright accent, and a cast of little clay machines doing the heavy lifting. This is infrastructure you can actually see.</p>
+      <div class="hero-cta-cluster" data-tier-a-component="hero-cta-cluster">
+        <a class="btn btn-hero-primary" href="#components">Start building free</a>
+        <a class="btn btn-hero-secondary" href="#composition">Talk to sales</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<style data-section-styles="palette">
+.band{padding:calc(var(--section-pad) + 24px) 0}
+.band-head{max-width:640px;margin-bottom:48px}
+.band-head .eyebrow{background:var(--surface);color:var(--text-secondary);margin-bottom:16px}
+.band-head h2{font-size:48px;letter-spacing:-1.9px}
+.band-head p{color:var(--text-secondary);font-size:16px;margin-top:16px}
+.pal-group{margin-bottom:40px}
+.pal-group h3{font-size:18px;letter-spacing:-0.5px;margin-bottom:16px;color:var(--text-secondary);font-weight:600}
+.swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
+.swatch{border:1px solid var(--border-hairline);border-radius:var(--r-card);overflow:hidden;background:var(--surface-alt)}
+.swatch .chip{height:96px}
+.checker{background-image:
+  linear-gradient(45deg,#ccc 25%,transparent 25%),
+  linear-gradient(-45deg,#ccc 25%,transparent 25%),
+  linear-gradient(45deg,transparent 75%,#ccc 75%),
+  linear-gradient(-45deg,transparent 75%,#ccc 75%);
+  background-size:16px 16px;background-position:0 0,0 8px,8px -8px,-8px 0}
+.swatch .meta{padding:12px 14px}
+.swatch .meta .val{font-size:14px;font-weight:600;font-family:ui-monospace,monospace}
+.swatch .meta .note{font-size:13px;color:var(--text-secondary);margin-top:4px;line-height:1.4}
+</style>
+<section class="band" id="palette" style="background:var(--surface)">
+  <div class="wrap">
+    <div class="band-head">
+      <span class="eyebrow">Palette</span>
+      <h2>Cream, ink, and one loud green</h2>
+      <p>Color is rationed. The page stays warm and near-white; the chartreuse only ever means “act here.”</p>
+    </div>
+
+    <div class="pal-group">
+      <h3>Surfaces</h3>
+      <div class="swatches">
+        <div class="swatch"><div class="chip" style="background:#FEFDFB;border-bottom:1px solid var(--border-hairline)"></div><div class="meta"><div class="val">#FEFDFB</div><div class="note">Dominant page canvas — the cream that carries the scroll.</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#F4F3F0"></div><div class="meta"><div class="val">#F4F3F0</div><div class="note">Secondary surface for inset bands and chips.</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#FFFFFF;border-bottom:1px solid var(--border-hairline)"></div><div class="meta"><div class="val">#FFFFFF</div><div class="note">Card fills sitting on the cream page.</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#F0F8FF"></div><div class="meta"><div class="val">#F0F8FF</div><div class="note">Dilute-blue section band.</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#FFF3ED"></div><div class="meta"><div class="val">#FFF3ED</div><div class="note">Coral / blush section band.</div></div></div>
+      </div>
+    </div>
+
+    <div class="pal-group">
+      <h3>Text</h3>
+      <div class="swatches">
+        <div class="swatch"><div class="chip" style="background:#000000"></div><div class="meta"><div class="val">#000000</div><div class="note">Primary ink for headlines and body.</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#1B1A18"></div><div class="meta"><div class="val">#1B1A18</div><div class="note">Deep ink — solid button fills.</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#55534E"></div><div class="meta"><div class="val">#55534E</div><div class="note">Secondary copy and proof lines.</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#79756D"></div><div class="meta"><div class="val">#79756D</div><div class="note">Tertiary captions and muted labels.</div></div></div>
+      </div>
+    </div>
+
+    <div class="pal-group">
+      <h3>Accents</h3>
+      <div class="swatches">
+        <div class="swatch"><div class="chip" style="background:#EEF773"></div><div class="meta"><div class="val">#EEF773</div><div class="note">Active chips and lime CTAs — never a wash.</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#CBD810"></div><div class="meta"><div class="val">#CBD810</div><div class="note">Hero primary button — deepest lime.</div></div></div>
+        <div class="swatch"><div class="chip checker"><div style="height:100%;background:rgba(255,255,255,0.05)"></div></div><div class="meta"><div class="val">rgba(255,255,255,0.05)</div><div class="note">Hairline inset used to edge every plain tile.</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#D1CDC7"></div><div class="meta"><div class="val">#D1CDC7</div><div class="note">Hairline border on cards and dividers.</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style data-section-styles="type-scale">
+.type-row{border-top:1px solid var(--border-hairline);padding:36px 0;display:grid;grid-template-columns:180px 1fr;gap:32px;align-items:baseline}
+.type-row .metrics{font-size:13px;color:var(--text-secondary);line-height:1.7;font-family:ui-monospace,monospace}
+.spec-display{font-size:88px;font-weight:575;line-height:1;letter-spacing:-3.5px}
+.spec-headline{font-size:72px;font-weight:500;line-height:1;letter-spacing:-2.2px}
+.spec-label{font-size:48px;font-weight:500;line-height:1;letter-spacing:-1.9px}
+.spec-body-default{font-size:16px;font-weight:400;line-height:1.5}
+.spec-body-md{font-size:14px;font-weight:500;line-height:1.5}
+.two-tone .accent{color:var(--accent-lime-deep)}
+.weights{display:flex;gap:28px;flex-wrap:wrap;margin-top:8px}
+.weights span{font-size:40px;letter-spacing:-1.5px}
+@media(max-width:768px){
+  .type-row{grid-template-columns:1fr;gap:12px}
+  .spec-display{font-size:52px;letter-spacing:-2px}
+  .spec-headline{font-size:42px;letter-spacing:-1.4px}
+  .spec-label{font-size:34px}
+}
+</style>
+<section class="band" id="type-scale">
+  <div class="wrap">
+    <div class="band-head">
+      <span class="eyebrow">Type scale</span>
+      <h2>Roobertvf, tracked in tight</h2>
+      <p>Oversized display type with heavy negative tracking. Body stays small and quiet so the headlines can shout.</p>
+    </div>
+
+    <div class="type-row">
+      <div class="metrics">display-lg<br>88px · 575<br>lh 1 · -3.5px</div>
+      <div class="spec-display">Sculpted infrastructure</div>
+    </div>
+    <div class="type-row">
+      <div class="metrics">headline-md<br>72px · 500<br>lh 1 · -2.2px</div>
+      <div class="spec-headline two-tone">Build once, <span class="accent">ship everywhere</span></div>
+    </div>
+    <div class="type-row">
+      <div class="metrics">label-md<br>48px · 500<br>lh 1 · -1.9px</div>
+      <div class="spec-label">One idea per scroll.</div>
+    </div>
+    <div class="type-row">
+      <div class="metrics">body-default<br>16px · 400<br>lh 1.5</div>
+      <div class="spec-body-default">Body copy sits low and calm. A warm off-white ground, real sentences, and just enough contrast to read for a long time without fatigue.</div>
+    </div>
+    <div class="type-row">
+      <div class="metrics">body-md<br>14px · 500<br>lh 1.5</div>
+      <div class="spec-body-md">Dense caption text — proof lines, tile bodies, and metadata run at the smallest sensible size in the system.</div>
+    </div>
+    <div class="type-row">
+      <div class="metrics">weight ramp<br>Roobertvf</div>
+      <div class="weights">
+        <span style="font-weight:400">Aa 400</span>
+        <span style="font-weight:500">Aa 500</span>
+        <span style="font-weight:600">Aa 575</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style data-section-styles="components">
+#components{background:var(--surface)}
+.comp-block{margin-bottom:72px}
+.comp-block>h3{font-size:28px;letter-spacing:-1px;margin-bottom:6px}
+.comp-block .lead{color:var(--text-secondary);font-size:15px;max-width:600px;margin-bottom:24px}
+.count-tag{display:inline-block;font-size:12px;font-weight:600;color:var(--text-tertiary);
+  border:1px solid var(--border-hairline);border-radius:var(--r-pill);padding:3px 10px;margin-left:10px;vertical-align:middle}
+.spec-card{
+  font-family:ui-monospace,monospace;font-size:12px;line-height:1.7;color:var(--text-secondary);
+  background:var(--surface-alt);border:1px solid var(--border-hairline);border-radius:var(--r-card-sm);
+  padding:14px 16px;margin-top:20px;
+}
+.spec-card b{color:var(--text-primary);font-weight:600}
+.demo{background:var(--surface-alt);border:1px solid var(--border-hairline);border-radius:var(--r-card);padding:28px}
+/* button matrix */
+.matrix{width:100%;border-collapse:collapse}
+.matrix th,.matrix td{padding:14px;text-align:left;border-bottom:1px solid var(--border-hairline);vertical-align:middle}
+.matrix th{font-size:12px;text-transform:uppercase;letter-spacing:0.05em;color:var(--text-tertiary);font-weight:600}
+.matrix td:first-child{font-size:13px;font-weight:600}
+.btn-accent-lime{height:44px;padding:10px 16px;border-radius:var(--r-control);background:var(--accent-lime);color:var(--ink-deep);font-size:14px;font-weight:600}
+.btn-accent-lime:hover{background:var(--accent-lime-deep)}
+.btn-ink-solid{height:40px;padding:0 20px;border-radius:var(--r-control);background:var(--ink-deep);color:var(--background);font-size:14px}
+.btn-ink-solid:hover{background:var(--nav-hover)}
+.on-dark{background:var(--ink-deep);color:#fff}
+.btn[disabled],.btn.is-disabled{opacity:.4;pointer-events:none}
+/* chips */
+.chip-rail{display:flex;gap:10px;flex-wrap:wrap;background:transparent;padding:8px 0}
+.fchip{height:36px;padding:0 18px;border-radius:var(--r-pill);border:none;cursor:pointer;
+  background:var(--surface);color:var(--text-secondary);font-family:inherit;font-size:14px;font-weight:500;
+  transition:background-color .3s var(--ease-hover),color .1s ease-out}
+.fchip.active,.fchip[aria-pressed="true"]{background:var(--accent-lime);color:var(--ink-deep)}
+/* feature band */
+.fband{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;border-radius:var(--r-card-lg);
+  padding:56px;margin-bottom:32px}
+.fband.blue{background:var(--panel-blue);box-shadow:inset 0 0 0 2px #F0F8FF}
+.fband.coral{background:var(--panel-coral);box-shadow:inset 0 0 0 2px #FFF3ED}
+.fband.cream{background:var(--surface-alt);border:1px solid var(--border-hairline)}
+.fband.rev .ftext{order:2}
+.fband .eyeb{color:#fff;text-transform:uppercase;font-size:11px;font-weight:600;letter-spacing:0.07em;
+  padding:5px 11px;border-radius:var(--r-pill);display:inline-block}
+.eyeb.blue{background:#2b5f8f}.eyeb.coral{background:#b0472a}.eyeb.teal{background:#1f7a70}
+.fband h4{font-size:44px;letter-spacing:-1.6px;margin:16px 0;line-height:1.02}
+.fband h4 .ac-blue{color:#2b5f8f}.fband h4 .ac-coral{color:#b0472a}.fband h4 .ac-teal{color:#1f7a70}
+.fband p{color:var(--text-secondary);font-size:15px;margin-bottom:20px}
+.proof-row{display:flex;align-items:center;gap:10px;margin-bottom:22px}
+.proof-row .logos{display:flex;gap:8px}
+.proof-row .logos iconify-icon{font-size:22px;color:var(--text-tertiary)}
+.proof-row .cap{font-size:13px;color:var(--text-secondary);font-weight:500}
+.fband .cta-pair{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.text-link{display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:14px;text-decoration:none;color:var(--text-primary);border-bottom:2px solid var(--text-primary);padding-bottom:2px}
+.text-link:hover{color:var(--text-secondary)}
+.clay-media{border-radius:var(--r-card-lg);min-height:300px;position:relative;overflow:hidden;
+  background:linear-gradient(150deg,#f6e6cf,#e9cfa8)}
+.clay-media .cprop{position:absolute;border-radius:26px;box-shadow:0 16px 26px rgba(120,90,40,0.22)}
+.cm-a{width:120px;height:120px;border-radius:50%;left:22%;top:30%;background:radial-gradient(circle at 32% 28%,#9ad0ff,#4d92d1)}
+.cm-b{width:88px;height:88px;left:50%;top:44%;background:radial-gradient(circle at 32% 28%,#ffcf7a,var(--accent-lime-deep))}
+.cm-c{width:70px;height:70px;border-radius:50%;left:60%;top:24%;background:radial-gradient(circle at 32% 28%,#ff9a6b,#e8571f)}
+/* mini tiles */
+.tile-grid{display:grid;gap:16px}
+.tile-lead{grid-template-columns:1fr}
+.tile-row3{grid-template-columns:1.6fr 1fr 1.1fr;margin-top:16px}
+.tile-row2{grid-template-columns:1fr 1fr;margin-top:16px}
+.mini-tile{background:#FEFDFB;border-radius:var(--r-card);padding:16px 20px;
+  box-shadow:rgba(255,255,255,0.05) 0 0 0 1px inset;border:1px solid var(--border-hairline)}
+.mini-tile iconify-icon{font-size:20px;color:var(--ink-deep);display:block;margin-bottom:10px}
+.mini-tile p{font-size:14px;font-weight:500;color:var(--text-primary);line-height:1.4}
+/* data table showcase */
+.table-showcase{position:relative;background:var(--surface-alt);border:1px solid var(--border-hairline);
+  border-radius:var(--r-card-lg);padding:28px;padding-bottom:120px}
+.mini-table{width:100%;border-collapse:collapse;font-size:13px}
+.mini-table th{text-align:left;color:var(--text-tertiary);font-weight:600;font-size:12px;padding:8px 10px;border-bottom:1px solid var(--border-hairline)}
+.mini-table td{padding:8px 10px;border-bottom:1px solid var(--border-hairline);color:var(--text-secondary)}
+.mini-table tr.active td{background:var(--panel-blue);color:var(--text-primary)}
+.float-panel{position:absolute;background:var(--surface-alt);border:1px solid var(--border-hairline);
+  border-radius:var(--r-card);box-shadow:rgba(255,255,255,0.05) 0 0 0 1px inset;padding:16px}
+.fp-form{width:220px;left:40px;bottom:-40px}
+.fp-mail{width:240px;right:40px;bottom:-56px}
+.fp-form label{display:block;font-size:12px;color:var(--text-tertiary);margin-bottom:6px;font-weight:600}
+.fp-input{width:100%;height:40px;border:1px solid var(--border-hairline);border-radius:var(--r-control-alt);padding:0 12px;font-family:inherit;font-size:14px}
+.fp-mail h5{font-size:14px;margin-bottom:6px}
+.fp-mail p{font-size:12px;color:var(--text-secondary);line-height:1.5}
+/* video showcase */
+.video-rail{display:grid;grid-template-columns:0.5fr 2fr 0.5fr;gap:16px;align-items:center}
+.video-panel{border-radius:var(--r-card-lg);min-height:280px;position:relative;overflow:hidden}
+.vp-main{background:linear-gradient(140deg,#a7d8ff,#6f7ed6)}
+.vp-side{background:linear-gradient(140deg,#f6e6cf,#e9cfa8);min-height:220px}
+.vp-side.b{background:linear-gradient(140deg,#ffd6c2,#f0a985)}
+.play-btn{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,0.35);
+  backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.5);
+  display:flex;align-items:center;justify-content:center;color:#fff;font-size:30px}
+/* logo proof strip */
+.proof-strip{background:var(--surface-alt);border:1px solid var(--border-hairline);border-radius:var(--r-card-lg);padding:44px 32px;text-align:center}
+.proof-strip .sentence{font-size:15px;color:var(--text-secondary);margin-bottom:28px;font-weight:500}
+.proof-marquee{overflow:hidden}
+.proof-track{display:flex;gap:48px;align-items:center;justify-content:center;flex-wrap:wrap}
+.proof-track .mark{display:flex;align-items:center;gap:8px;color:var(--text-tertiary);font-weight:700;font-size:18px;letter-spacing:-0.5px}
+.stat-badge{background:var(--surface);border:1px solid var(--border-hairline);border-radius:var(--r-card-sm);padding:8px 14px;text-align:left}
+.stat-badge b{display:block;font-size:20px;color:var(--text-primary);letter-spacing:-1px}
+.stat-badge span{font-size:12px;color:var(--text-secondary)}
+/* article link tiles */
+.article-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.article-tile{background:#FEFDFB;border:1px solid var(--border-hairline);border-radius:var(--r-card);
+  box-shadow:rgba(255,255,255,0.05) 0 0 0 1px inset;padding:0;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit;min-height:180px}
+.article-tile .thumb{height:96px;background:var(--surface)}
+.article-tile.dark .thumb{background:linear-gradient(135deg,#1B1A18 40%,#3a4d2e 120%);position:relative}
+.article-tile.dark .thumb::after{content:"";position:absolute;right:-30px;top:-30px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle at 40% 40%,rgba(203,216,16,0.7),transparent 70%)}
+.article-tile .body{padding:16px 18px;display:flex;flex-direction:column;gap:8px}
+.article-tile .body .title{font-size:15px;font-weight:600;letter-spacing:-0.4px}
+.article-tile .body .kick{font-size:12px;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.05em;font-weight:600}
+/* nav demo variants */
+.navlinks-demo{display:flex;gap:24px;flex-wrap:wrap}
+.navlinks-demo a{font-size:14px;font-weight:500;text-decoration:none;color:var(--text-secondary)}
+.navlinks-demo a.active{color:var(--text-primary)}
+.navlinks-demo a:hover{color:var(--text-primary)}
+@media(max-width:768px){
+  .fband{grid-template-columns:1fr;padding:32px}
+  .fband.rev .ftext{order:0}
+  .fband h4{font-size:32px}
+  .tile-row3,.tile-row2{grid-template-columns:1fr}
+  .article-row{grid-template-columns:1fr}
+  .video-rail{grid-template-columns:1fr}
+  .vp-side{display:none}
+  .fp-form,.fp-mail{position:static;width:auto;margin-top:16px}
+  .table-showcase{padding-bottom:28px}
+}
+</style>
+<section class="band" id="components">
+  <div class="wrap">
+    <div class="band-head">
+      <span class="eyebrow">Components</span>
+      <h2>The full cast</h2>
+      <p>Every measured family, rendered with its real dimensions. Flat elevation, hairline edges, one rationed green.</p>
+    </div>
+
+    <!-- NAVBAR -->
+    <div class="comp-block" data-tier-a-component="navbar">
+      <h3>Navbar <span class="count-tag">×1</span></h3>
+      <p class="lead">Transparent 59px bar over the hero. Wordmark left, six primary links, a search trigger, session link, and the two right actions.</p>
+      <div class="demo" style="background:var(--ink-deep)">
+        <div style="display:flex;align-items:center;gap:20px;height:59px">
+          <a class="logo" href="#components" aria-label="Clay"><span class="glyph"></span>Clay</a>
+          <div class="nav-items" style="display:flex;margin-left:8px">
+            <a href="#components">Platform</a><a href="#components">Sources</a>
+            <a href="#components">Solutions</a><a href="#components">Resources</a>
+            <a href="#components">Pricing</a><a href="#components">Company</a>
+          </div>
+          <div class="nav-right">
+            <button class="nav-icon" aria-label="Search"><iconify-icon icon="lucide:search"></iconify-icon></button>
+            <a class="nav-session" href="#components">Log in</a>
+            <a class="btn btn-nav-secondary" href="#components">Get a demo</a>
+            <a class="btn btn-nav-cta" href="#components">Start building</a>
+          </div>
+        </div>
+      </div>
+      <div class="spec-card">
+        <b>--button-nav-cta</b> · fill <b>#000000</b> · text <b>#FFFFFF</b> · radius <b>r-control 12</b> · height <b>39</b> · padding <b>8px 16px</b> · hover <b>#282C35</b><br>
+        navbar height <b>59</b> · logo glyph <b>accent-lime-deep</b> · motion <b>background-color .3s ease-hover</b>
+      </div>
+    </div>
+
+    <!-- HERO CTA CLUSTER (also documents button variant matrix) -->
+    <div class="comp-block">
+      <h3>Buttons — variant × state</h3>
+      <p class="lead">The full documented matrix. Hover cells respond on pointer. Focus is left to the browser — the system records no focus treatment.</p>
+      <div class="demo">
+        <table class="matrix">
+          <thead><tr><th>Variant</th><th>Rest</th><th>Hover</th><th>Disabled</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Hero primary</td>
+              <td><button class="btn btn-hero-primary" style="color:#000">Start building</button></td>
+              <td><button class="btn btn-hero-primary" style="background:var(--accent-lime);color:#000">Start building</button></td>
+              <td><button class="btn btn-hero-primary is-disabled" style="color:#000" aria-disabled="true">Start building</button></td>
+            </tr>
+            <tr>
+              <td>Accent lime</td>
+              <td><button class="btn btn-accent-lime">Enrich data</button></td>
+              <td><button class="btn btn-accent-lime" style="background:var(--accent-lime-deep)">Enrich data</button></td>
+              <td><button class="btn btn-accent-lime is-disabled" aria-disabled="true">Enrich data</button></td>
+            </tr>
+            <tr>
+              <td>Ink solid</td>
+              <td><button class="btn btn-ink-solid">Book a demo</button></td>
+              <td><button class="btn btn-ink-solid" style="background:var(--nav-hover)">Book a demo</button></td>
+              <td><button class="btn btn-ink-solid is-disabled" aria-disabled="true">Book a demo</button></td>
+            </tr>
+            <tr>
+              <td>Nav CTA</td>
+              <td><button class="btn btn-nav-cta">Log in</button></td>
+              <td><button class="btn btn-nav-cta" style="background:var(--nav-hover)">Log in</button></td>
+              <td><button class="btn btn-nav-cta is-disabled" aria-disabled="true">Log in</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="demo on-dark" style="margin-top:16px">
+        <p style="font-size:13px;color:rgba(255,255,255,0.7);margin-bottom:16px">Hero secondary — ghost on the illustration ground</p>
+        <div style="display:flex;gap:14px;flex-wrap:wrap">
+          <button class="btn btn-hero-primary" style="color:#000">Start building</button>
+          <button class="btn btn-hero-secondary">Talk to sales</button>
+        </div>
+      </div>
+      <div class="spec-card">
+        <b>--button-hero-primary</b> fill <b>#CBD810</b> · text <b>#000</b> · radius <b>16</b> · height <b>47</b><br>
+        <b>--button-accent-lime</b> fill <b>#EEF773</b> · text <b>ink-deep</b> · radius <b>r-control 12</b> · height <b>44</b><br>
+        <b>--button-ink-solid</b> fill <b>ink-deep</b> · text <b>background</b> · radius <b>r-control 12</b> · height <b>40</b><br>
+        <b>--button-hero-secondary</b> transparent · border <b>rgba(255,255,255,0.4)</b> · text <b>#fff</b> · radius <b>16</b>
+      </div>
+    </div>
+
+    <!-- FILTER CHIP RAIL -->
+    <div class="comp-block" data-tier-a-component="filter-chip-rail">
+      <h3>Filter-chip rail <span class="count-tag">×1</span></h3>
+      <p class="lead">Pill chips switch the displayed feature. The active chip is the only place the flat lime appears on a control this small.</p>
+      <div class="demo">
+        <div class="chip-rail" role="group" aria-label="Feature filters">
+          <button class="fchip active" aria-pressed="true">Prospecting</button>
+          <button class="fchip" aria-pressed="false">Enrichment</button>
+          <button class="fchip" aria-pressed="false">Scoring</button>
+          <button class="fchip" aria-pressed="false">Outreach</button>
+          <button class="fchip" aria-pressed="false">Signals</button>
+        </div>
+      </div>
+      <div class="spec-card">
+        inactive fill <b>surface #F4F3F0</b> · active fill <b>accent-lime #EEF773</b> · text <b>ink-deep</b> · radius <b>pill</b> · height <b>36</b>
+      </div>
+    </div>
+
+    <!-- FEATURE BANDS -->
+    <div class="comp-block" data-tier-a-component="feature-band">
+      <h3>Feature band <span class="count-tag">×3</span></h3>
+      <p class="lead">The repeating scroll unit. Eyebrow → two-tone headline → body → proof line → CTA pair, beside one big clay render. Bands alternate sides and tints.</p>
+
+      <div class="fband blue">
+        <div class="ftext">
+          <span class="eyeb blue">Sources</span>
+          <h4>Pull from <span class="ac-blue">100+ places</span> at once</h4>
+          <p>Point Clay at any source and let the little machines fan out. Every record lands enriched, deduped, and ready to act on.</p>
+          <div class="proof-row">
+            <div class="logos"><iconify-icon icon="lucide:box"></iconify-icon><iconify-icon icon="lucide:database"></iconify-icon><iconify-icon icon="lucide:cloud"></iconify-icon></div>
+            <span class="cap">Trusted by 5,000+ GTM teams</span>
+          </div>
+          <div class="cta-pair">
+            <button class="btn btn-accent-lime">Explore sources</button>
+            <a class="text-link" href="#components">See the docs <iconify-icon icon="lucide:arrow-right"></iconify-icon></a>
+          </div>
+        </div>
+        <div class="clay-media" aria-label="Clay illustration of stacked data props" role="img">
+          <div class="cprop cm-a"></div><div class="cprop cm-b"></div><div class="cprop cm-c"></div>
+        </div>
+      </div>
+
+      <div class="fband coral rev">
+        <div class="ftext">
+          <span class="eyeb coral">Enrichment</span>
+          <h4>Turn a name into a <span class="ac-coral">full picture</span></h4>
+          <p>Waterfall through providers until every field fills. No credits wasted, no gaps left — just complete rows every time.</p>
+          <div class="proof-row">
+            <div class="logos"><iconify-icon icon="lucide:building-2"></iconify-icon><iconify-icon icon="lucide:users"></iconify-icon><iconify-icon icon="lucide:mail"></iconify-icon></div>
+            <span class="cap">3× coverage vs. single providers</span>
+          </div>
+          <div class="cta-pair">
+            <button class="btn btn-ink-solid">Start enriching</button>
+            <a class="text-link" href="#components">Watch a demo <iconify-icon icon="lucide:arrow-right"></iconify-icon></a>
+          </div>
+        </div>
+        <div class="clay-media" style="background:linear-gradient(150deg,#ffd6c2,#f0a985)" aria-label="Clay illustration of connected records" role="img">
+          <div class="cprop cm-a" style="background:radial-gradient(circle at 32% 28%,#ff9a6b,#e8571f)"></div>
+          <div class="cprop cm-b"></div>
+          <div class="cprop cm-c" style="background:radial-gradient(circle at 32% 28%,#c9a2ff,#7a4fd1)"></div>
+        </div>
+      </div>
+
+      <div class="fband cream">
+        <div class="ftext">
+          <span class="eyeb teal">Signals</span>
+          <h4>Act the moment <span class="ac-teal">something moves</span></h4>
+          <p>Job changes, funding, hiring spikes — Clay watches for you and routes the play automatically, while it still matters.</p>
+          <div class="proof-row">
+            <div class="logos"><iconify-icon icon="lucide:activity"></iconify-icon><iconify-icon icon="lucide:zap"></iconify-icon><iconify-icon icon="lucide:bell"></iconify-icon></div>
+            <span class="cap">Real-time triggers across your stack</span>
+          </div>
+          <div class="cta-pair">
+            <button class="btn btn-accent-lime">Set up signals</button>
+            <a class="text-link" href="#components">Read the guide <iconify-icon icon="lucide:arrow-right"></iconify-icon></a>
+          </div>
+        </div>
+        <div class="clay-media" style="background:linear-gradient(150deg,#cfe9d3,#9cc9a6)" aria-label="Clay illustration of signal props" role="img">
+          <div class="cprop cm-a" style="background:radial-gradient(circle at 32% 28%,#a9f0b6,#3ba85b)"></div>
+          <div class="cprop cm-b"></div>
+          <div class="cprop cm-c"></div>
+        </div>
+      </div>
+      <div class="spec-card">
+        panels <b>card-panel-blue #F0F8FF</b> / <b>card-panel-coral #FFF3ED</b> · radius <b>card-lg 24</b> · inset <b>2px</b><br>
+        headline <b>headline-md 72/500 -2.2px</b> (scaled) · media <b>card-lg 24</b> · eyebrow <b>pill</b> · body <b>body-default</b>
+      </div>
+    </div>
+
+    <!-- MINI ICON TILES -->
+    <div class="comp-block" data-tier-a-component="mini-icon-tile">
+      <h3>Mini icon-tile card <span class="count-tag">×4</span></h3>
+      <p class="lead">Non-uniform grid — one full-width lead row, then a row of uneven tiles. Icon glyph plus one or two dense lines, hairline inset edge.</p>
+      <div class="demo">
+        <div class="tile-grid tile-lead">
+          <div class="mini-tile"><iconify-icon icon="lucide:workflow"></iconify-icon><p>Chain steps into a workflow once and let every new record run it automatically.</p></div>
+        </div>
+        <div class="tile-grid tile-row3">
+          <div class="mini-tile"><iconify-icon icon="lucide:table-2"></iconify-icon><p>Spreadsheet-native. Every table is a live pipeline.</p></div>
+          <div class="mini-tile"><iconify-icon icon="lucide:plug"></iconify-icon><p>Native connectors to your CRM.</p></div>
+          <div class="mini-tile"><iconify-icon icon="lucide:sparkles"></iconify-icon><p>AI research agents on tap.</p></div>
+        </div>
+      </div>
+      <div class="spec-card">
+        <b>--card-mini-tile</b> fill <b>#FEFDFB</b> · radius <b>card 18</b> · padding <b>16px 20px</b> · shadow <b>rgba(255,255,255,0.05) 0 0 0 1px inset</b> · icon <b>20px</b>
+      </div>
+    </div>
+
+    <!-- DATA TABLE SHOWCASE -->
+    <div class="comp-block" data-tier-a-component="data-table-showcase">
+      <h3>Data / table showcase <span class="count-tag">×1</span></h3>
+      <p class="lead">A compound layered composition — a spreadsheet card with floating form and email-preview panels overlapping its lower edge. Flat hairline elevation, no drop shadow.</p>
+      <div class="table-showcase">
+        <table class="mini-table">
+          <thead><tr><th><input type="checkbox" aria-label="Select all"></th><th>Company</th><th>Domain</th><th>Size</th><th>Signal</th><th>Score</th><th>Owner</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td><input type="checkbox" aria-label="Select row"></td><td>Northwind</td><td>northwind.io</td><td>210</td><td>Hiring</td><td>92</td><td>Ada</td><td>Queued</td></tr>
+            <tr class="active"><td><input type="checkbox" checked aria-label="Select row"></td><td>Meridian</td><td>meridian.co</td><td>540</td><td>Funding</td><td>88</td><td>Leo</td><td>Enriching</td></tr>
+            <tr><td><input type="checkbox" aria-label="Select row"></td><td>Halcyon</td><td>halcyon.app</td><td>78</td><td>Job change</td><td>81</td><td>Mira</td><td>Ready</td></tr>
+            <tr><td><input type="checkbox" aria-label="Select row"></td><td>Verdant</td><td>verdant.dev</td><td>1,200</td><td>Traffic</td><td>76</td><td>Kai</td><td>Ready</td></tr>
+          </tbody>
+        </table>
+        <div class="float-panel fp-form">
+          <label for="ss">Enrichment source</label>
+          <input class="fp-input" id="ss" value="Waterfall · 6 providers" readonly>
+        </div>
+        <div class="float-panel fp-mail">
+          <h5>Draft — Meridian</h5>
+          <p>Saw the Series B — congrats. Teams your size usually hit a data wall right about now…</p>
+        </div>
+      </div>
+      <div class="spec-card">
+        panel fill <b>surface-alt / cream</b> · radius <b>card-lg 24</b> · row-active tint <b>panel-blue</b> · input height <b>40</b> · radius <b>control-alt 8</b> · elevation <b>hairline inset only</b>
+      </div>
+    </div>
+
+    <!-- VIDEO MEDIA SHOWCASE -->
+    <div class="comp-block" data-tier-a-component="video-media-showcase">
+      <h3>Video / media showcase <span class="count-tag">×1</span></h3>
+      <p class="lead">A full-width rounded panel flanked by cropped siblings implying a rail. The still is a clay gradient render — never live video or a screenshot.</p>
+      <div class="video-rail">
+        <div class="video-panel vp-side" aria-hidden="true"></div>
+        <div class="video-panel vp-main" role="img" aria-label="Illustrated gradient still with play control">
+          <button class="play-btn" aria-label="Play the product tour"><iconify-icon icon="lucide:play"></iconify-icon></button>
+        </div>
+        <div class="video-panel vp-side b" aria-hidden="true"></div>
+      </div>
+      <div class="spec-card">
+        panel radius <b>card-lg 24</b> · play glyph <b>translucent rgba(255,255,255,0.35)</b> · backdrop <b>blur</b> · still <b>clay gradient substitute</b>
+      </div>
+    </div>
+
+    <!-- LOGO PROOF STRIP -->
+    <div class="comp-block" data-tier-a-component="logo-proof-strip">
+      <h3>Logo / proof strip <span class="count-tag">×1</span></h3>
+      <p class="lead">A full-bleed cream card marking the start of the dominant surface. A centered proof sentence over a marquee-capable row of partner marks and a stat badge.</p>
+      <div class="proof-strip">
+        <p class="sentence">The fastest-growing GTM teams run on Clay</p>
+        <div class="proof-marquee">
+          <div class="proof-track" id="proofTrack">
+            <span class="mark"><iconify-icon icon="lucide:hexagon"></iconify-icon>Vellum</span>
+            <span class="mark"><iconify-icon icon="lucide:triangle"></iconify-icon>Rampart</span>
+            <div class="stat-badge"><b>+312%</b><span>pipeline lift</span></div>
+            <span class="mark"><iconify-icon icon="lucide:circle"></iconify-icon>Northbeam</span>
+            <span class="mark"><iconify-icon icon="lucide:square"></iconify-icon>Cadence</span>
+            <span class="mark"><iconify-icon icon="lucide:diamond"></iconify-icon>Lumen</span>
+          </div>
+        </div>
+      </div>
+      <div class="spec-card">
+        card fill <b>surface-alt cream</b> · radius <b>card-lg 24</b> · sentence <b>body-default / text-secondary</b> · stat badge radius <b>card-sm 14</b> · rail <b>marquee</b>
+      </div>
+    </div>
+
+    <!-- ARTICLE LINK TILE ROW -->
+    <div class="comp-block" data-tier-a-component="article-link-tile-row">
+      <h3>Article / link tile row <span class="count-tag">×3</span></h3>
+      <p class="lead">Bottom-of-page wide low cards. The lead one carries a dark gradient corner-swoosh; the rest are plain cream with a title and thumbnail.</p>
+      <div class="article-row">
+        <a class="article-tile dark" href="#components">
+          <div class="thumb" aria-hidden="true"></div>
+          <div class="body"><span class="kick">Guide</span><span class="title">The GTM engineer’s playbook</span></div>
+        </a>
+        <a class="article-tile" href="#components">
+          <div class="thumb" aria-hidden="true"></div>
+          <div class="body"><span class="kick">Story</span><span class="title">How Meridian 4×’d reply rates</span></div>
+        </a>
+        <a class="article-tile" href="#components">
+          <div class="thumb" aria-hidden="true"></div>
+          <div class="body"><span class="kick">Docs</span><span class="title">Building your first workflow</span></div>
+        </a>
+      </div>
+      <div class="spec-card">
+        fill <b>#FEFDFB</b> · radius <b>card 18</b> · shadow <b>hairline inset</b> · swoosh <b>ink-deep gradient</b> · title <b>body-default 600</b>
+      </div>
+    </div>
+
+    <!-- NAV LINKS (Tier A supporting) -->
+    <div class="comp-block">
+      <h3>Nav links</h3>
+      <p class="lead">Quiet on cream, ink on hover. The active item carries full contrast.</p>
+      <div class="demo">
+        <div class="navlinks-demo">
+          <a href="#components" class="active">Platform</a>
+          <a href="#components">Sources</a>
+          <a href="#components">Solutions</a>
+          <a href="#components">Resources</a>
+          <a href="#components">Pricing</a>
+        </div>
+      </div>
+      <div class="spec-card">rest <b>text-secondary</b> · hover/active <b>text-primary</b> · type <b>body-md 14/500</b> · motion <b>color .1s ease-out</b></div>
+    </div>
+  </div>
+</section>
+
+<style data-section-styles="surface-depth">
+.depth-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px}
+.depth-card{padding:22px;background:var(--surface-alt);border:1px solid var(--border-hairline)}
+.depth-card .name{font-size:14px;font-weight:600;margin-bottom:6px}
+.depth-card .tok{font-size:12px;color:var(--text-secondary);font-family:ui-monospace,monospace}
+.depth-card .sample{height:80px;margin-bottom:16px;background:var(--surface)}
+.r-control{border-radius:var(--r-control)}
+.r-control-alt{border-radius:var(--r-control-alt)}
+.r-card{border-radius:var(--r-card)}
+.r-card-lg{border-radius:var(--r-card-lg)}
+.r-card-sm{border-radius:var(--r-card-sm)}
+.r-pill{border-radius:var(--r-pill)}
+.s-tile{box-shadow:rgba(255,255,255,0.05) 0 0 0 1px inset;border:1px solid var(--border-hairline)}
+.s-blue{box-shadow:inset 0 0 0 2px #F0F8FF;background:var(--panel-blue)}
+.s-coral{box-shadow:inset 0 0 0 2px #FFF3ED;background:var(--panel-coral)}
+</style>
+<section class="band" id="surface-depth">
+  <div class="wrap">
+    <div class="band-head">
+      <span class="eyebrow">Surface &amp; depth</span>
+      <h2>Flat, bordered, grounded</h2>
+      <p>No floating cards. Depth reads through hairline insets and rounded corners, not drop shadows.</p>
+    </div>
+    <div class="depth-grid">
+      <div class="depth-card r-control-alt"><div class="sample r-control-alt"></div><div class="name">Control alt</div><div class="tok">radius 8px</div></div>
+      <div class="depth-card r-control"><div class="sample r-control"></div><div class="name">Control</div><div class="tok">radius 12px</div></div>
+      <div class="depth-card r-card-sm"><div class="sample r-card-sm"></div><div class="name">Card small</div><div class="tok">radius 14px</div></div>
+      <div class="depth-card r-card"><div class="sample r-card"></div><div class="name">Card</div><div class="tok">radius 18px</div></div>
+      <div class="depth-card r-card-lg"><div class="sample r-card-lg"></div><div class="name">Card large</div><div class="tok">radius 24px</div></div>
+      <div class="depth-card r-pill"><div class="sample r-pill" style="border-radius:var(--r-pill)"></div><div class="name">Pill</div><div class="tok">radius 9999px</div></div>
+      <div class="depth-card s-tile r-card"><div class="sample r-card" style="background:#FEFDFB"></div><div class="name">Mini-tile inset</div><div class="tok">rgba(255,255,255,0.05) inset</div></div>
+      <div class="depth-card s-blue r-card-lg"><div class="sample r-card-lg" style="background:transparent"></div><div class="name">Blue panel inset</div><div class="tok">2px #F0F8FF inset</div></div>
+      <div class="depth-card s-coral r-card-lg"><div class="sample r-card-lg" style="background:transparent"></div><div class="name">Coral panel inset</div><div class="tok">2px #FFF3ED inset</div></div>
+    </div>
+  </div>
+</section>
+
+<style data-section-styles="motion">
+#motion{background:var(--surface)}
+.motion-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+.motion-card{background:var(--surface-alt);border:1px solid var(--border-hairline);border-radius:var(--r-card);padding:24px}
+.motion-card h4{font-size:16px;letter-spacing:-0.4px;margin-bottom:14px}
+.motion-card .tok{font-size:12px;font-family:ui-monospace,monospace;color:var(--text-secondary);margin-bottom:16px}
+.motion-dot{width:44px;height:44px;border-radius:var(--r-control);background:var(--ink-deep)}
+.m-hover .motion-dot.play{background:var(--nav-hover);transition:background-color .3s var(--ease-hover)}
+.m-lift .motion-dot.play{transform:translateY(-14px) scale(1.05);transition:transform .4s var(--ease-lift)}
+.m-quick .motion-dot.play{background:var(--accent-lime-deep);transition:transform .3s ease-out}
+.replay{margin-top:16px;height:36px;padding:0 14px;border-radius:var(--r-control);border:1px solid var(--border-hairline);background:var(--surface);font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+</style>
+<section class="band" id="motion">
+  <div class="wrap">
+    <div class="band-head">
+      <span class="eyebrow">Motion</span>
+      <h2>Short and purposeful</h2>
+      <p>Transitions do one thing quickly. Click a card to replay its curve.</p>
+    </div>
+    <div class="motion-grid">
+      <div class="motion-card m-hover">
+        <h4>Hover fill</h4>
+        <div class="tok">background-color 0.3s<br>cubic-bezier(.075,.82,.165,1)</div>
+        <div class="motion-dot"></div>
+        <button class="replay" aria-label="Replay hover fill"><iconify-icon icon="lucide:rotate-cw"></iconify-icon>Replay</button>
+      </div>
+      <div class="motion-card m-lift">
+        <h4>Hover lift</h4>
+        <div class="tok">transform 0.4s<br>cubic-bezier(.165,.84,.44,1)</div>
+        <div class="motion-dot"></div>
+        <button class="replay" aria-label="Replay hover lift"><iconify-icon icon="lucide:rotate-cw"></iconify-icon>Replay</button>
+      </div>
+      <div class="motion-card m-quick">
+        <h4>Text swap</h4>
+        <div class="tok">color 0.1s ease-out</div>
+        <div class="motion-dot"></div>
+        <button class="replay" aria-label="Replay text swap"><iconify-icon icon="lucide:rotate-cw"></iconify-icon>Replay</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style data-section-styles="composition">
+.mock{border:1px solid var(--border-hairline);border-radius:var(--r-card-lg);overflow:hidden;background:var(--background)}
+.mock-nav{height:59px;display:flex;align-items:center;gap:16px;padding:0 24px;
+  background:linear-gradient(rgba(120,170,120,0.9),rgba(56,92,48,0.95))}
+.mock-nav .logo{font-size:16px}
+.mock-nav .spacer{margin-left:auto}
+.mock-hero{background:linear-gradient(160deg,#9cc9a6,#37622f);padding:56px 32px;color:#fff;position:relative}
+.mock-hero h3{font-size:44px;letter-spacing:-2px;line-height:1;max-width:520px}
+.mock-hero p{color:rgba(255,255,255,0.9);margin:14px 0 22px;max-width:420px;font-weight:500}
+.mock-body{padding:32px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.mock-cta{padding:40px 32px;background:var(--panel-blue);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.mock-cta h4{font-size:28px;letter-spacing:-1px}
+@media(max-width:768px){.mock-body{grid-template-columns:1fr}.mock-hero h3{font-size:30px}}
+</style>
+<section class="band" id="composition">
+  <div class="wrap">
+    <div class="band-head">
+      <span class="eyebrow">In composition</span>
+      <h2>The system, assembled</h2>
+      <p>Nav, hero fragment, three tiles, and a closing CTA — built only from the tokens above.</p>
+    </div>
+    <div class="mock">
+      <div class="mock-nav">
+        <span class="logo"><span class="glyph"></span>Clay</span>
+        <span class="spacer"></span>
+        <a class="btn btn-nav-secondary" href="#composition">Get a demo</a>
+        <a class="btn btn-nav-cta" href="#composition">Start building</a>
+      </div>
+      <div class="mock-hero">
+        <span class="eyebrow" style="background:rgba(255,255,255,0.18);color:#fff;border:1px solid rgba(255,255,255,0.4)">Signals</span>
+        <h3>Ship the play before the moment passes</h3>
+        <p>Watch, enrich, and act — one warm surface holding a lot of quiet machinery.</p>
+        <div style="display:flex;gap:14px;flex-wrap:wrap">
+          <a class="btn btn-hero-primary" style="color:#000" href="#composition">Start building</a>
+          <a class="btn btn-hero-secondary" href="#composition">Talk to sales</a>
+        </div>
+      </div>
+      <div class="mock-body">
+        <div class="mini-tile"><iconify-icon icon="lucide:radar"></iconify-icon><p>Detect job changes and funding as they happen.</p></div>
+        <div class="mini-tile"><iconify-icon icon="lucide:layers"></iconify-icon><p>Waterfall enrichment across every provider.</p></div>
+        <div class="mini-tile"><iconify-icon icon="lucide:send"></iconify-icon><p>Route the right play to the right owner.</p></div>
+      </div>
+      <div class="mock-cta">
+        <h4>Build your first workflow today</h4>
+        <a class="btn btn-accent-lime" href="#composition">Get started free</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style data-section-styles="footer">
+#footer{background:var(--footer-bg);border-top:1px solid var(--border-hairline);
+  background-image:radial-gradient(ellipse at 20% 120%,rgba(203,216,16,0.12),transparent 55%),radial-gradient(ellipse at 85% 120%,rgba(160,205,230,0.18),transparent 55%);
+  padding:72px 0 48px}
+.foot-cols{display:grid;grid-template-columns:repeat(5,1fr);gap:24px;margin-bottom:48px}
+.foot-col h5{font-size:12px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-tertiary);margin-bottom:14px}
+.foot-col a{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--text-secondary);text-decoration:none;padding:5px 0}
+.foot-col a:hover{color:var(--text-primary)}
+.hiring{font-size:10px;font-weight:700;text-transform:uppercase;background:var(--accent-lime);color:var(--ink-deep);border-radius:var(--r-pill);padding:2px 8px}
+.foot-bottom{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;border-top:1px solid var(--border-hairline);padding-top:28px}
+.foot-wordmark{display:flex;align-items:center;gap:8px;font-weight:600;font-size:18px;letter-spacing:-0.5px}
+.foot-wordmark .glyph{width:18px;height:18px;border-radius:50%;background:var(--accent-lime-deep)}
+.foot-copy{font-size:13px;color:var(--text-secondary)}
+.socials{display:flex;gap:10px}
+.socials a{width:40px;height:40px;border-radius:50%;border:1px solid var(--border-hairline);background:var(--surface-alt);display:flex;align-items:center;justify-content:center;color:var(--text-primary);font-size:18px}
+.socials a:hover{background:var(--surface)}
+.foot-credit{text-align:center;margin-top:32px;font-size:13px;color:var(--text-tertiary)}
+.foot-credit a{color:var(--text-secondary)}
+@media(max-width:768px){.foot-cols{grid-template-columns:repeat(2,1fr)}}
+</style>
+<footer id="footer">
+  <div class="wrap">
+    <div class="foot-cols">
+      <div class="foot-col"><h5>Platform</h5><a href="#">Sources</a><a href="#">Enrichment</a><a href="#">Signals</a><a href="#">Workflows</a><a href="#">Integrations</a></div>
+      <div class="foot-col"><h5>Solutions</h5><a href="#">Prospecting</a><a href="#">Scoring</a><a href="#">Outbound</a><a href="#">Inbound</a><a href="#">CRM sync</a></div>
+      <div class="foot-col"><h5>Resources</h5><a href="#">Docs</a><a href="#">University</a><a href="#">Templates</a><a href="#">Community</a><a href="#">Changelog</a></div>
+      <div class="foot-col"><h5>Company</h5><a href="#">About</a><a href="#">Careers <span class="hiring">Hiring</span></a><a href="#">Blog</a><a href="#">Press</a><a href="#">Contact</a></div>
+      <div class="foot-col"><h5>Legal</h5><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Security</a><a href="#">DPA</a><a href="#">Status</a></div>
+    </div>
+    <div class="foot-bottom">
+      <div>
+        <div class="foot-wordmark"><span class="glyph"></span>Clay</div>
+        <div class="foot-copy" style="margin-top:8px">© 2024 Clay. All rights reserved.</div>
+      </div>
+      <div class="socials">
+        <a href="#" aria-label="Clay on Twitter"><iconify-icon icon="lucide:twitter"></iconify-icon></a>
+        <a href="#" aria-label="Clay on LinkedIn"><iconify-icon icon="lucide:linkedin"></iconify-icon></a>
+        <a href="#" aria-label="Clay on YouTube"><iconify-icon icon="lucide:youtube"></iconify-icon></a>
+      </div>
+    </div>
+    <div class="foot-credit">
+      <a href="https://www.clay.com/">clay.com</a> · Design system captured and rendered by superdesign.dev
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Filter chips
+  document.querySelectorAll('.chip-rail').forEach(function(rail){
+    rail.querySelectorAll('.fchip').forEach(function(chip){
+      chip.addEventListener('click',function(){
+        rail.querySelectorAll('.fchip').forEach(function(c){c.classList.remove('active');c.setAttribute('aria-pressed','false')});
+        chip.classList.add('active');chip.setAttribute('aria-pressed','true');
+      });
+    });
+  });
+  // Motion replay
+  document.querySelectorAll('.motion-card').forEach(function(card){
+    var dot=card.querySelector('.motion-dot');
+    var btn=card.querySelector('.replay');
+    function play(){dot.classList.remove('play');void dot.offsetWidth;dot.classList.add('play');}
+    if(btn)btn.addEventListener('click',play);
+    card.addEventListener('mouseenter',play);
+  });
+})();
+</script>
+</body>
+</html>

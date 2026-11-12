@@ -1,0 +1,697 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src data: blob:; media-src data: blob:; script-src 'unsafe-inline' https://code.iconify.design; connect-src https://api.iconify.design https://api.simplesvg.com https://api.unisvg.com; frame-src 'none'; object-src 'none'; form-action 'none'; base-uri 'none'">
+<meta name="referrer" content="no-referrer">
+
+<meta name="referrer" content="no-referrer">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compute-noir lime — Design System</title>
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --background:#09090B;
+  --surface:#0E0E10;
+  --surface-alt:#121215;
+  --text-primary:#F4F4F1;
+  --text-secondary:#A7A8A1;
+  --text-tertiary:#8C8E86;
+  --accent:#C6F24E;
+  --accent-deep:#76B900;
+  --accent-hover:#E4FFA3;
+  --border:rgba(243,243,239,0.12);
+  --r-control:8px;
+  --r-card:4px;
+  --r-panel:12px;
+  --r-pill:9999px;
+  --sp-base:8px;
+  --sp-gap:48px;
+  --sp-section:96px;
+  --hairline:2px;
+  --display-lg:66px;
+  --headline-md:52px;
+  --label-md:38px;
+  --body-md:18px;
+  --body-base:16px;
+  --ease-out:cubic-bezier(0,0,0.2,1);
+  --ease-std:cubic-bezier(0.4,0,0.2,1);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--background);color:var(--text-primary);
+  font-family:"Space Grotesk",system-ui,sans-serif;font-size:var(--body-base);
+  line-height:1.6;
+  background-image:
+    radial-gradient(1100px 620px at 20% 0px, rgba(198,242,78,0.09), rgba(0,0,0,0) 70%),
+    radial-gradient(700px 380px at 82% 78%, rgba(118,185,0,0.08), rgba(0,0,0,0) 70%),
+    radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 60% 70%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1px 1px at 80% 20%, rgba(255,255,255,0.35), transparent),
+    radial-gradient(1px 1px at 35% 85%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1px 1px at 90% 55%, rgba(255,255,255,0.3), transparent);
+  background-attachment:fixed;
+}
+h1,h2,h3,h4{font-family:"Archivo Black",Impact,sans-serif;font-weight:400;margin:0}
+p{margin:0}
+a{color:inherit}
+.mono{font-family:"JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:0.06em;font-size:12px;line-height:1.4}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+.eyebrow{font-family:"JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:0.06em;font-size:12px;color:var(--accent);display:inline-flex;align-items:center;gap:8px}
+.live-dot{width:7px;height:7px;border-radius:9999px;background:var(--accent);box-shadow:0 0 0 4px rgba(198,242,78,0.15);display:inline-block}
+section{padding:var(--sp-section) 0}
+.sec-head{margin-bottom:var(--sp-gap)}
+.sec-head h2{font-size:var(--label-md);letter-spacing:-0.8px;line-height:1.05}
+.sec-head p{color:var(--text-secondary);margin-top:14px;max-width:640px;font-size:var(--body-md);line-height:1.63}
+
+/* navbar */
+.nav{position:sticky;top:0;z-index:100;width:100%;height:64px;
+  background:rgba(10,10,12,0.4);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  border-radius:0;border-bottom:1px solid var(--border);display:flex;align-items:center}
+.nav-inner{max-width:1240px;margin:0 auto;padding:0 24px;width:100%;display:flex;align-items:center;gap:20px}
+.logo{display:flex;align-items:center;gap:10px;font-family:"Archivo Black",sans-serif;font-size:18px;letter-spacing:-0.5px}
+.logo-mark{width:26px;height:26px;background:var(--accent);border-radius:9999px;display:grid;place-items:center;color:#0B0B0C}
+.price-pill{font-family:"JetBrains Mono",monospace;font-size:12px;text-transform:uppercase;letter-spacing:0.06em;
+  border:1px solid var(--border);border-radius:9999px;padding:6px 12px;color:var(--text-primary);display:flex;align-items:center;gap:8px}
+.nav-center{display:flex;gap:26px;margin:0 auto}
+.nav-center a{font-family:"JetBrains Mono",monospace;font-size:12px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-secondary);text-decoration:none;transition:color .15s var(--ease-std)}
+.nav-center a:hover{color:var(--accent)}
+.icon-glass{width:40px;height:40px;border-radius:9999px;background:var(--surface-alt);border:1px solid var(--border);
+  display:grid;place-items:center;color:var(--text-secondary);cursor:pointer;transition:color .15s var(--ease-std);flex:none}
+.icon-glass:hover{color:var(--accent)}
+.nav-cta{background:var(--accent);color:#0B0B0C;border:none;border-radius:9999px;height:40px;padding:0 20px;
+  font-family:"JetBrains Mono",monospace;font-size:12px;text-transform:uppercase;letter-spacing:0.06em;font-weight:500;cursor:pointer;transition:background .15s var(--ease-std)}
+.nav-cta:hover{background:var(--accent-hover)}
+.nav-util{display:flex;align-items:center;gap:10px}
+
+/* hero */
+#hero{padding-top:64px;position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1fr 0.85fr;gap:48px;align-items:center}
+.hero-eyebrow{margin-bottom:20px}
+.hero h1{font-size:var(--display-lg);letter-spacing:-2px;line-height:0.94;text-transform:uppercase}
+.hero .accent-line{color:var(--accent)}
+.hero-body{color:var(--text-secondary);font-size:var(--body-md);line-height:1.63;max-width:460px;margin:22px 0 30px}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-bottom:26px}
+.btn-primary{background:var(--accent);color:#0B0B0C;border:none;border-radius:9999px;height:44px;padding:0 26px;
+  font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:16px;cursor:pointer;transition:background .15s var(--ease-std)}
+.btn-primary:hover{background:var(--accent-hover)}
+.btn-secondary-outline{background:var(--surface);color:var(--text-primary);border:1px solid var(--border);border-radius:9999px;height:44px;padding:0 24px;
+  font-family:"Space Grotesk",sans-serif;font-weight:500;font-size:16px;cursor:pointer;transition:color .15s var(--ease-std)}
+.btn-secondary-outline:hover{color:var(--accent)}
+.btn-glass{background:var(--surface-alt);color:var(--text-secondary);border:1px solid var(--border);border-radius:8px;height:34px;padding:8px 14px;
+  font-family:"Space Grotesk",sans-serif;font-size:14px;cursor:pointer;transition:color .15s var(--ease-std);display:inline-flex;align-items:center;gap:6px}
+.btn-glass:hover{color:#C1E65B}
+.chip{background:var(--surface);border-radius:6px;padding:10px 12px;display:flex;align-items:center;gap:12px;justify-content:space-between}
+.chip .chip-txt{display:flex;flex-direction:column;gap:2px}
+.chip .chip-label{font-family:"JetBrains Mono",monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-tertiary)}
+.chip .chip-addr{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--text-primary)}
+.chip-copy{background:var(--accent);color:#0B0B0C;border:none;border-radius:9999px;height:26px;padding:0 12px;
+  font-family:"JetBrains Mono",monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.06em;cursor:pointer;transition:background .15s var(--ease-std)}
+.chip-copy:hover{background:var(--accent-hover)}
+.hero-chips{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:520px}
+.hero-art{aspect-ratio:1/1.05;border-radius:0;position:relative;display:grid;place-items:center;
+  background:radial-gradient(circle at 50% 40%, rgba(198,242,78,0.12), transparent 60%)}
+.hero-char{font-size:180px;color:var(--accent);animation:bob 5s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+@media(max-width:1024px){
+  :root{--display-lg:52px;--headline-md:42px;--label-md:32px}
+  .hero-grid{grid-template-columns:1fr}
+  .hero-art{max-width:360px;order:-1}
+}
+@media(max-width:640px){:root{--display-lg:40px;--headline-md:34px;--label-md:26px}.hero-chips{grid-template-columns:1fr}}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Primary">
+  <div class="nav-inner">
+    <div class="logo"><span class="logo-mark"><iconify-icon icon="lucide:cpu" aria-hidden="true"></iconify-icon></span>ARTIFICIAL</div>
+    <span class="price-pill"><span class="live-dot"></span>$0.0412 <span style="color:var(--accent)">+6.4%</span></span>
+    <div class="nav-center">
+      <a href="#hero">Protocol</a>
+      <a href="#components">Vault</a>
+      <a href="#composition">Compute</a>
+    </div>
+    <div class="nav-util">
+      <button class="icon-glass" aria-label="Search"><iconify-icon icon="lucide:search" aria-hidden="true"></iconify-icon></button>
+      <button class="icon-glass" aria-label="Documentation"><iconify-icon icon="lucide:book-open" aria-hidden="true"></iconify-icon></button>
+      <button class="nav-cta">Trade</button>
+    </div>
+  </div>
+</nav>
+
+<header id="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <div class="hero-eyebrow eyebrow"><span class="live-dot"></span>COMPUTE-NOIR · LIVE ON MAINNET</div>
+        <h1>Raw compute,<br><span class="accent-line">rationed light.</span></h1>
+        <p class="hero-body">A dark-mode-default protocol lit by a single acid-lime accent. Terminal-grade data panels, oversized numerals, and quiet monospace labels — engineered restraint over the void.</p>
+        <div class="hero-ctas">
+          <button class="btn-primary">Enter the vault</button>
+          <button class="btn-secondary-outline">Read the docs</button>
+          <button class="btn-glass"><iconify-icon icon="lucide:github" aria-hidden="true"></iconify-icon>Source</button>
+        </div>
+        <div class="hero-chips">
+          <div class="chip">
+            <div class="chip-txt"><span class="chip-label">Contract</span><span class="chip-addr">0x7a3f…9E21</span></div>
+            <button class="chip-copy">Copy</button>
+          </div>
+          <div class="chip">
+            <div class="chip-txt"><span class="chip-label">Vault</span><span class="chip-addr">0xC6F2…4E0B</span></div>
+            <button class="chip-copy">Copy</button>
+          </div>
+        </div>
+      </div>
+      <div class="hero-art" role="img" aria-label="Illustrated compute mascot floating in the void">
+        <iconify-icon class="hero-char" icon="lucide:bot" aria-hidden="true"></iconify-icon>
+      </div>
+    </div>
+  </div>
+</header>
+
+<style data-section-styles="marquee">
+.marquee{width:100%;background:var(--accent);overflow:hidden;padding:12px 0;white-space:nowrap}
+.marquee-track{display:inline-flex;gap:0;animation:marquee 22s linear infinite;will-change:transform}
+.marquee span{font-family:"JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:0.1em;font-size:13px;color:#0B0B0C;font-weight:500;padding:0 28px;display:inline-flex;align-items:center;gap:28px}
+.marquee span::after{content:"◆";font-size:8px}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+</style>
+<div class="marquee" data-tier-a-component="marquee-ticker-band" aria-hidden="true">
+  <div class="marquee-track">
+    <span>VAULT ONLINE</span><span>COMPUTE RATIONED</span><span>LIME CONFINED · 4.1%</span><span>NEAR-BLACK DEFAULT</span><span>TERMINAL GRADE</span><span>VAULT ONLINE</span><span>COMPUTE RATIONED</span><span>LIME CONFINED · 4.1%</span><span>NEAR-BLACK DEFAULT</span><span>TERMINAL GRADE</span>
+  </div>
+</div>
+
+<style data-section-styles="statband">
+.stat-band{text-align:center;padding:var(--sp-section) 0}
+.giant-num{font-family:"Archivo Black",sans-serif;color:var(--accent);font-size:clamp(90px,18vw,240px);line-height:0.9;letter-spacing:-4px}
+.sub-num{font-family:"Archivo Black",sans-serif;color:var(--text-primary);font-size:var(--headline-md);letter-spacing:-1px;margin-top:8px}
+.stat-hair{height:2px;background:var(--border);max-width:640px;margin:44px auto}
+.stat-pair{display:grid;grid-template-columns:1fr 1fr;max-width:640px;margin:0 auto;gap:24px}
+.stat-pair .num{font-family:"Archivo Black",sans-serif;font-size:var(--label-md);letter-spacing:-0.8px}
+.stat-pair .lbl{font-family:"JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:0.06em;font-size:12px;color:var(--text-secondary);margin-top:8px}
+</style>
+<section class="stat-band" aria-label="Live statistics">
+  <div class="wrap">
+    <div class="eyebrow" style="justify-content:center;margin-bottom:22px"><span class="live-dot"></span>TOTAL VALUE LOCKED</div>
+    <div class="giant-num">42.7M</div>
+    <div class="sub-num">$18,204,556</div>
+    <div class="stat-hair"></div>
+    <div class="stat-pair">
+      <div><div class="num" style="color:var(--accent)">9,318</div><div class="lbl">Vault deposits</div></div>
+      <div><div class="num">$6.2M</div><div class="lbl">Pool liquidity</div></div>
+    </div>
+  </div>
+</section>
+
+<style data-section-styles="palette">
+#palette .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px}
+.swatch{border:1px solid var(--border);border-radius:var(--r-card);overflow:hidden;background:var(--surface)}
+.swatch .chip-color{height:96px}
+.swatch .meta{padding:14px}
+.swatch .name{font-family:"JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:0.06em;font-size:12px;color:var(--text-primary)}
+.swatch .val{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--text-secondary);margin-top:4px}
+.swatch .note{color:var(--text-secondary);font-size:13px;margin-top:10px;line-height:1.5}
+.checker{background-image:linear-gradient(45deg,#1a1a1c 25%,transparent 25%),linear-gradient(-45deg,#1a1a1c 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#1a1a1c 75%),linear-gradient(-45deg,transparent 75%,#1a1a1c 75%);background-size:16px 16px;background-position:0 0,0 8px,8px -8px,-8px 0;background-color:#0c0c0e}
+.role-h{font-family:"JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:0.06em;font-size:12px;color:var(--accent);margin:36px 0 18px}
+</style>
+<section id="palette">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow"><span class="live-dot"></span>PALETTE</div>
+      <h2>Pure neutral, one acid hue.</h2>
+      <p>Near-monochrome dark by design. Everything outside the lime accent and off-white ink stays structural neutral — no secondary brand hue exists.</p>
+    </div>
+    <div class="role-h">Surfaces</div>
+    <div class="grid">
+      <div class="swatch"><div class="chip-color" style="background:#09090B"></div><div class="meta"><div class="name">background</div><div class="val">#09090B</div><div class="note">Dominant near-black field, ~48% of pixels.</div></div></div>
+      <div class="swatch"><div class="chip-color" style="background:#0E0E10"></div><div class="meta"><div class="name">surface</div><div class="val">#0E0E10</div><div class="note">Lifted panel neutral for flat data cards.</div></div></div>
+      <div class="swatch"><div class="chip-color" style="background:#121215"></div><div class="meta"><div class="name">surface-alt</div><div class="val">#121215</div><div class="note">Glass utility button fill, chip surfaces.</div></div></div>
+    </div>
+    <div class="role-h">Text</div>
+    <div class="grid">
+      <div class="swatch"><div class="chip-color" style="background:#F4F4F1"></div><div class="meta"><div class="name">text-primary</div><div class="val">#F4F4F1</div><div class="note">Primary off-white ink for headings & body.</div></div></div>
+      <div class="swatch"><div class="chip-color" style="background:#A7A8A1"></div><div class="meta"><div class="name">text-secondary</div><div class="val">#A7A8A1</div><div class="note">Supporting copy and secondary labels.</div></div></div>
+      <div class="swatch"><div class="chip-color" style="background:#8C8E86"></div><div class="meta"><div class="name">text-tertiary</div><div class="val">#8C8E86</div><div class="note">Tertiary data tags and muted meta.</div></div></div>
+    </div>
+    <div class="role-h">Accents</div>
+    <div class="grid">
+      <div class="swatch"><div class="chip-color" style="background:#C6F24E"></div><div class="meta"><div class="name">accent</div><div class="val">#C6F24E</div><div class="note">Acid-lime, rationed to CTAs, numerals, glow rings — ~4.1% of area.</div></div></div>
+      <div class="swatch"><div class="chip-color" style="background:#76B900"></div><div class="meta"><div class="name">accent-deep</div><div class="val">#76B900</div><div class="note">Deeper green for secondary glow dots and dark gradient stops.</div></div></div>
+      <div class="swatch"><div class="chip-color checker"><div style="height:100%;background:rgba(198,242,78,0.09)"></div></div><div class="meta"><div class="name">glow-lime</div><div class="val">rgba(198,242,78,0.09)</div><div class="note">Soft radial hero glow — faint wash, never a saturated fill.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<style data-section-styles="type-scale">
+#type-scale .spec{border-top:2px solid var(--border);padding:32px 0;display:grid;grid-template-columns:200px 1fr;gap:32px;align-items:baseline}
+#type-scale .spec .metrics{font-family:"JetBrains Mono",monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-secondary);line-height:1.9}
+#type-scale .spec .metrics b{color:var(--text-primary);font-weight:400}
+.sp-display{font-family:"Archivo Black",sans-serif;font-size:var(--display-lg);letter-spacing:-2px;line-height:0.94;text-transform:uppercase}
+.sp-headline{font-family:"Archivo Black",sans-serif;font-size:var(--headline-md);letter-spacing:-1px;line-height:1}
+.sp-label{font-family:"Archivo Black",sans-serif;font-size:var(--label-md);letter-spacing:-0.8px;line-height:1.05}
+.sp-body-md{font-family:"Space Grotesk",sans-serif;font-size:18px;line-height:1.63;color:var(--text-secondary)}
+.sp-body-base{font-family:"Space Grotesk",sans-serif;font-size:16px;line-height:1.6;color:var(--text-secondary)}
+.sp-mono{font-family:"JetBrains Mono",monospace;font-size:12px;text-transform:uppercase;letter-spacing:0.06em}
+@media(max-width:768px){#type-scale .spec{grid-template-columns:1fr;gap:14px}}
+</style>
+<section id="type-scale">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow"><span class="live-dot"></span>TYPE SCALE</div>
+      <h2>Blunt display, quiet instrument.</h2>
+      <p>Archivo Black reserved for display, headline and numeral roles. Space Grotesk carries all body copy. JetBrains Mono is the instrument-panel voice.</p>
+    </div>
+    <div class="spec"><div class="metrics"><b>display-lg</b><br>Archivo Black<br>66px · 400<br>lh 0.94 · -2px</div><div class="sp-display">Rationed light</div></div>
+    <div class="spec"><div class="metrics"><b>headline-md</b><br>Archivo Black<br>52px · 400<br>lh 1 · -1px</div><div class="sp-headline">Enter the vault</div></div>
+    <div class="spec"><div class="metrics"><b>label-md</b><br>Archivo Black<br>38px · 400<br>lh 1.05 · -0.8px</div><div class="sp-label">Compute noir</div></div>
+    <div class="spec"><div class="metrics"><b>body-md</b><br>Space Grotesk<br>18px · 400<br>lh 1.63</div><div class="sp-body-md">Terminal-grade data panels and quiet monospace labels sit directly on the near-black void, lit by a single acid accent.</div></div>
+    <div class="spec"><div class="metrics"><b>body-base</b><br>Space Grotesk<br>16px · 400<br>lh 1.6</div><div class="sp-body-base">Denser supporting paragraphs run at the base size, keeping ample air around each measured line for legibility.</div></div>
+    <div class="spec"><div class="metrics"><b>label-mono</b><br>JetBrains Mono<br>12px · 400<br>lh 1.4 · 0.06em</div><div class="sp-mono" style="color:var(--accent)">VAULT ONLINE · COMPUTE RATIONED</div></div>
+  </div>
+</section>
+
+<style data-section-styles="components">
+#components .cluster{border-top:2px solid var(--border);padding:44px 0;display:grid;grid-template-columns:1fr 300px;gap:44px}
+#components .cluster h3{font-size:24px;font-family:"Archivo Black",sans-serif;letter-spacing:-0.5px;margin-bottom:8px}
+#components .cluster .desc{color:var(--text-secondary);font-size:15px;margin-bottom:26px;max-width:560px}
+.spec-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-card);padding:18px;font-family:"JetBrains Mono",monospace;font-size:11px;line-height:1.9;color:var(--text-secondary);align-self:start}
+.spec-card .st{color:var(--accent);text-transform:uppercase;letter-spacing:0.06em;display:block;margin-bottom:8px}
+.spec-card b{color:var(--text-primary);font-weight:400}
+.meta-count{font-family:"JetBrains Mono",monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-tertiary);border:1px solid var(--border);border-radius:9999px;padding:3px 10px;display:inline-block;margin-left:10px;vertical-align:middle}
+.demo{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.matrix{border-collapse:collapse;width:100%}
+.matrix th,.matrix td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--border);vertical-align:middle}
+.matrix th{font-family:"JetBrains Mono",monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-tertiary);font-weight:400}
+.b-dis{opacity:0.4;cursor:not-allowed}
+.data-panel{background:var(--surface);border-radius:0;padding:20px 22px 12px;border:1px solid var(--border)}
+.dp-simple{background:var(--surface);border-radius:0;padding:20px 22px;border:1px solid var(--border);position:relative;overflow:hidden}
+.dp-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.mcap-badge{font-family:"JetBrains Mono",monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--accent);border:1px solid var(--border);border-radius:9999px;padding:3px 10px}
+.tf-tabs{display:flex;gap:4px}
+.tf-tabs button{background:transparent;border:none;color:var(--text-tertiary);font-family:"JetBrains Mono",monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.06em;padding:4px 8px;border-radius:8px;cursor:pointer;transition:color .15s var(--ease-std)}
+.tf-tabs button[aria-selected="true"]{color:#0B0B0C;background:var(--accent)}
+.rack{display:grid;grid-template-rows:repeat(4,1fr);gap:6px;position:relative;padding-top:6px}
+.rack::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(198,242,78,0.05) 1px,rgba(0,0,0,0) 1px);background-size:100% 12px;pointer-events:none}
+.rack-row{display:grid;grid-template-columns:repeat(16,1fr);gap:6px}
+.rack-cell{aspect-ratio:1;border-radius:2px;background:rgba(198,242,78,0.12)}
+.media-row{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;padding:44px 0}
+.media-row.rev .m-text{order:2}
+.media-block{aspect-ratio:16/10;background:var(--surface);display:flex;align-items:flex-end;gap:8px;padding:20px;border:1px solid var(--border)}
+.bar{flex:1;background:var(--accent);border-radius:2px 2px 0 0;opacity:0.85}
+.row-eyebrow{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--accent);letter-spacing:0.06em}
+.hair-div{height:2px;background:var(--border);margin:0}
+.scene{position:relative;min-height:420px;border-radius:0;overflow:hidden;display:flex;align-items:flex-start;justify-content:flex-end;
+  background:radial-gradient(600px 400px at 30% 30%,rgba(118,185,0,0.14),transparent 70%),#000}
+.scene::before{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(4,4,5,0.7) 4%,rgba(4,4,5,0.3) 55%,rgba(0,0,0,0) 100%)}
+.scene .stars{position:absolute;inset:0;background-image:radial-gradient(1px 1px at 20% 30%,rgba(255,255,255,0.6),transparent),radial-gradient(1px 1px at 70% 60%,rgba(255,255,255,0.5),transparent),radial-gradient(1px 1px at 45% 80%,rgba(255,255,255,0.5),transparent),radial-gradient(1px 1px at 85% 25%,rgba(255,255,255,0.4),transparent)}
+.scene .cluster-txt{position:relative;padding:44px;max-width:440px;text-align:right}
+.scene h3{font-size:var(--label-md);text-transform:uppercase;letter-spacing:-0.8px;line-height:1.05}
+.scene .accent-line{color:var(--accent)}
+.scene .desc{color:var(--text-secondary);margin:16px 0 22px}
+.scene .btns{display:flex;gap:12px;justify-content:flex-end;flex-wrap:wrap;margin-bottom:16px}
+.scene .chips2{display:flex;flex-direction:column;gap:10px}
+.footer-demo{display:flex;flex-wrap:wrap;gap:18px 26px;align-items:center;background:transparent}
+.footer-demo a{font-family:"JetBrains Mono",monospace;font-size:12px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-secondary);text-decoration:none;transition:color .15s var(--ease-std)}
+.footer-demo a:hover{color:var(--accent)}
+@media(max-width:1024px){#components .cluster{grid-template-columns:1fr}.media-row{grid-template-columns:1fr}.media-row.rev .m-text{order:0}}
+@media(max-width:640px){.rack-row{grid-template-columns:repeat(8,1fr)}}
+</style>
+<section id="components">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow"><span class="live-dot"></span>COMPONENTS</div>
+      <h2>The full inventory.</h2>
+      <p>Sharp square chrome, pill and small-radius controls, flat data panels — structure from hairlines and rationed light.</p>
+    </div>
+
+    <!-- NAVBAR -->
+    <div class="cluster" data-tier-a-component="navbar">
+      <div>
+        <h3>Navbar <span class="meta-count">9 items · ×1</span></h3>
+        <p class="desc">Edge-to-edge sticky glass bar, 64px tall, all corners 0px. Logo, live price pill, 3-item center cluster, two circular glass utilities, and a lime pill CTA utility.</p>
+        <div style="border:1px solid var(--border)">
+          <nav class="nav" style="position:static" aria-label="Navbar demo">
+            <div class="nav-inner">
+              <div class="logo"><span class="logo-mark"><iconify-icon icon="lucide:cpu" aria-hidden="true"></iconify-icon></span>ARTIFICIAL</div>
+              <span class="price-pill"><span class="live-dot"></span>$0.0412</span>
+              <div class="nav-center"><a href="#components">Protocol</a><a href="#components">Vault</a><a href="#components">Compute</a></div>
+              <div class="nav-util">
+                <button class="icon-glass" aria-label="Search"><iconify-icon icon="lucide:search" aria-hidden="true"></iconify-icon></button>
+                <button class="icon-glass" aria-label="Docs"><iconify-icon icon="lucide:book-open" aria-hidden="true"></iconify-icon></button>
+                <button class="nav-cta">Trade</button>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+      <div class="spec-card"><span class="st">navbar</span>fill <b>rgba(10,10,12,0.4)</b><br>blur <b>24px</b><br>height <b>64</b><br>radius <b>r · 0</b><br>cta <b>#C6F24E / #F4F4F1</b><br>cta-radius <b>pill</b> · h <b>40</b></div>
+    </div>
+
+    <!-- BUTTON MATRIX -->
+    <div class="cluster" data-tier-a-component="button-primary-hero">
+      <div>
+        <h3>Buttons — variant × state</h3>
+        <p class="desc">Primary and page-end lime pills, dark secondary outline pill, and the 8px glass utility. Radii and roles stay strictly separated.</p>
+        <table class="matrix">
+          <thead><tr><th>Variant</th><th>Rest</th><th>Hover</th><th>Active</th><th>Disabled</th></tr></thead>
+          <tbody>
+            <tr>
+              <th>Primary (hero)</th>
+              <td><button class="btn-primary">Enter vault</button></td>
+              <td><button class="btn-primary" style="background:var(--accent-hover)">Enter vault</button></td>
+              <td><button class="btn-primary" style="background:var(--accent-hover)">Enter vault</button></td>
+              <td><button class="btn-primary b-dis" disabled>Enter vault</button></td>
+            </tr>
+            <tr>
+              <th>Secondary outline</th>
+              <td><button class="btn-secondary-outline">Read docs</button></td>
+              <td><button class="btn-secondary-outline" style="color:var(--accent)">Read docs</button></td>
+              <td><button class="btn-secondary-outline" style="color:var(--accent)">Read docs</button></td>
+              <td><button class="btn-secondary-outline b-dis" disabled>Read docs</button></td>
+            </tr>
+            <tr>
+              <th>Glass utility</th>
+              <td><button class="btn-glass"><iconify-icon icon="lucide:copy" aria-hidden="true"></iconify-icon>Copy</button></td>
+              <td><button class="btn-glass" style="color:#C1E65B"><iconify-icon icon="lucide:copy" aria-hidden="true"></iconify-icon>Copy</button></td>
+              <td><button class="btn-glass" style="color:#C1E65B"><iconify-icon icon="lucide:copy" aria-hidden="true"></iconify-icon>Copy</button></td>
+              <td><button class="btn-glass b-dis" disabled><iconify-icon icon="lucide:copy" aria-hidden="true"></iconify-icon>Copy</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="spec-card"><span class="st">button-primary</span>fill <b>#C6F24E</b><br>text <b>#0B0B0C</b><br>radius <b>pill</b> · h <b>44</b><br>hover <b>#E4FFA3</b><br>motion <b>ease-std 0.15s</b></div>
+    </div>
+
+    <!-- NAV CTA (button-nav-cta) is rendered within navbar; hero primary above -->
+    <div class="cluster" data-tier-a-component="button-secondary-outline-hero">
+      <div>
+        <h3>Secondary outline (hero) <span class="meta-count">×1</span></h3>
+        <p class="desc">Dark-filled pill beside the hero primary, off-white text, same pill radius, no glass blur, lower visual weight.</p>
+        <div class="demo"><button class="btn-secondary-outline">Read the docs</button></div>
+      </div>
+      <div class="spec-card"><span class="st">button-secondary</span>fill <b>#0E0E10</b><br>text <b>#F4F4F1</b><br>border <b>border</b><br>radius <b>pill</b> · h <b>44</b><br>hover-text <b>accent</b></div>
+    </div>
+
+    <div class="cluster" data-tier-a-component="button-glass-utility">
+      <div>
+        <h3>Glass utility <span class="meta-count">×1</span></h3>
+        <p class="desc">Tertiary link-style button. 8px radius — deliberately not the pill of the primary — text hover shifts to a soft lime.</p>
+        <div class="demo"><button class="btn-glass"><iconify-icon icon="lucide:github" aria-hidden="true"></iconify-icon>Source</button><button class="btn-glass"><iconify-icon icon="lucide:link" aria-hidden="true"></iconify-icon>Explorer</button></div>
+      </div>
+      <div class="spec-card"><span class="st">button-secondary-glass</span>fill <b>#121215</b><br>text <b>#A7A8A1</b><br>radius <b>r-control · 8</b><br>height <b>34</b> · pad <b>8/14</b><br>border <b>lab(…/0.12)</b><br>hover <b>#C1E65B</b></div>
+    </div>
+
+    <div class="cluster" data-tier-a-component="button-prominent-lime-page-end">
+      <div>
+        <h3>Prominent lime (page-end) <span class="meta-count">×2</span></h3>
+        <p class="desc">The repeated Trade CTA near the closing scene. Lime pill, dark text, hover brightens.</p>
+        <div class="demo">
+          <button class="btn-primary" style="height:40px;padding:0 20px;font-size:15px">Trade now</button>
+          <button class="btn-primary" style="height:40px;padding:0 20px;font-size:15px">Trade now</button>
+        </div>
+      </div>
+      <div class="spec-card"><span class="st">button-primary</span>fill <b>#C6F24E</b><br>text <b>#0B0B0C</b><br>radius <b>pill</b> · h <b>40</b><br>pad <b>10/20</b><br>hover <b>#E4FFA3</b></div>
+    </div>
+
+    <!-- MARQUEE (rendered live above hero; referenced here) -->
+    <div class="cluster" data-tier-a-component="marquee-ticker-band">
+      <div>
+        <h3>Marquee ticker band <span class="meta-count">×1</span></h3>
+        <p class="desc">Full-bleed lime strip, dark all-caps mono text repeating in a continuous loop. Breaks the container constraint entirely.</p>
+        <div class="marquee" style="border-radius:0" aria-hidden="true"><div class="marquee-track"><span>VAULT ONLINE</span><span>COMPUTE RATIONED</span><span>TERMINAL GRADE</span><span>VAULT ONLINE</span><span>COMPUTE RATIONED</span><span>TERMINAL GRADE</span></div></div>
+      </div>
+      <div class="spec-card"><span class="st">marquee</span>fill <b>#C6F24E</b><br>text <b>#0B0B0C mono</b><br>motion <b>marquee 22s linear</b><br>full-bleed <b>edge-to-edge</b></div>
+    </div>
+
+    <!-- STAT BAND -->
+    <div class="cluster" data-tier-a-component="stat-numeral-band">
+      <div>
+        <h3>Stat / numeral band <span class="meta-count">×1</span></h3>
+        <p class="desc">Oversized lime numeral under a live-dot eyebrow, secondary white numeral, hairline divider, 2-column stat pair.</p>
+        <div style="text-align:center">
+          <div class="eyebrow" style="justify-content:center;margin-bottom:14px"><span class="live-dot"></span>VALUE LOCKED</div>
+          <div class="giant-num" style="font-size:120px">42.7M</div>
+          <div class="sub-num" style="font-size:32px">$18,204,556</div>
+          <div class="stat-hair" style="margin:28px auto"></div>
+          <div class="stat-pair"><div><div class="num" style="color:var(--accent)">9,318</div><div class="lbl">Vault</div></div><div><div class="num">$6.2M</div><div class="lbl">Liquidity</div></div></div>
+        </div>
+      </div>
+      <div class="spec-card"><span class="st">stat-band</span>numeral <b>Archivo Black</b><br>color <b>#C6F24E</b><br>sub <b>#F4F4F1</b><br>divider <b>hairline 2</b><br>eyebrow <b>label-mono</b></div>
+    </div>
+
+    <!-- DATA PANEL DUO -->
+    <div class="cluster" data-tier-a-component="data-panel-duo">
+      <div>
+        <h3>Data-panel duo <span class="meta-count">×1</span></h3>
+        <p class="desc">Stacked flat cards. Top: line-chart panel with label row, mcap badge and timeframe tabs. Bottom: rack grid of small squares in varying lime intensities over a repeating grid texture.</p>
+        <div style="display:grid;gap:16px;max-width:520px">
+          <div class="data-panel">
+            <div class="dp-row">
+              <span class="mono" style="color:var(--text-secondary)">$AI · PRICE</span>
+              <span class="mcap-badge">MCAP $42.7M</span>
+            </div>
+            <div class="tf-tabs" style="margin-bottom:14px">
+              <button aria-selected="true">1H</button><button aria-selected="false">1D</button><button aria-selected="false">1W</button><button aria-selected="false">1M</button>
+            </div>
+            <svg viewBox="0 0 480 120" width="100%" height="120" aria-label="Lime line chart">
+              <polyline fill="none" stroke="#C6F24E" stroke-width="2" points="0,90 60,72 120,84 180,50 240,62 300,34 360,44 420,20 480,28"/>
+            </svg>
+          </div>
+          <div class="dp-simple" style="background:linear-gradient(to right bottom,rgb(27,29,21) 0%,rgb(11,11,12) 100%)">
+            <div class="dp-row"><span class="mono" style="color:var(--text-secondary)">COMPUTE RACKS · LIVE</span><span class="live-dot"></span></div>
+            <div class="rack">
+              <div class="rack-row"></div><div class="rack-row"></div><div class="rack-row"></div><div class="rack-row"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spec-card"><span class="st">card-data-panel</span>fill <b>#0E0E10</b><br>radius <b>0</b> · pad <b>20/22/12</b><br>chart <b>#C6F24E</b><br>grid <b>rgba(198,242,78,0.05)</b><br>angled <b>oklab tint</b></div>
+    </div>
+
+    <!-- ALTERNATING MEDIA/TEXT -->
+    <div class="cluster" data-tier-a-component="alternating-media-text-row" style="grid-template-columns:1fr">
+      <div>
+        <h3>Alternating media / text rows <span class="meta-count">×3</span></h3>
+        <p class="desc">The "three things" sequence — text/media alternating sides, media bleeding to the row edge, full-width hairlines, generous gap. No CTA inside rows.</p>
+        <div class="hair-div"></div>
+        <div class="media-row m-row">
+          <div class="m-text"><div class="row-eyebrow">01</div><h3 style="font-size:28px;margin:12px 0">Rationed accent</h3><p class="desc" style="max-width:none">Lime confined to 4.1% of area — CTAs, the giant numeral, and thin glow rings. The void stays black between.</p></div>
+          <div class="media-block"><div class="bar" style="height:40%"></div><div class="bar" style="height:70%"></div><div class="bar" style="height:55%"></div><div class="bar" style="height:90%"></div><div class="bar" style="height:65%"></div></div>
+        </div>
+        <div class="hair-div"></div>
+        <div class="media-row rev m-row">
+          <div class="m-text"><div class="row-eyebrow">02</div><h3 style="font-size:28px;margin:12px 0">Instrument voice</h3><p class="desc" style="max-width:none">Mono uppercase, wide-tracked labels mark eyebrows and data tags — the terminal signature that separates the system from generic type.</p></div>
+          <div class="media-block" style="display:grid;place-items:center"><iconify-icon icon="lucide:activity" style="font-size:72px;color:var(--accent)" aria-hidden="true"></iconify-icon></div>
+        </div>
+        <div class="hair-div"></div>
+        <div class="media-row m-row">
+          <div class="m-text"><div class="row-eyebrow">03</div><h3 style="font-size:28px;margin:12px 0">Flat by design</h3><p class="desc" style="max-width:none">Card surfaces stay 0px radius and near-black — structure comes from hairline dividers and whitespace, not container chrome.</p></div>
+          <div class="media-block"><div class="bar" style="height:80%"></div><div class="bar" style="height:50%"></div><div class="bar" style="height:95%"></div><div class="bar" style="height:60%"></div><div class="bar" style="height:75%"></div></div>
+        </div>
+        <div class="hair-div"></div>
+      </div>
+    </div>
+
+    <!-- ADDRESS CHIP CARDS -->
+    <div class="cluster" data-tier-a-component="address-copy-chip-card">
+      <div>
+        <h3>Address / copy chip cards <span class="meta-count">×4</span></h3>
+        <p class="desc">Dark small-radius rectangles with a mono label, truncated address and a lime pill copy button. Two in hero, two in the closing band.</p>
+        <div class="hero-chips" style="max-width:none;grid-template-columns:repeat(auto-fill,minmax(240px,1fr))">
+          <div class="chip"><div class="chip-txt"><span class="chip-label">Contract</span><span class="chip-addr">0x7a3f…9E21</span></div><button class="chip-copy">Copy</button></div>
+          <div class="chip"><div class="chip-txt"><span class="chip-label">Vault</span><span class="chip-addr">0xC6F2…4E0B</span></div><button class="chip-copy">Copy</button></div>
+          <div class="chip"><div class="chip-txt"><span class="chip-label">Treasury</span><span class="chip-addr">0x76B9…0018</span></div><button class="chip-copy">Copy</button></div>
+          <div class="chip"><div class="chip-txt"><span class="chip-label">Router</span><span class="chip-addr">0x0909…0B10</span></div><button class="chip-copy">Copy</button></div>
+        </div>
+      </div>
+      <div class="spec-card"><span class="st">address-chip</span>fill <b>#0E0E10</b><br>radius <b>r-card · 4-8</b><br>label <b>label-mono</b><br>copy <b>#C6F24E pill</b> · h <b>26</b></div>
+    </div>
+
+    <!-- CLOSING SCENE -->
+    <div class="cluster" data-tier-a-component="closing-illustrated-scene-band" style="grid-template-columns:1fr">
+      <div>
+        <h3>Closing illustrated scene band <span class="meta-count">×1</span></h3>
+        <p class="desc">Full-bleed cosmic illustration with a vertical scrim, overlaid headline with one lime line, primary + secondary buttons, and two address chips anchored right.</p>
+        <div class="scene">
+          <div class="stars" aria-hidden="true"></div>
+          <div class="cluster-txt">
+            <h3>Compute the<br><span class="accent-line">unseen.</span></h3>
+            <p class="desc">Enter the vault and put idle cycles to work under a single rationed light.</p>
+            <div class="btns"><button class="btn-primary" style="height:40px;padding:0 20px;font-size:15px">Trade now</button><button class="btn-secondary-outline" style="height:40px">Docs</button></div>
+            <div class="chips2">
+              <div class="chip"><div class="chip-txt"><span class="chip-label">Contract</span><span class="chip-addr">0x7a3f…9E21</span></div><button class="chip-copy">Copy</button></div>
+              <div class="chip"><div class="chip-txt"><span class="chip-label">Vault</span><span class="chip-addr">0xC6F2…4E0B</span></div><button class="chip-copy">Copy</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER COMPONENT -->
+    <div class="cluster" data-tier-a-component="footer" style="grid-template-columns:1fr">
+      <div>
+        <h3>Footer <span class="meta-count">11 links · ×1</span></h3>
+        <p class="desc">Transparent single row sitting directly on the page background — no card chrome.</p>
+        <div class="footer-demo">
+          <div class="logo"><span class="logo-mark"><iconify-icon icon="lucide:cpu" aria-hidden="true"></iconify-icon></span></div>
+          <a href="#components">Protocol</a><a href="#components">Vault</a><a href="#components">Compute</a><a href="#components">Docs</a><a href="#components">Explorer</a><a href="#components">Bridge</a><a href="#components">Staking</a><a href="#components">Governance</a><a href="#components">Security</a><a href="#components">Brand</a><a href="#components">Contact</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style data-section-styles="surface-depth">
+#surface-depth .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:22px}
+.depth-card{background:var(--surface);padding:26px;border:1px solid var(--border)}
+.depth-card .t{font-family:"JetBrains Mono",monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-secondary);margin-top:16px}
+.depth-card .v{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--accent);margin-top:4px}
+.depth-body{height:60px;background:var(--surface-alt);display:grid;place-items:center;color:var(--text-tertiary);font-family:"JetBrains Mono",monospace;font-size:11px;text-transform:uppercase}
+.glow-ring{box-shadow:rgba(198,242,78,0.44) 0 0 0 1px, rgba(198,242,78,0.05) 0 0 0 15px}
+</style>
+<section id="surface-depth">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow"><span class="live-dot"></span>SURFACE &amp; DEPTH</div>
+      <h2>Flat chrome, lime glow rings.</h2>
+      <p>Radii step 0 → 4 → 8 → 12 → pill. Shadows are lime-tinted glow rings at near-zero blur, never drop shadows.</p>
+    </div>
+    <div class="cards">
+      <div class="depth-card" style="border-radius:0"><div class="depth-body" style="border-radius:0">CARD</div><div class="t">card-media · flat</div><div class="v">radius 0px</div></div>
+      <div class="depth-card" style="border-radius:4px"><div class="depth-body" style="border-radius:4px">DATA CARD</div><div class="t">r-card</div><div class="v">radius 4px</div></div>
+      <div class="depth-card" style="border-radius:8px"><div class="depth-body" style="border-radius:8px">CONTROL</div><div class="t">r-control</div><div class="v">radius 8px</div></div>
+      <div class="depth-card" style="border-radius:12px"><div class="depth-body" style="border-radius:12px">PANEL</div><div class="t">r-panel</div><div class="v">radius 12px</div></div>
+      <div class="depth-card" style="border-radius:12px"><div class="depth-body glow-ring" style="border-radius:12px;background:var(--surface)">GLOW RING</div><div class="t">shadow · lime glow</div><div class="v">0 0 0 1px + halo</div></div>
+    </div>
+  </div>
+</section>
+
+<style data-section-styles="motion">
+#motion .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:22px}
+.motion-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-card);padding:24px}
+.motion-card .lbl{font-family:"JetBrains Mono",monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-secondary);margin-top:18px}
+.mover{width:40px;height:40px;background:var(--accent);border-radius:9999px}
+.demo-stage{height:60px;display:flex;align-items:center;overflow:hidden}
+.replay{margin-top:14px;background:var(--surface-alt);border:1px solid var(--border);color:var(--text-secondary);border-radius:8px;height:34px;padding:0 14px;font-family:"JetBrains Mono",monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.06em;cursor:pointer}
+.replay:hover{color:#C1E65B}
+.run-fast .mover{animation:slide .15s cubic-bezier(0.4,0,0.2,1) forwards}
+.run-slow .mover{animation:slide .3s cubic-bezier(0.4,0,0.2,1) forwards}
+.run-out .mover{animation:slide .3s cubic-bezier(0,0,0.2,1) forwards}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(180px)}}
+.pulse-demo{width:40px;height:40px;border-radius:9999px;background:var(--accent);animation:pulse-glow 2s ease-in-out infinite}
+@keyframes pulse-glow{0%,100%{box-shadow:0 0 0 0 rgba(198,242,78,0.44)}50%{box-shadow:0 0 0 12px rgba(198,242,78,0.05)}}
+</style>
+<section id="motion">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow"><span class="live-dot"></span>MOTION</div>
+      <h2>Light and loop, not position.</h2>
+      <p>Short, snappy, glow-based. Fast color shifts at 0.15s, slower state changes at 0.3s, layout-adjacent hovers on the ease-out curve.</p>
+    </div>
+    <div class="cards">
+      <div class="motion-card" id="m1"><div class="demo-stage"><div class="mover"></div></div><div class="lbl">hover shift · 0.15s cubic-bezier(0.4,0,0.2,1)</div><button class="replay" data-run="run-fast" data-target="m1">Replay</button></div>
+      <div class="motion-card" id="m2"><div class="demo-stage"><div class="mover"></div></div><div class="lbl">state change · 0.3s cubic-bezier(0.4,0,0.2,1)</div><button class="replay" data-run="run-slow" data-target="m2">Replay</button></div>
+      <div class="motion-card" id="m3"><div class="demo-stage"><div class="mover"></div></div><div class="lbl">layout hover · 0.3s cubic-bezier(0,0,0.2,1)</div><button class="replay" data-run="run-out" data-target="m3">Replay</button></div>
+      <div class="motion-card"><div class="demo-stage"><div class="pulse-demo"></div></div><div class="lbl">pulse-glow · breathe opacity/blur</div></div>
+    </div>
+  </div>
+</section>
+
+<style data-section-styles="composition">
+#composition .mock{border:1px solid var(--border);border-radius:0;overflow:hidden;background:var(--background)}
+.mock-hero{padding:60px 40px;display:grid;grid-template-columns:1fr 0.7fr;gap:40px;align-items:center;position:relative;
+  background:radial-gradient(700px 400px at 20% 0,rgba(198,242,78,0.09),transparent 70%)}
+.mock-hero h3{font-size:44px;text-transform:uppercase;letter-spacing:-1.5px;line-height:0.95}
+.mock-hero .accent-line{color:var(--accent)}
+.mock-hero p{color:var(--text-secondary);margin:16px 0 22px}
+.mock-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:0 40px 40px}
+.mock-card{background:var(--surface);border:1px solid var(--border);padding:22px}
+.mock-card .n{font-family:"Archivo Black",sans-serif;font-size:32px;color:var(--accent);letter-spacing:-1px}
+.mock-card .l{font-family:"JetBrains Mono",monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-secondary);margin-top:8px}
+.mock-cta{padding:40px;text-align:center;border-top:2px solid var(--border)}
+.mock-art{aspect-ratio:1;display:grid;place-items:center;background:radial-gradient(circle at 50% 40%,rgba(198,242,78,0.12),transparent 60%)}
+@media(max-width:768px){.mock-hero{grid-template-columns:1fr}.mock-cards{grid-template-columns:1fr}.mock-hero h3{font-size:32px}}
+</style>
+<section id="composition">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow"><span class="live-dot"></span>IN COMPOSITION</div>
+      <h2>The system, assembled.</h2>
+      <p>Nav, hero fragment, stat cards and a closing CTA — built entirely from documented tokens.</p>
+    </div>
+    <div class="mock">
+      <nav class="nav" style="position:static" aria-label="Composition navbar">
+        <div class="nav-inner">
+          <div class="logo"><span class="logo-mark"><iconify-icon icon="lucide:cpu" aria-hidden="true"></iconify-icon></span>ARTIFICIAL</div>
+          <span class="price-pill"><span class="live-dot"></span>$0.0412</span>
+          <div class="nav-center"><a href="#composition">Protocol</a><a href="#composition">Vault</a><a href="#composition">Compute</a></div>
+          <div class="nav-util"><button class="nav-cta">Trade</button></div>
+        </div>
+      </nav>
+      <div class="mock-hero">
+        <div>
+          <div class="eyebrow" style="margin-bottom:16px"><span class="live-dot"></span>LIVE ON MAINNET</div>
+          <h3>Put idle<br><span class="accent-line">cycles to work.</span></h3>
+          <p>A dark-mode-default vault lit by one rationed acid accent. Terminal-grade data, painterly restraint.</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap"><button class="btn-primary">Enter the vault</button><button class="btn-secondary-outline">Read the docs</button></div>
+        </div>
+        <div class="mock-art" role="img" aria-label="Compute mascot"><iconify-icon icon="lucide:bot" style="font-size:120px;color:var(--accent)" aria-hidden="true"></iconify-icon></div>
+      </div>
+      <div class="mock-cards">
+        <div class="mock-card"><div class="n">42.7M</div><div class="l">Total value locked</div></div>
+        <div class="mock-card"><div class="n">9,318</div><div class="l">Vault deposits</div></div>
+        <div class="mock-card"><div class="n">4.1%</div><div class="l">Accent area · rationed</div></div>
+      </div>
+      <div class="mock-cta">
+        <h3 style="font-size:32px;text-transform:uppercase;letter-spacing:-1px">Ready to compute?</h3>
+        <p style="color:var(--text-secondary);margin:14px 0 22px">One light, one vault, one loop.</p>
+        <button class="btn-primary">Trade now</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style data-section-styles="footer">
+#footer{padding:56px 0}
+.site-foot{display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;justify-content:space-between}
+.site-foot .links{display:flex;flex-wrap:wrap;gap:12px 22px}
+.site-foot a{font-family:"JetBrains Mono",monospace;font-size:12px;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-secondary);text-decoration:none;transition:color .15s var(--ease-std)}
+.site-foot a:hover{color:var(--accent)}
+.foot-meta{color:var(--text-tertiary);font-family:"JetBrains Mono",monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.06em;margin-top:24px;line-height:1.8}
+.foot-meta a{color:var(--text-secondary);text-decoration:none}
+</style>
+<footer id="footer">
+  <div class="wrap">
+    <div class="site-foot">
+      <div class="logo"><span class="logo-mark"><iconify-icon icon="lucide:cpu" aria-hidden="true"></iconify-icon></span>ARTIFICIAL</div>
+      <div class="links">
+        <a href="#hero">Protocol</a><a href="#components">Vault</a><a href="#composition">Compute</a><a href="#type-scale">Docs</a><a href="#palette">Explorer</a><a href="#components">Bridge</a><a href="#components">Staking</a><a href="#components">Governance</a><a href="#surface-depth">Security</a><a href="#motion">Brand</a><a href="#footer">Contact</a>
+      </div>
+    </div>
+    <div class="foot-meta">
+      Compute-noir lime · <a href="https://artificialinu.com/">artificialinu.com</a><br>
+      Design system captured and rendered by superdesign.dev
+    </div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.replay').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var card=document.getElementById(btn.dataset.target);
+    var cls=btn.dataset.run;
+    card.classList.remove(cls);
+    void card.offsetWidth;
+    card.classList.add(cls);
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,370 @@
+@import "tailwindcss";
+
+/* Tailwind CSS v4 Custom Variant */
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  /* ========================================================================
+   * SUPERFICIES Y LIENZO BASE
+   * ======================================================================== */
+  --surface-page: var(--color-white);
+  --text-body: var(--color-brand-blue-500);
+
+  /* ========================================================================
+   * MOTION TOKENS — Emil Kowalski Philosophy
+   * ======================================================================== */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-snappy: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --ease-out-ui: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out-ui: cubic-bezier(0.77, 0, 0.175, 1);
+
+  --duration-feedback: 160ms;
+  --duration-dropdown: 200ms;
+  --duration-modal: 250ms;
+}
+
+@theme {
+  /* ========================================================================
+   * PALETA CANÓNICA — Ley de Tres Colores (Ajuste Max #0950F6)
+   * Cada token tiene un hex literal. Nada más oscuro que #0950F6.
+   * ======================================================================== */
+
+  /* Azul Vibrante — 6 pasos canónicos (50 → 500). Tope máximo de oscuridad: #0950F6 */
+  --color-brand-blue-50: #E6EEFE;   /* fondo suave, bezel exterior /80, skeleton, hover ghost */
+  --color-brand-blue-100: #BACEFD;  /* borde estructural, divisores, stepper línea pendiente */
+  --color-brand-blue-200: #8EAFFB;  /* hover borde tarjeta, anillo radio pendiente, trazos SVG */
+  --color-brand-blue-300: #628FF9;  /* borde input reposo, hover bezel, trazos SVG secundarios */
+  --color-brand-blue-400: #3570F8;  /* íconos, texto grande muted (≥24px), hover de fondos azules */
+  --color-brand-blue-500: #0950F6;  /* primario canónico, tope de oscuridad, H1/H2, foco, botones */
+
+  /* Amarillo Vial — 7 pasos (50 → 600). Señal, nunca superficie. ≤15% cobertura. */
+  --color-brand-yellow-50: #FFFDE6;  /* fondo Flex seleccionado */
+  --color-brand-yellow-100: #FFFAB8; /* badge flex, anillo step completado, halos */
+  --color-brand-yellow-200: #FFF78A; /* borde Flex seleccionado */
+  --color-brand-yellow-300: #FFF45C; /* detalle mono sobre azul */
+  --color-brand-yellow-400: #FFF12E; /* hover CTA primario y WhatsApp */
+  --color-brand-yellow-500: #FFEC01; /* CTA primario, step completado/activo, precio sobre azul, franja footer 6px */
+  --color-brand-yellow-600: #E6D400; /* pressed del CTA */
+
+  /* Blanco — lienzo único */
+  --color-white: #FFFFFF;
+
+  /* ========================================================================
+   * ALIAS SEMÁNTICOS CANÓNICOS (referencian a la paleta de arriba)
+   * ======================================================================== */
+  --color-brand-blue: var(--color-brand-blue-500);
+  --color-brand-yellow: var(--color-brand-yellow-500);
+  --color-brand-ink: var(--color-brand-blue-500);
+  --color-brand-white: var(--color-white);
+
+
+  /* ========================================================================
+   * NEUTRALIZACIÓN DE PALETAS PROHIBIDAS (Tailwind defaults)
+   * Se ponen a `initial` para que no generen CSS. Confirmado: 0 usos en src/.
+   * ======================================================================== */
+  --color-neutral-50: initial; --color-neutral-100: initial; --color-neutral-200: initial;
+  --color-neutral-300: initial; --color-neutral-400: initial; --color-neutral-500: initial;
+  --color-neutral-600: initial; --color-neutral-700: initial; --color-neutral-800: initial;
+  --color-neutral-900: initial; --color-neutral-950: initial;
+
+  --color-stone-50: initial; --color-stone-100: initial; --color-stone-200: initial;
+  --color-stone-300: initial; --color-stone-400: initial; --color-stone-500: initial;
+  --color-stone-600: initial; --color-stone-700: initial; --color-stone-800: initial;
+  --color-stone-900: initial; --color-stone-950: initial;
+
+  --color-green-50: initial; --color-green-100: initial; --color-green-200: initial;
+  --color-green-300: initial; --color-green-400: initial; --color-green-500: initial;
+  --color-green-600: initial; --color-green-700: initial; --color-green-800: initial;
+  --color-green-900: initial; --color-green-950: initial;
+
+  --color-emerald-50: initial; --color-emerald-100: initial; --color-emerald-200: initial;
+  --color-emerald-300: initial; --color-emerald-400: initial; --color-emerald-500: initial;
+  --color-emerald-600: initial; --color-emerald-700: initial; --color-emerald-800: initial;
+  --color-emerald-900: initial; --color-emerald-950: initial;
+
+  --color-lime-50: initial; --color-lime-100: initial; --color-lime-200: initial;
+  --color-lime-300: initial; --color-lime-400: initial; --color-lime-500: initial;
+  --color-lime-600: initial; --color-lime-700: initial; --color-lime-800: initial;
+  --color-lime-900: initial; --color-lime-950: initial;
+
+  --color-teal-50: initial; --color-teal-100: initial; --color-teal-200: initial;
+  --color-teal-300: initial; --color-teal-400: initial; --color-teal-500: initial;
+  --color-teal-600: initial; --color-teal-700: initial; --color-teal-800: initial;
+  --color-teal-900: initial; --color-teal-950: initial;
+
+  --color-blue-50: initial; --color-blue-100: initial; --color-blue-200: initial;
+  --color-blue-300: initial; --color-blue-400: initial; --color-blue-500: initial;
+  --color-blue-600: initial; --color-blue-700: initial; --color-blue-800: initial;
+  --color-blue-900: initial; --color-blue-950: initial;
+
+  /* ========================================================================
+   * TIPOGRAFÍAS OFICIALES — Anton, Bebas Neue, Outfit, Geist Mono
+   * ======================================================================== */
+  --font-sans: var(--font-sans, "Outfit"), "IBM Plex Sans", sans-serif;
+  --font-display: var(--font-display, "Anton SC"), "Anton", sans-serif;
+  --font-subheading: var(--font-subheading, "Bebas Neue"), sans-serif;
+  --font-mono: var(--font-mono, "Geist Mono"), monospace;
+
+  --text-2xs: 0.625rem;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-6xl: 3.75rem;
+  --text-7xl: 4.5rem;
+  --text-8xl: 6rem;
+  --text-9xl: 9rem;
+
+  --leading-hero: 0.8;
+  --leading-none: 1;
+  --leading-tight: 1.25;
+  --leading-relaxed: 1.625;
+
+  --tracking-tighter: -0.05em;
+  --tracking-tight: -0.025em;
+  --tracking-normal: 0em;
+  --tracking-wide: 0.025em;
+  --tracking-wider: 0.05em;
+  --tracking-widest: 0.1em;
+  --tracking-mega: 0.2em;
+
+  --spacing-section-y: 6rem;
+  --spacing-section-y-tight: 3rem;
+  --spacing-container-max: 80rem;
+  --spacing-control-sm: 2.25rem;
+  --spacing-control: 2.5rem;
+  --spacing-control-lg: 2.75rem;
+  --spacing-control-xl: 3.5rem;
+  --spacing-control-2xl: 4rem;
+
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+  --radius-3xl: 32px;
+  --radius-4xl: 40px;
+  --radius-full: 9999px;
+
+  /* ========================================================================
+   * SOMBRAS TEÑIDAS — tope #0950F6 / #FFEC01 — NUNCA grises/negras
+   * ======================================================================== */
+  --shadow-xs: 0 1px 2px rgba(9, 80, 246, 0.04);
+  --shadow-sm: 0 2px 4px rgba(9, 80, 246, 0.06), 0 1px 2px rgba(9, 80, 246, 0.03);
+  --shadow-md: 0 4px 8px rgba(9, 80, 246, 0.08), 0 2px 4px rgba(9, 80, 246, 0.04);
+  --shadow-lg: 0 8px 16px rgba(9, 80, 246, 0.1), 0 4px 8px rgba(9, 80, 246, 0.06);
+  --shadow-xl: 0 16px 32px rgba(9, 80, 246, 0.12), 0 8px 16px rgba(9, 80, 246, 0.08);
+  --shadow-2xl: 0 25px 50px -12px rgba(9, 80, 246, 0.25);
+
+  --shadow-float: 0 25px 50px -12px rgba(9, 80, 246, 0.15);
+  --shadow-elevated: 0 16px 40px rgba(9, 80, 246, 0.18);
+  --shadow-hover-lift: 0 24px 64px rgba(9, 80, 246, 0.20);
+  --shadow-antigravity-deep: 0 24px 64px rgba(9, 80, 246, 0.22);
+
+  --shadow-accent: 0 12px 40px -6px rgba(255, 236, 1, 0.3);
+  --shadow-accent-sm: 0 2px 4px rgba(255, 236, 1, 0.15);
+  --shadow-accent-md: 0 4px 8px rgba(255, 236, 1, 0.2);
+  --shadow-glow-yellow: 0 0 25px rgba(255, 241, 46, 0.45);
+  --shadow-cta-glow: 0 0 28px rgba(255, 236, 1, 0.45), 0 8px 24px rgba(9, 80, 246, 0.18);
+
+  --animate-float-slow: float-slow 6s ease-in-out infinite;
+  --animate-pulse-subtle: pulse-subtle 2s ease-in-out infinite;
+  --animate-logos-scroll: marquee-left 30s linear infinite;
+
+  /* ========================================================================
+   * ALIAS DE TRANSICIÓN: conservado para compatibilidad en producción
+   * ======================================================================== */
+  --color-brand-white-50: var(--color-white);
+}
+
+@keyframes float-slow { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+@keyframes pulse-subtle { 0%, 100% { opacity: 1; } 50% { opacity: 0.8; } }
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--surface-page);
+  color: var(--text-body);
+}
+
+section[id],
+main[id] {
+  scroll-margin-top: 5rem;
+}
+
+@utility font-display {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  text-wrap: balance;
+}
+
+@utility font-subheading {
+  font-family: var(--font-subheading);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+@utility font-mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Double-Bezel - Firma geométrica oficial */
+@utility double-bezel-outer {
+  background-color: color-mix(in srgb, var(--color-brand-blue-50) 80%, transparent);
+  border: 1px solid var(--color-brand-blue-100);
+  padding: 0.5rem;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-float);
+  transition: border-color var(--duration-dropdown) var(--ease-out-ui), box-shadow var(--duration-dropdown) var(--ease-out-ui);
+  @media (hover: hover) and (pointer: fine) {
+    &:hover { border-color: var(--color-brand-blue-300); box-shadow: var(--shadow-antigravity-deep); }
+  }
+}
+@utility double-bezel-inner {
+  background-color: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: inset 0 2px 4px rgba(9,80,246,0.06);
+  border: 1px solid color-mix(in srgb, var(--color-brand-blue-50) 50%, transparent);
+}
+
+/* CTA Nested Pill - Oficial: solo estructura (layout, tipografía, easing).
+ * El color (fondo, texto, borde, sombra) lo define el variant del componente.
+ */
+@utility cta-nested-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: var(--radius-full);
+  font-family: var(--font-subheading);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  padding: 0.75rem 1.5rem;
+  min-height: 44px;
+  transition: transform var(--duration-feedback) var(--ease-out-ui), background-color var(--duration-feedback) var(--ease-out-ui), border-color var(--duration-feedback) var(--ease-out-ui), box-shadow var(--duration-feedback) var(--ease-out-ui);
+  @media (hover: hover) and (pointer: fine) {
+    &:hover { transform: translateY(-1px); }
+  }
+  &:active { transform: scale(0.97); }
+}
+@utility cta-nested-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-left: 0.75rem;
+  background-color: rgba(9,80,246,0.1);
+  transition: transform 0.25s;
+  .group:hover & { transform: translateX(4px); }
+}
+
+@utility text-display {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  line-height: 0.85;
+  letter-spacing: -0.05em;
+  text-wrap: balance;
+  text-transform: uppercase;
+}
+@utility text-h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4vw, 3rem);
+  line-height: 0.9;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+  text-transform: uppercase;
+}
+@utility text-h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  text-transform: uppercase;
+}
+
+@utility kinetic-font-stretch {
+  display: inline-block;
+  transition: transform 0.4s var(--ease-out-ui), letter-spacing 0.4s;
+  transform-origin: left;
+  @media (hover: hover) and (pointer: fine) {
+    &:hover { transform: scaleX(1.08); letter-spacing: 0.02em; }
+  }
+}
+
+/* V2 Marquee Flotante */
+@keyframes marquee-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* Motion compartido de heroes */
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes shuttle {
+  from { transform: translateX(0); }
+  to { transform: translateX(100%); }
+}
+@keyframes pulse-ring {
+  0% { transform: translate(-50%, -50%) scale(0.6); opacity: 0.9; }
+  100% { transform: translate(-50%, -50%) scale(3.2); opacity: 0; }
+}
+@keyframes roundtrip {
+  0% { transform: translateX(0); }
+  44% { transform: translateX(100%); }
+  56% { transform: translateX(100%); }
+  100% { transform: translateX(0); }
+}
+
+@utility animate-floaty { animation: floaty 5s ease-in-out infinite; }
+@utility animate-shuttle {
+  animation: shuttle 5s cubic-bezier(0.45, 0, 0.55, 1) infinite alternate;
+}
+@utility animate-pulse-ring {
+  animation: pulse-ring 3.2s cubic-bezier(0.25, 1, 0.5, 1) infinite;
+}
+@utility animate-roundtrip {
+  animation: roundtrip 4.8s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+@keyframes grow-x {
+  from { transform: scaleX(0.25); opacity: 0.3; }
+  to { transform: scaleX(1); opacity: 1; }
+}
+@utility animate-grow-x {
+  animation: grow-x 220ms var(--ease-out-ui) forwards;
+  transform-origin: left center;
+}
+
+@utility animate-marquee-left { animation: marquee-left 36s linear infinite; }
+
+/* Rendimiento de render diferido (modern-web-guidance) */
+@utility content-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto none auto 650px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+  .animate-floaty, .animate-shuttle, .animate-roundtrip, .animate-pulse-ring, .animate-grow-x, .animate-marquee-left {
+    animation: none !important;
+  }
+  .animate-grow-x { transform: scaleX(1) !important; }
+  .animate-pulse-ring { opacity: 0 !important; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

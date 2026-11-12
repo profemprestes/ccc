@@ -1,0 +1,699 @@
+<!doctype html>
+<html lang="pt">
+<head>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src data: blob:; media-src data: blob:; script-src 'unsafe-inline' https://code.iconify.design; connect-src https://api.iconify.design https://api.simplesvg.com https://api.unisvg.com; frame-src 'none'; object-src 'none'; form-action 'none'; base-uri 'none'">
+<meta name="referrer" content="no-referrer">
+
+<meta name="referrer" content="no-referrer">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wine &amp; Ember Ledger — Design System</title>
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --background:#F3EFEA;
+  --surface:#FFFFFF;
+  --surface-alt:#F3EFEA;
+  --band-wine:#6D0633;
+  --band-wine-dark:#4E0524;
+  --band-plum:#45063B;
+  --text-primary:#190A13;
+  --text-on-wine:#FFF4EA;
+  --accent:#F7972C;
+  --accent-hover:#FFB050;
+  --accent-dark:#B96409;
+  --plum-text:#2A0110;
+  --border-hair:#1C0E0E;
+  --base:7px;
+  --gap:24px;
+  --gap-lg:68px;
+  --section-padding:132px;
+  --r-control:13px;
+  --r-card-lg:24px;
+  --r-card-sm:16px;
+  --r-pill:100px;
+  --r-chip:50px;
+  --ease:cubic-bezier(0.22,0.8,0.24,1);
+  --wine-grad:linear-gradient(118deg,#6D0633 0%,#45063B 100%);
+  --plum-grad:linear-gradient(135deg,#7A0A3B 0%,#5A0630 47%,#3C0534 100%);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--background);color:var(--text-primary);
+  font-family:"Epilogue",system-ui,sans-serif;font-size:17px;font-weight:400;line-height:1.74;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{margin:0;font-family:"Epilogue",sans-serif}
+a{color:inherit}
+.wrap{max-width:1260px;margin:0 auto;padding:0 24px}
+.eyebrow{font-size:12px;font-weight:640;line-height:1.74;letter-spacing:2.3px;text-transform:uppercase;color:var(--accent-dark)}
+.eyebrow-on-wine{color:var(--accent)}
+.display{font-size:56px;font-weight:800;line-height:1.03;letter-spacing:-2.1px}
+.headline{font-size:38px;font-weight:700;line-height:1.1;letter-spacing:-1.2px}
+section{padding:var(--section-padding) 0}
+/* NAV */
+.nav{
+  position:sticky;top:0;z-index:50;width:100%;height:77px;border-radius:0;
+  background:rgba(255,255,255,0.72);backdrop-filter:blur(20px) saturate(1.4);
+  -webkit-backdrop-filter:blur(20px) saturate(1.4);
+  border-bottom:1px solid rgba(28,14,14,0.08);
+}
+.nav-inner{max-width:1260px;margin:0 auto;height:77px;padding:0 24px;display:flex;align-items:center;gap:28px}
+.logo{font-weight:800;font-size:21px;letter-spacing:-0.6px;display:flex;align-items:center;gap:8px}
+.logo iconify-icon{color:var(--accent);font-size:22px}
+.nav-links{display:flex;gap:26px;margin-left:14px}
+.nav-links a{font-size:15px;font-weight:600;text-decoration:none;color:var(--text-primary);transition:color .25s var(--ease)}
+.nav-links a:hover{color:var(--band-wine)}
+.nav-utils{margin-left:auto;display:flex;align-items:center;gap:16px}
+.nav-utils button{background:none;border:none;cursor:pointer;color:var(--text-primary);font-size:20px;display:grid;place-items:center}
+.nav-cta{
+  background:var(--band-wine);color:#fff;border:1px solid transparent;border-radius:100px;
+  height:37px;padding:11px 20px;font-family:inherit;font-weight:600;font-size:14px;line-height:1;
+  cursor:pointer;box-shadow:rgba(109,6,51,0.75) 0 12px 28px -14px;transition:all .25s var(--ease);
+  display:inline-flex;align-items:center;
+}
+.nav-cta:hover{background:var(--band-wine-dark);transform:translateY(-2px)}
+/* HERO */
+.hero{position:relative;overflow:hidden;background:var(--wine-grad);color:var(--text-on-wine);padding:112px 0 132px}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(120% 90% at 82% 18%,rgba(247,151,44,0.16),rgba(0,0,0,0) 58%)}
+.hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;gap:var(--gap-lg);align-items:center}
+.hero h1{font-size:56px;font-weight:800;line-height:1.03;letter-spacing:-2.1px;color:var(--text-on-wine);max-width:12ch}
+.hero h1 .em{color:var(--accent)}
+.hero p{max-width:46ch;color:var(--text-on-wine);opacity:.92;margin:26px 0 34px}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap}
+.btn-hero-primary{
+  background:var(--accent);color:var(--plum-text);border:1px solid transparent;border-radius:100px;
+  height:55px;padding:18px 34px;font-family:inherit;font-weight:700;font-size:16px;line-height:1;cursor:pointer;
+  box-shadow:rgba(247,151,44,0.66) 0 14px 34px -14px;transition:all .25s var(--ease);
+  display:inline-flex;align-items:center;gap:10px;
+}
+.btn-hero-primary:hover{background:var(--accent-hover);transform:translateY(-2px)}
+.btn-glass{
+  background:rgba(24,4,14,0.42);backdrop-filter:blur(12px) saturate(1.2);-webkit-backdrop-filter:blur(12px) saturate(1.2);
+  color:var(--text-on-wine);border:1px solid rgba(255,244,234,0.34);border-radius:100px;height:55px;padding:18px 34px;
+  font-family:inherit;font-weight:600;font-size:16px;line-height:1;cursor:pointer;
+  box-shadow:rgba(255,244,234,0.14) 0 1px 0 0 inset;transition:all .25s var(--ease);display:inline-flex;align-items:center;
+}
+.btn-glass:hover{background:rgba(24,4,14,0.6);transform:translateY(-2px)}
+.hero-device{position:relative;display:grid;place-items:center}
+.hero-device::before{content:"";position:absolute;width:420px;height:420px;
+  background:radial-gradient(closest-side,rgba(247,151,44,0.34),rgba(247,151,44,0.08) 62%,rgba(0,0,0,0) 78%)}
+.device-mock{position:relative;z-index:2;width:100%;max-width:380px;background:#fff;border-radius:24px;
+  box-shadow:rgba(25,10,19,0.35) 0 30px 60px -20px;overflow:hidden}
+.device-bar{height:34px;background:#F3EFEA;display:flex;align-items:center;gap:6px;padding:0 14px}
+.device-bar span{width:9px;height:9px;border-radius:50%;background:#d8cfc6}
+.device-body{padding:22px}
+.device-body .dl{height:12px;border-radius:6px;background:#efe7de;margin-bottom:10px}
+.device-body .dl.s{width:60%}
+.device-body .dbtn{margin-top:14px;height:34px;border-radius:100px;background:var(--accent);width:120px}
+.stat-badge{position:absolute;z-index:3;right:-10px;bottom:-18px;background:#fff;color:var(--text-primary);
+  border-radius:16px;padding:16px 22px;box-shadow:rgba(25,10,19,0.2) 0 10px 30px -8px}
+.stat-badge b{display:block;font-size:28px;font-weight:800;letter-spacing:-1px;color:var(--band-wine)}
+.stat-badge small{font-size:12px;font-weight:640;letter-spacing:2.3px;text-transform:uppercase;color:var(--accent-dark)}
+@media(max-width:1024px){
+  .display,.hero h1{font-size:44px;letter-spacing:-1.4px}
+  .headline{font-size:32px}
+  .hero-inner{grid-template-columns:1fr;gap:48px}
+  .nav-links{display:none}
+}
+@media(max-width:640px){
+  .display,.hero h1{font-size:34px;letter-spacing:-1px}
+  .headline{font-size:26px}
+  section{padding:72px 0}
+  :root{--section-padding:72px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <nav class="nav-inner" aria-label="Principal">
+    <div class="logo"><iconify-icon icon="lucide:flame" aria-hidden="true"></iconify-icon>Ledger</div>
+    <div class="nav-links">
+      <a href="#hero">Início</a>
+      <a href="#components">Serviços</a>
+      <a href="#composition">Portfólio</a>
+      <a href="#type-scale">Processo</a>
+      <a href="#palette">Sobre</a>
+      <a href="#footer">Contactos</a>
+    </div>
+    <div class="nav-utils">
+      <button aria-label="Pesquisar"><iconify-icon icon="lucide:search" aria-hidden="true"></iconify-icon></button>
+      <button aria-label="Conta"><iconify-icon icon="lucide:user" aria-hidden="true"></iconify-icon></button>
+      <button class="nav-cta">Consultar domínio</button>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+<section id="hero" class="hero" aria-label="Destaque">
+  <div class="wrap hero-inner">
+    <div>
+      <span class="eyebrow eyebrow-on-wine">Presença digital em Moçambique</span>
+      <h1 style="margin-top:18px">Sites que <span class="em">vendem</span>, alojados perto de si.</h1>
+      <p>Um sistema editorial de papel quente com um único acento âmbar reservado a cada acção. Domínios, alojamento e sites feitos à medida — sem ruído.</p>
+      <div class="hero-btns">
+        <button class="btn-hero-primary">Começar agora <iconify-icon icon="lucide:arrow-right" aria-hidden="true"></iconify-icon></button>
+        <button class="btn-glass">Ver planos</button>
+      </div>
+    </div>
+    <div class="hero-device">
+      <div class="device-mock" role="img" aria-label="Ilustração de dispositivo com um site publicado">
+        <div class="device-bar"><span></span><span></span><span></span></div>
+        <div class="device-body">
+          <div class="dl" style="width:80%"></div>
+          <div class="dl s"></div>
+          <div class="dl" style="width:70%"></div>
+          <div class="dbtn"></div>
+        </div>
+        <div class="stat-badge"><b>+1200</b><small>Sites no ar</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style data-section-styles="palette">
+#palette{background:var(--surface)}
+.sec-head{max-width:60ch;margin-bottom:56px}
+.sec-head p{color:#4a3c42}
+.pal-group{margin-top:48px}
+.pal-group h3{font-size:22px;font-weight:700;letter-spacing:-0.4px;margin-bottom:20px}
+.sw-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap)}
+.sw{border-radius:16px;overflow:hidden;border:1px solid rgba(28,14,14,0.08);background:#fff}
+.sw-chip{height:110px}
+.sw-meta{padding:14px 16px}
+.sw-meta .nm{font-weight:700;font-size:15px}
+.sw-meta .val{font-size:13px;color:var(--accent-dark);font-weight:600}
+.sw-meta .use{font-size:13px;color:#4a3c42;line-height:1.5;margin-top:4px}
+.checker{background-image:linear-gradient(45deg,#ddd 25%,transparent 25%),linear-gradient(-45deg,#ddd 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#ddd 75%),linear-gradient(-45deg,transparent 75%,#ddd 75%);background-size:16px 16px;background-position:0 0,0 8px,8px -8px,-8px 0}
+@media(max-width:768px){.sw-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+<section id="palette">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Paleta</span>
+      <h2 class="headline" style="margin-top:14px">Papel quente, acento racionado.</h2>
+      <p>A superfície clara é o verdadeiro chão. O vinho pontua em bandas; o âmbar aparece só onde é preciso agir.</p>
+    </div>
+
+    <div class="pal-group">
+      <h3>Superfícies</h3>
+      <div class="sw-grid">
+        <div class="sw"><div class="sw-chip" style="background:#F3EFEA"></div><div class="sw-meta"><div class="nm">Paper</div><div class="val">#F3EFEA</div><div class="use">Fundo dominante do sistema.</div></div></div>
+        <div class="sw"><div class="sw-chip" style="background:#FFFFFF;border-bottom:1px solid rgba(28,14,14,0.08)"></div><div class="sw-meta"><div class="nm">Surface</div><div class="val">#FFFFFF</div><div class="use">Cartões sobre o papel.</div></div></div>
+        <div class="sw"><div class="sw-chip" style="background:var(--wine-grad)"></div><div class="sw-meta"><div class="nm">Band Wine</div><div class="val">#6D0633 → #45063B</div><div class="use">Bandas de herói e CTA.</div></div></div>
+        <div class="sw"><div class="sw-chip" style="background:#45063B"></div><div class="sw-meta"><div class="nm">Plum</div><div class="val">#45063B</div><div class="use">Profundidade das bandas.</div></div></div>
+      </div>
+    </div>
+
+    <div class="pal-group">
+      <h3>Texto</h3>
+      <div class="sw-grid">
+        <div class="sw"><div class="sw-chip" style="background:#190A13"></div><div class="sw-meta"><div class="nm">Ink</div><div class="val">#190A13</div><div class="use">Texto primário em papel/branco.</div></div></div>
+        <div class="sw"><div class="sw-chip" style="background:#6D0633;display:grid;place-items:center"><span style="color:#FFF4EA;font-weight:700">Aa</span></div><div class="sw-meta"><div class="nm">On Wine</div><div class="val">#FFF4EA</div><div class="use">Texto invertido sobre vinho.</div></div></div>
+        <div class="sw"><div class="sw-chip" style="background:#2A0110"></div><div class="sw-meta"><div class="nm">Plum Text</div><div class="val">#2A0110</div><div class="use">Texto sobre âmbar.</div></div></div>
+        <div class="sw"><div class="sw-chip" style="background:#F3EFEA;display:grid;place-items:center"><span style="color:#B96409;font-weight:700">Aa</span></div><div class="sw-meta"><div class="nm">Accent Dark</div><div class="val">#B96409</div><div class="use">Âmbar legível como texto.</div></div></div>
+      </div>
+    </div>
+
+    <div class="pal-group">
+      <h3>Acentos</h3>
+      <div class="sw-grid">
+        <div class="sw"><div class="sw-chip" style="background:#F7972C"></div><div class="sw-meta"><div class="nm">Ember</div><div class="val">#F7972C</div><div class="use">Acções primárias, chips, eyebrows.</div></div></div>
+        <div class="sw"><div class="sw-chip" style="background:#FFB050"></div><div class="sw-meta"><div class="nm">Ember Hover</div><div class="val">#FFB050</div><div class="use">Estado hover do âmbar.</div></div></div>
+        <div class="sw"><div class="sw-chip checker"><div style="height:100%;background:rgba(24,4,14,0.42)"></div></div><div class="sw-meta"><div class="nm">Glass Dark</div><div class="val">rgba(24,4,14,0.42)</div><div class="use">Vidro fosco do botão secundário.</div></div></div>
+        <div class="sw"><div class="sw-chip checker"><div style="height:100%;background:rgba(255,255,255,0.72)"></div></div><div class="sw-meta"><div class="nm">Glass Nav</div><div class="val">rgba(255,255,255,0.72)</div><div class="use">Barra de navegação em vidro.</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style data-section-styles="type-scale">
+#type-scale{background:var(--surface-alt)}
+.spec{border-top:1px solid rgba(28,14,14,0.12);padding:32px 0;display:grid;grid-template-columns:1fr 260px;gap:40px;align-items:baseline}
+.spec .meta{font-size:12px;font-weight:640;letter-spacing:2.3px;text-transform:uppercase;color:var(--accent-dark);line-height:1.8}
+.wramp{display:flex;gap:40px;flex-wrap:wrap;margin-top:20px}
+.wramp div{text-align:center}
+.wramp b{display:block;font-size:44px;letter-spacing:-1px}
+.wramp small{font-size:12px;letter-spacing:2.3px;text-transform:uppercase;color:var(--accent-dark)}
+@media(max-width:768px){.spec{grid-template-columns:1fr}}
+</style>
+<section id="type-scale">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Tipografia</span>
+      <h2 class="headline" style="margin-top:14px">Uma família, dois extremos.</h2>
+      <p>Epilogue faz toda a hierarquia: display muito pesado contra corpo regular, com 1.74 de entrelinha.</p>
+    </div>
+
+    <div class="spec">
+      <div class="display">O ofício de publicar bem.</div>
+      <div class="meta">display-lg<br>56px · 780 · 1.03 · -2.1px</div>
+    </div>
+    <div class="spec">
+      <div class="headline">Serviços editoriais e alojamento.</div>
+      <div class="meta">headline-md<br>38px · 760 · 1.1 · -1.2px</div>
+    </div>
+    <div class="spec">
+      <div style="font-size:17px;font-weight:400;line-height:1.74;max-width:60ch">Corpo de texto em ritmo de revista: entrelinha generosa, peso regular, sem uma segunda família. É o contraste de peso que carrega toda a leitura, do título ao parágrafo.</div>
+      <div class="meta">body-md<br>17px · 400 · 1.74</div>
+    </div>
+    <div class="spec">
+      <div style="font-size:12px;font-weight:640;letter-spacing:2.3px;text-transform:uppercase;color:var(--accent-dark)">Portfólio · Processo · Contactos</div>
+      <div class="meta">label-md<br>12px · 640 · +2.3px · CAIXA ALTA</div>
+    </div>
+    <div class="spec">
+      <div style="font-family:'Times New Roman',serif;font-size:34px;line-height:1.1">Uma interrupção editorial rara.</div>
+      <div class="meta">accent-serif<br>Times New Roman · uso raro</div>
+    </div>
+
+    <div style="border-top:1px solid rgba(28,14,14,0.12);padding-top:32px;margin-top:8px">
+      <span class="eyebrow">Rampa de peso — Epilogue</span>
+      <div class="wramp">
+        <div><b style="font-weight:400">Aa</b><small>Regular 400</small></div>
+        <div><b style="font-weight:600">Aa</b><small>Semi 640</small></div>
+        <div><b style="font-weight:700">Aa</b><small>Bold 760</small></div>
+        <div><b style="font-weight:800">Aa</b><small>Display 780</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style data-section-styles="components">
+#components{background:var(--surface)}
+.comp{border-top:1px solid rgba(28,14,14,0.12);padding:56px 0}
+.comp-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:28px}
+.comp-head h3{font-size:26px;font-weight:700;letter-spacing:-0.6px}
+.comp-head .count{font-size:12px;font-weight:640;letter-spacing:2.3px;text-transform:uppercase;color:var(--accent-dark)}
+.spec-card{margin-top:24px;background:var(--surface-alt);border-radius:13px;padding:16px 18px;font-size:12.5px;line-height:1.8;color:#4a3c42}
+.spec-card b{color:var(--text-primary)}
+/* button matrix */
+.matrix{display:grid;grid-template-columns:180px repeat(3,1fr);gap:16px;align-items:center}
+.matrix .rh{font-size:13px;font-weight:700}
+.matrix .ch{font-size:12px;font-weight:640;letter-spacing:2.3px;text-transform:uppercase;color:var(--accent-dark)}
+.cell{display:grid;place-items:start}
+.demo-dark{background:var(--wine-grad);border-radius:16px;padding:24px}
+/* nav demo */
+.navdemo{border-radius:0;background:rgba(255,255,255,0.72);backdrop-filter:blur(20px) saturate(1.4);border:1px solid rgba(28,14,14,0.1);height:77px;display:flex;align-items:center;padding:0 24px;gap:24px;overflow:hidden}
+.navdemo .nav-links{display:flex}
+/* domain panel */
+.domain{background:var(--plum-grad);border-radius:24px;padding:44px;color:var(--text-on-wine)}
+.domain-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.domain input{height:55px;border-radius:100px;border:1px solid rgba(255,244,234,0.34);background:rgba(255,244,234,0.1);color:var(--text-on-wine);padding:0 24px;font-family:inherit;font-size:16px;flex:1;min-width:200px}
+.domain input::placeholder{color:rgba(255,244,234,0.6)}
+.domain select{height:55px;border-radius:100px;border:1px solid rgba(255,244,234,0.34);background:rgba(255,244,234,0.1);color:var(--text-on-wine);padding:0 22px;font-family:inherit;font-size:15px}
+.domain option{color:#190A13}
+.assure{display:flex;gap:28px;flex-wrap:wrap;margin-top:22px;padding-top:20px;border-top:1px solid rgba(255,244,234,0.22)}
+.assure span{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--text-on-wine)}
+.assure iconify-icon{color:var(--accent)}
+/* services */
+.svc-split{display:grid;grid-template-columns:45fr 41fr;gap:24px}
+.svc-dark{background:var(--plum-grad);border-radius:24px;padding:38px;color:var(--text-on-wine);display:flex;flex-direction:column;justify-content:space-between;min-height:320px}
+.icon-chip{width:52px;height:52px;border-radius:16px;background:var(--accent);color:var(--plum-text);display:grid;place-items:center;font-size:26px}
+.chip-most{display:inline-flex;align-items:center;gap:6px;background:var(--accent);color:var(--plum-text);border-radius:50px;padding:6px 14px;font-size:11px;font-weight:640;letter-spacing:2.3px;text-transform:uppercase;align-self:flex-start}
+.svc-2up{display:grid;grid-template-rows:1fr 1fr;gap:24px}
+.svc-icon-card{background:#fff;border-radius:24px;padding:28px;box-shadow:rgba(25,10,19,0.04) 0 1px 2px 0;border:1px solid rgba(28,14,14,0.05)}
+.icon-chip.peach{background:#FBE7CF;color:var(--accent-dark)}
+.svc-icon-card h4{font-size:19px;font-weight:700;margin:16px 0 8px;letter-spacing:-0.3px}
+.svc-icon-card p{font-size:15px;color:#4a3c42;line-height:1.6}
+/* portfolio rail */
+.rail{display:flex;gap:24px;overflow-x:auto;padding-bottom:14px;scroll-snap-type:x mandatory}
+.pcard{flex:0 0 300px;scroll-snap-align:start;background:#fff;border-radius:24px;overflow:hidden;box-shadow:rgba(25,10,19,0.04) 0 1px 2px 0;border:1px solid rgba(28,14,14,0.05)}
+.pmedia{height:180px;display:grid;place-items:center}
+.pmedia .circ{width:150px;height:150px;border-radius:50%;display:grid;place-items:center}
+.plap{width:110px;height:70px;background:#fff;border-radius:8px;box-shadow:0 8px 20px -8px rgba(0,0,0,.3);position:relative}
+.plap::after{content:"";position:absolute;left:-14px;right:-14px;bottom:-6px;height:6px;background:#e8e0d7;border-radius:0 0 6px 6px}
+.pbody{padding:22px}
+.pbody .eb{font-size:11px}
+.pbody h4{font-size:18px;font-weight:700;margin:8px 0 4px;letter-spacing:-0.3px}
+.pbody .sub{font-size:14px;color:#7a6c72}
+.pbody a{display:inline-flex;align-items:center;gap:6px;margin-top:14px;color:var(--accent-dark);font-weight:700;font-size:14px;text-decoration:none}
+/* process */
+.proc-band{background:var(--plum-grad);border-radius:24px;padding:56px 44px;color:var(--text-on-wine)}
+.proc-row{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.pstep{padding-top:22px;border-top:1px solid rgba(255,244,234,0.24)}
+.pnum{font-size:56px;font-weight:800;letter-spacing:-2.1px;color:transparent;-webkit-text-stroke:1.5px var(--accent);line-height:1}
+.pstep h4{font-size:19px;font-weight:700;margin:16px 0 8px;letter-spacing:-0.3px}
+.pstep p{font-size:14px;color:rgba(255,244,234,0.85);line-height:1.6}
+.pdur{display:inline-block;margin-top:12px;font-size:12px;font-weight:640;letter-spacing:2.3px;text-transform:uppercase;color:var(--accent)}
+/* testimonials */
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.tcard{background:#F3EFEA;border-radius:24px;padding:38px}
+.tquote{font-size:44px;color:var(--accent);line-height:.6;font-family:'Times New Roman',serif}
+.tcard p{font-size:16px;line-height:1.6;margin:16px 0}
+.tcard hr{border:none;border-top:1px solid rgba(28,14,14,0.14);margin:20px 0}
+.tcard .nm{font-weight:700;font-size:15px}
+.tcard .co{font-size:13px;color:#7a6c72}
+/* closing */
+.closing{background:var(--wine-grad);border-radius:24px;padding:64px 48px;color:var(--text-on-wine);text-align:center}
+.closing h3{font-size:38px;font-weight:800;letter-spacing:-1.2px;margin:14px 0}
+.closing p{color:rgba(255,244,234,0.9);max-width:52ch;margin:0 auto 28px}
+.closing-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-midpage{background:var(--accent);color:var(--plum-text);border:1px solid transparent;border-radius:100px;height:62px;padding:15px 30px;font-family:inherit;font-weight:700;font-size:16px;cursor:pointer;box-shadow:rgba(247,151,44,0.7) 0 12px 28px -14px;transition:all .25s var(--ease);display:inline-flex;align-items:center;gap:10px}
+.btn-midpage:hover{background:var(--accent-hover);transform:translateY(-2px)}
+.phone-link{display:block;margin-top:22px;color:var(--text-on-wine);font-weight:600;text-decoration:none}
+@media(max-width:1024px){.svc-split{grid-template-columns:1fr}.proc-row{grid-template-columns:repeat(2,1fr)}.tgrid{grid-template-columns:1fr}.matrix{grid-template-columns:1fr}}
+@media(max-width:640px){.proc-row{grid-template-columns:1fr}}
+</style>
+<section id="components">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Componentes</span>
+      <h2 class="headline" style="margin-top:14px">O inventário completo.</h2>
+      <p>Cada peça herda os mesmos tokens: pílulas de 100px, cartões de 24px, âmbar racionado ao clique.</p>
+    </div>
+
+    <!-- NAVBAR -->
+    <div class="comp" data-tier-a-component="navbar">
+      <div class="comp-head"><h3>Navbar</h3><span class="count">×1 · 9 itens + CTA · 77px</span></div>
+      <div class="navdemo">
+        <div class="logo"><iconify-icon icon="lucide:flame" aria-hidden="true"></iconify-icon>Ledger</div>
+        <div class="nav-links"><a href="#components">Serviços</a><a href="#composition">Portfólio</a><a href="#type-scale">Processo</a><a href="#palette">Sobre</a><a href="#footer">Contactos</a><a href="#palette">Blog</a></div>
+        <div class="nav-utils" style="margin-left:auto">
+          <button aria-label="Pesquisar"><iconify-icon icon="lucide:search" aria-hidden="true"></iconify-icon></button>
+          <button aria-label="Conta"><iconify-icon icon="lucide:user" aria-hidden="true"></iconify-icon></button>
+          <button class="nav-cta">Consultar domínio</button>
+        </div>
+      </div>
+      <div class="spec-card"><b>navbar</b> · bg rgba(255,255,255,0.72) · <b>backdrop</b> blur(20px) saturate(1.4) · height 77 · radius 0 · <b>nav-cta</b> fill band-wine · text #fff · radius pill · height 37 · pad 11px 20px · hover band-wine-dark −2px · motion ease 0.25s</div>
+    </div>
+
+    <!-- BUTTON MATRIX -->
+    <div class="comp" data-tier-a-component="button-hero-primary">
+      <div class="comp-head"><h3>Botões — variantes × estados</h3><span class="count">Pílula 100px em todas as variantes</span></div>
+      <div class="matrix">
+        <div></div><div class="ch">Rest</div><div class="ch">Hover</div><div class="ch">Disabled</div>
+
+        <div class="rh">Hero primary · 55px</div>
+        <div class="cell"><button class="btn-hero-primary">Começar <iconify-icon icon="lucide:arrow-right" aria-hidden="true"></iconify-icon></button></div>
+        <div class="cell"><button class="btn-hero-primary" style="background:var(--accent-hover);transform:translateY(-2px)">Começar <iconify-icon icon="lucide:arrow-right" aria-hidden="true"></iconify-icon></button></div>
+        <div class="cell"><button class="btn-hero-primary" style="opacity:.45;box-shadow:none;cursor:not-allowed" disabled>Começar <iconify-icon icon="lucide:arrow-right" aria-hidden="true"></iconify-icon></button></div>
+
+        <div class="rh">Mid-page primary · 62px</div>
+        <div class="cell"><button class="btn-midpage">Falar connosco</button></div>
+        <div class="cell"><button class="btn-midpage" style="background:var(--accent-hover);transform:translateY(-2px)">Falar connosco</button></div>
+        <div class="cell"><button class="btn-midpage" style="opacity:.45;box-shadow:none;cursor:not-allowed" disabled>Falar connosco</button></div>
+
+        <div class="rh">Nav CTA · 37px</div>
+        <div class="cell"><button class="nav-cta">Consultar</button></div>
+        <div class="cell"><button class="nav-cta" style="background:var(--band-wine-dark);transform:translateY(-2px)">Consultar</button></div>
+        <div class="cell"><button class="nav-cta" style="opacity:.45;box-shadow:none;cursor:not-allowed" disabled>Consultar</button></div>
+      </div>
+
+      <div class="demo-dark" style="margin-top:24px" data-tier-a-component="button-glass-secondary">
+        <div class="ch" style="color:var(--accent);margin-bottom:16px">Sobre banda vinho — vidro secundário · 55px</div>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center">
+          <button class="btn-glass">Ver planos</button>
+          <button class="btn-glass" style="background:rgba(24,4,14,0.6);transform:translateY(-2px)">Ver planos (hover)</button>
+          <button class="btn-glass" style="opacity:.5;cursor:not-allowed" disabled>Ver planos</button>
+        </div>
+      </div>
+      <div class="spec-card">
+        <b>button-hero-primary</b> · fill accent · text plum-text · radius pill · height 55 · pad 18px 34px · shadow accent/.66 14px · hover accent-hover −2px<br>
+        <b>button-midpage-primary</b> · fill accent · height 62 · pad 15px 30px · shadow accent/.7 12px<br>
+        <b>button-glass-secondary</b> · fill rgba(24,4,14,.42) · backdrop blur(12px) sat(1.2) · text on-wine · border on-wine/.34 · hover fill /.6 · motion ease 0.25s
+      </div>
+    </div>
+
+    <!-- DOMAIN LOOKUP -->
+    <div class="comp" data-tier-a-component="domain-lookup-panel">
+      <div class="comp-head"><h3>Painel de consulta de domínio</h3><span class="count">×1 · banda vinho</span></div>
+      <div class="domain">
+        <span class="eyebrow eyebrow-on-wine">Encontre o seu domínio</span>
+        <h3 style="font-size:28px;font-weight:800;letter-spacing:-1px;margin-top:10px">O seu nome, no ar.</h3>
+        <div class="domain-row">
+          <input type="text" placeholder="o-seu-negocio" aria-label="Nome do domínio">
+          <select aria-label="Sufixo do domínio"><option>.co.mz</option><option>.mz</option><option>.com</option></select>
+          <button class="btn-hero-primary" style="height:55px">Consultar</button>
+        </div>
+        <div class="assure">
+          <span><iconify-icon icon="lucide:check" aria-hidden="true"></iconify-icon> Registo instantâneo</span>
+          <span><iconify-icon icon="lucide:check" aria-hidden="true"></iconify-icon> DNS incluído</span>
+          <span><iconify-icon icon="lucide:check" aria-hidden="true"></iconify-icon> Suporte local</span>
+        </div>
+      </div>
+      <div class="spec-card"><b>domain-lookup-panel</b> · bg plum-grad · radius card-lg · input height 55 · radius pill · border on-wine/.34 · <b>Consultar</b> fill accent · assurance icons accent</div>
+    </div>
+
+    <!-- SERVICES -->
+    <div class="comp" data-tier-a-component="service-card-dark">
+      <div class="comp-head"><h3>Cartões de serviço</h3><span class="count">1 dark + 2 icon cards · split 45/41</span></div>
+      <div class="svc-split">
+        <div class="svc-dark">
+          <div>
+            <div class="icon-chip"><iconify-icon icon="lucide:server" aria-hidden="true"></iconify-icon></div>
+          </div>
+          <div>
+            <span class="chip-most"><iconify-icon icon="lucide:star" aria-hidden="true"></iconify-icon> Mais procurado</span>
+            <h4 style="font-size:28px;font-weight:800;letter-spacing:-1px;margin-top:16px">Alojamento gerido, sem dores de cabeça.</h4>
+          </div>
+        </div>
+        <div class="svc-2up" data-tier-a-component="service-icon-card">
+          <div class="svc-icon-card">
+            <div class="icon-chip peach"><iconify-icon icon="lucide:layout" aria-hidden="true"></iconify-icon></div>
+            <h4>Sites à medida</h4>
+            <p>Desenho editorial em papel quente, feito para converter visitantes em clientes.</p>
+          </div>
+          <div class="svc-icon-card">
+            <div class="icon-chip peach"><iconify-icon icon="lucide:mail" aria-hidden="true"></iconify-icon></div>
+            <h4>Email profissional</h4>
+            <p>Caixas de correio no seu domínio, com anti-spam e sincronização em todos os dispositivos.</p>
+          </div>
+        </div>
+      </div>
+      <div class="spec-card"><b>service-card-dark</b> · fill plum-grad · radius card-lg · icon-chip accent · chip-most accent/plum-text · <b>service-icon-card</b> ×2 · fill surface · radius card-lg · shadow ink/.04 · chip peach</div>
+    </div>
+
+    <!-- PORTFOLIO -->
+    <div class="comp" data-tier-a-component="portfolio-media-card">
+      <div class="comp-head"><h3>Rail de portfólio</h3><span class="count">×4 · rail horizontal com peek</span></div>
+      <div class="rail">
+        <div class="pcard"><div class="pmedia" style="background:#FBE7CF"><div class="circ" style="background:#F7972C"><div class="plap"></div></div></div><div class="pbody"><span class="eyebrow eb">Restauração</span><h4>Café Central</h4><div class="sub">Menu digital &amp; reservas</div><a href="#composition">Ver site <iconify-icon icon="lucide:arrow-right" aria-hidden="true"></iconify-icon></a></div></div>
+        <div class="pcard"><div class="pmedia" style="background:#F3EFEA"><div class="circ" style="background:#6D0633"><div class="plap"></div></div></div><div class="pbody"><span class="eyebrow eb">Retalho</span><h4>Loja Nampula</h4><div class="sub">Catálogo &amp; pagamentos</div><a href="#composition">Ver site <iconify-icon icon="lucide:arrow-right" aria-hidden="true"></iconify-icon></a></div></div>
+        <div class="pcard"><div class="pmedia" style="background:#FBE7CF"><div class="circ" style="background:#45063B"><div class="plap"></div></div></div><div class="pbody"><span class="eyebrow eb">Serviços</span><h4>Advocacia MZ</h4><div class="sub">Site institucional</div><a href="#composition">Ver site <iconify-icon icon="lucide:arrow-right" aria-hidden="true"></iconify-icon></a></div></div>
+        <div class="pcard"><div class="pmedia" style="background:#F3EFEA"><div class="circ" style="background:#F7972C"><div class="plap"></div></div></div><div class="pbody"><span class="eyebrow eb">Turismo</span><h4>Ilha Lodge</h4><div class="sub">Reservas &amp; galeria</div><a href="#composition">Ver site <iconify-icon icon="lucide:arrow-right" aria-hidden="true"></iconify-icon></a></div></div>
+      </div>
+      <div class="spec-card"><b>portfolio-media-card</b> ×4 · fill surface · radius card-lg · shadow ink/.04 · media ~60% top · eyebrow label-md · link accent-dark · rail scroll-snap</div>
+    </div>
+
+    <!-- PROCESS -->
+    <div class="comp" data-tier-a-component="process-step">
+      <div class="comp-head"><h3>Passos do processo</h3><span class="count">×4 · banda vinho · sem contentor</span></div>
+      <div class="proc-band">
+        <div class="proc-row">
+          <div class="pstep"><div class="pnum">01</div><h4>Conversa</h4><p>Percebemos o negócio e os objectivos antes de desenhar uma única linha.</p><span class="pdur">1–2 dias</span></div>
+          <div class="pstep"><div class="pnum">02</div><h4>Desenho</h4><p>Protótipo editorial em papel quente, revisto consigo em cada banda.</p><span class="pdur">3–5 dias</span></div>
+          <div class="pstep"><div class="pnum">03</div><h4>Construção</h4><p>Código limpo, alojamento configurado e domínio ligado ao vivo.</p><span class="pdur">5–7 dias</span></div>
+          <div class="pstep"><div class="pnum">04</div><h4>Publicação</h4><p>Lançamento, medição e suporte local contínuo depois do arranque.</p><span class="pdur">Contínuo</span></div>
+        </div>
+      </div>
+      <div class="spec-card"><b>process-step</b> ×4 · bg plum-grad · numeral display-lg outline accent · top-rule on-wine/.24 · body on-wine/.85 · duration label accent · sem card</div>
+    </div>
+
+    <!-- TESTIMONIALS -->
+    <div class="comp" data-tier-a-component="testimonial-card">
+      <div class="comp-head"><h3>Testemunhos</h3><span class="count">×3 · grelha em terços · gap 24px</span></div>
+      <div class="tgrid">
+        <div class="tcard"><div class="tquote">&ldquo;</div><p>Passámos de nada online a receber pedidos todas as semanas. O site parece uma revista.</p><hr><div class="nm">Ana Chissano</div><div class="co">Café Central · Maputo</div></div>
+        <div class="tcard"><div class="tquote">&ldquo;</div><p>Rápidos, atenciosos e locais. O domínio e o email ficaram prontos no mesmo dia.</p><hr><div class="nm">Jorge Mabjaia</div><div class="co">Loja Nampula · Nampula</div></div>
+        <div class="tcard"><div class="tquote">&ldquo;</div><p>A diferença de credibilidade foi imediata. Os clientes confiam mais na marca.</p><hr><div class="nm">Sofia Langa</div><div class="co">Advocacia MZ · Beira</div></div>
+      </div>
+      <div class="spec-card"><b>testimonial-card</b> ×3 · fill paper · radius card-lg · shadow none · pad 38 · quote glyph accent · rule ink/.14 · body-md · name bold · co muted</div>
+    </div>
+
+    <!-- CLOSING CTA -->
+    <div class="comp" data-tier-a-component="closing-cta-band">
+      <div class="comp-head"><h3>Banda de conversão final</h3><span class="count">×1 · painel vinho-gradiente</span></div>
+      <div class="closing">
+        <span class="eyebrow eyebrow-on-wine">Pronto para começar</span>
+        <h3>O seu site no ar esta semana.</h3>
+        <p>Fale connosco hoje e ponha a sua marca online com alojamento e suporte local.</p>
+        <div class="closing-btns">
+          <button class="btn-midpage">Começar agora</button>
+          <button class="btn-glass"><iconify-icon icon="lucide:message-circle" aria-hidden="true" style="margin-right:8px"></iconify-icon> WhatsApp</button>
+        </div>
+        <a class="phone-link" href="tel:+258840000000">+258 84 000 0000</a>
+      </div>
+      <div class="spec-card"><b>closing-cta-band</b> · fill wine-grad · radius card-lg · eyebrow accent · headline display · <b>midpage</b> primary + <b>glass</b> secondary · phone plain-text</div>
+    </div>
+
+  </div>
+</section>
+
+<style data-section-styles="surface-depth">
+#surface-depth{background:var(--surface-alt)}
+.depth-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.dcard{background:#fff;padding:28px}
+.dcard .cap{font-size:12px;font-weight:640;letter-spacing:2.3px;text-transform:uppercase;color:var(--accent-dark);margin-top:14px}
+.dcard .val{font-size:13px;color:#4a3c42}
+@media(max-width:768px){.depth-grid{grid-template-columns:1fr}}
+</style>
+<section id="surface-depth">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Superfície &amp; profundidade</span>
+      <h2 class="headline" style="margin-top:14px">Sombras para separar, não para dramatizar.</h2>
+    </div>
+    <div class="depth-grid">
+      <div class="dcard" style="border-radius:24px;box-shadow:rgba(25,10,19,0.04) 0 1px 2px 0"><h4 style="font-size:18px;font-weight:700">Cartão média / testemunho</h4><div class="cap">radius card-lg</div><div class="val">24px · shadow ink/.04</div></div>
+      <div class="dcard" style="border-radius:16px;box-shadow:rgba(25,10,19,0.05) 0 1px 2px 0,rgba(25,10,19,0.08) 0 4px 14px -6px"><h4 style="font-size:18px;font-weight:700">Painel de destaque</h4><div class="cap">radius card-sm</div><div class="val">16px · shadow ink/.05 + /.08</div></div>
+      <div class="dcard" style="border-radius:13px;box-shadow:none;border:1px solid rgba(28,14,14,0.12)"><h4 style="font-size:18px;font-weight:700">Controlo / campo</h4><div class="cap">radius control</div><div class="val">13px · hairline</div></div>
+      <div class="dcard" style="border-radius:100px;box-shadow:rgba(247,151,44,0.4) 0 12px 28px -14px;background:var(--accent);color:var(--plum-text);text-align:center"><h4 style="font-size:18px;font-weight:700">Pílula</h4><div class="cap" style="color:var(--plum-text)">radius pill</div><div class="val" style="color:var(--plum-text)">100px · botões e inputs</div></div>
+      <div class="dcard" style="border-radius:50px;text-align:center;border:1px solid rgba(28,14,14,0.12)"><h4 style="font-size:18px;font-weight:700">Chip</h4><div class="cap">radius chip</div><div class="val">50px · rótulos</div></div>
+      <div class="dcard" style="border-radius:24px;background:var(--wine-grad);color:var(--text-on-wine)"><h4 style="font-size:18px;font-weight:700">Banda vinho</h4><div class="cap" style="color:var(--accent)">band gradient</div><div class="val" style="color:rgba(255,244,234,.85)">118deg wine → plum</div></div>
+    </div>
+  </div>
+</section>
+
+<style data-section-styles="motion">
+#motion{background:var(--surface)}
+.motion-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.mcard{background:var(--surface-alt);border-radius:16px;padding:32px}
+.mcard h4{font-size:18px;font-weight:700;margin-bottom:6px}
+.mcard .cap{font-size:12px;font-weight:640;letter-spacing:2.3px;text-transform:uppercase;color:var(--accent-dark)}
+.mball{width:44px;height:44px;border-radius:50%;background:var(--accent);margin-top:24px}
+.replay{margin-top:20px;background:none;border:1px solid rgba(28,14,14,0.2);border-radius:100px;padding:8px 18px;font-family:inherit;font-weight:600;font-size:13px;cursor:pointer}
+.lift{transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+.slide.go{animation:slidein .75s var(--ease)}
+@keyframes slidein{from{transform:translateY(24px);opacity:.2}to{transform:translateY(0);opacity:1}}
+@media(max-width:768px){.motion-grid{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.slide.go{animation:none}}
+</style>
+<section id="motion">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Movimento</span>
+      <h2 class="headline" style="margin-top:14px">Uma curva, dois tempos.</h2>
+      <p>cubic-bezier(0.22, 0.8, 0.24, 1) — lenta nas entradas, rápida no hover.</p>
+    </div>
+    <div class="motion-grid">
+      <div class="mcard">
+        <span class="cap">Entrada — reveal</span>
+        <h4>0.75s · ease editorial</h4>
+        <div class="mball slide" id="ball1"></div>
+        <br><button class="replay" onclick="document.getElementById('ball1').classList.remove('go');void document.getElementById('ball1').offsetWidth;document.getElementById('ball1').classList.add('go')">Repetir</button>
+      </div>
+      <div class="mcard">
+        <span class="cap">Hover — float up</span>
+        <h4>0.25s · translateY(-2px)</h4>
+        <button class="btn-hero-primary lift" style="margin-top:24px" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform=''">Passe o rato</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style data-section-styles="composition">
+#composition{background:var(--surface-alt)}
+.mock{border-radius:24px;overflow:hidden;box-shadow:rgba(25,10,19,0.08) 0 20px 50px -20px;border:1px solid rgba(28,14,14,0.06)}
+.mock-nav{height:64px;background:rgba(255,255,255,0.72);backdrop-filter:blur(20px) saturate(1.4);display:flex;align-items:center;padding:0 28px;gap:20px;border-bottom:1px solid rgba(28,14,14,0.08)}
+.mock-nav .nav-links{display:flex}
+.mock-hero{background:var(--wine-grad);color:var(--text-on-wine);padding:56px 40px;position:relative;overflow:hidden}
+.mock-hero::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 90% at 82% 18%,rgba(247,151,44,0.16),rgba(0,0,0,0) 58%)}
+.mock-hero h3{position:relative;z-index:2;font-size:40px;font-weight:800;letter-spacing:-1.4px;max-width:14ch;line-height:1.05}
+.mock-hero .em{color:var(--accent)}
+.mock-cards{background:#fff;padding:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.mc{background:#fff;border-radius:24px;padding:24px;box-shadow:rgba(25,10,19,0.04) 0 1px 2px 0;border:1px solid rgba(28,14,14,0.05)}
+.mc .icon-chip{margin-bottom:14px}
+.mc h4{font-size:17px;font-weight:700;margin-bottom:6px}
+.mc p{font-size:14px;color:#4a3c42;line-height:1.55}
+.mock-cta{background:var(--plum-grad);padding:44px 40px;text-align:center;color:var(--text-on-wine)}
+.mock-cta h3{font-size:30px;font-weight:800;letter-spacing:-1px;margin-bottom:20px}
+@media(max-width:768px){.mock-cards{grid-template-columns:1fr}.mock-nav .nav-links{display:none}}
+</style>
+<section id="composition">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Em composição</span>
+      <h2 class="headline" style="margin-top:14px">O sistema, montado.</h2>
+    </div>
+    <div class="mock">
+      <div class="mock-nav">
+        <div class="logo"><iconify-icon icon="lucide:flame" aria-hidden="true"></iconify-icon>Ledger</div>
+        <div class="nav-links"><a href="#components">Serviços</a><a href="#composition">Portfólio</a><a href="#type-scale">Processo</a></div>
+        <div style="margin-left:auto"><button class="nav-cta">Consultar</button></div>
+      </div>
+      <div class="mock-hero">
+        <h3>Presença digital com <span class="em">carácter</span>.</h3>
+        <div style="position:relative;z-index:2;display:flex;gap:14px;margin-top:26px;flex-wrap:wrap">
+          <button class="btn-hero-primary">Começar <iconify-icon icon="lucide:arrow-right" aria-hidden="true"></iconify-icon></button>
+          <button class="btn-glass">Ver planos</button>
+        </div>
+      </div>
+      <div class="mock-cards">
+        <div class="mc"><div class="icon-chip peach" style="background:#FBE7CF;color:var(--accent-dark)"><iconify-icon icon="lucide:globe" aria-hidden="true"></iconify-icon></div><h4>Domínios</h4><p>Registo .co.mz instantâneo com DNS gerido.</p></div>
+        <div class="mc"><div class="icon-chip peach" style="background:#FBE7CF;color:var(--accent-dark)"><iconify-icon icon="lucide:server" aria-hidden="true"></iconify-icon></div><h4>Alojamento</h4><p>Servidores rápidos com suporte local dedicado.</p></div>
+        <div class="mc"><div class="icon-chip peach" style="background:#FBE7CF;color:var(--accent-dark)"><iconify-icon icon="lucide:layout" aria-hidden="true"></iconify-icon></div><h4>Sites</h4><p>Desenho editorial feito para converter.</p></div>
+      </div>
+      <div class="mock-cta">
+        <h3>Comece hoje.</h3>
+        <button class="btn-midpage">Falar connosco</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style data-section-styles="footer">
+#footer{background:linear-gradient(#1F0417 0%,#160310 58%,#10020B 100%);color:var(--text-on-wine);padding:96px 0 40px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px}
+.foot-brand .logo{color:var(--text-on-wine)}
+.foot-brand p{color:rgba(255,244,234,0.7);font-size:14px;max-width:36ch;margin-top:14px}
+.foot-col h5{font-size:12px;font-weight:640;letter-spacing:2.3px;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.foot-col a{display:block;color:rgba(255,244,234,0.82);text-decoration:none;font-size:14px;padding:5px 0;transition:color .25s var(--ease)}
+.foot-col a:hover{color:var(--accent)}
+.foot-social{display:flex;gap:14px;margin-top:24px}
+.foot-social a{width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,244,234,0.24);display:grid;place-items:center;color:var(--text-on-wine);font-size:18px}
+.foot-social a:hover{border-color:var(--accent);color:var(--accent)}
+.foot-div{border:none;border-top:1px solid rgba(255,244,234,0.16);margin:48px 0 24px}
+.foot-copy{font-size:13px;color:rgba(255,244,234,0.6);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.foot-copy a{color:var(--accent);text-decoration:none}
+@media(max-width:768px){.foot-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.foot-grid{grid-template-columns:1fr}}
+</style>
+<footer id="footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="logo"><iconify-icon icon="lucide:flame" aria-hidden="true"></iconify-icon>Ledger</div>
+        <p>Sistema editorial de papel quente com acento âmbar racionado — presença digital para negócios em Moçambique.</p>
+        <div class="foot-social">
+          <a href="#footer" aria-label="Facebook"><iconify-icon icon="lucide:facebook" aria-hidden="true"></iconify-icon></a>
+          <a href="#footer" aria-label="Instagram"><iconify-icon icon="lucide:instagram" aria-hidden="true"></iconify-icon></a>
+          <a href="#footer" aria-label="LinkedIn"><iconify-icon icon="lucide:linkedin" aria-hidden="true"></iconify-icon></a>
+          <a href="#footer" aria-label="WhatsApp"><iconify-icon icon="lucide:message-circle" aria-hidden="true"></iconify-icon></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h5>Páginas</h5>
+        <a href="#hero">Início</a><a href="#components">Serviços</a><a href="#composition">Portfólio</a><a href="#type-scale">Processo</a><a href="#palette">Sobre</a><a href="#footer">Blog</a>
+      </div>
+      <div class="foot-col">
+        <h5>Serviços</h5>
+        <a href="#components">Domínios</a><a href="#components">Alojamento</a><a href="#components">Sites à medida</a><a href="#components">Email profissional</a><a href="#components">Manutenção</a><a href="#components">SEO local</a>
+      </div>
+      <div class="foot-col">
+        <h5>Contactos</h5>
+        <a href="tel:+258840000000">+258 84 000 0000</a><a href="mailto:ola@ledger.co.mz">ola@ledger.co.mz</a><a href="#footer">Maputo, Moçambique</a><a href="#footer">Suporte 24/7</a><a href="#footer">Parcerias</a><a href="#footer">Facturação</a>
+      </div>
+    </div>
+    <hr class="foot-div">
+    <div class="foot-copy">
+      <span>© Wine &amp; Ember Ledger · <a href="https://mozwebsites.com/index.html">mozwebsites.com</a></span>
+      <span>Design system captured and rendered by superdesign.dev</span>
+    </div>
+  </div>
+</footer>
+
+</main>
+
+<script>
+document.querySelectorAll('.slide').forEach(function(el){el.classList.add('go')});
+</script>
+</body>
+</html>

@@ -1,0 +1,832 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src data: blob:; media-src data: blob:; script-src 'unsafe-inline' https://code.iconify.design; connect-src https://api.iconify.design https://api.simplesvg.com https://api.unisvg.com; frame-src 'none'; object-src 'none'; form-action 'none'; base-uri 'none'">
+<meta name="referrer" content="no-referrer">
+
+<meta name="referrer" content="no-referrer">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Orb-lit orange minimalism — Design System</title>
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --background:#EFF0F0;
+  --surface:#FFFFFF;
+  --surface-sunken:#EFF0F0;
+  --text-primary:#000000;
+  --text-on-dark:#FFFFFF;
+  --border:#C5C7C8;
+  --brand-accent:#F75D00;
+  --success:#00502F;
+  --neutral-black:#000000;
+
+  --r-control:10px;
+  --r-card:10px;
+  --r-chip:4px;
+  --r-capsule:50px;
+  --r-pill:9999px;
+
+  --base:8px;
+  --gap-sm:4px;
+  --gap-md:12px;
+  --gap-lg:20px;
+  --gap-xl:60px;
+  --section-padding:68px;
+  --section-gap-sm:156px;
+  --section-gap-md:176px;
+
+  --display:'Archivo',system-ui,sans-serif;
+  --mono:'Spline Sans Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--background);
+  color:var(--text-primary);
+  font-family:var(--display);
+  font-size:16px;
+  line-height:1.4;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,p{margin:0}
+a{color:inherit}
+img{max-width:100%;display:block}
+.wrap{max-width:1440px;margin:0 auto;padding-left:var(--section-padding);padding-right:var(--section-padding)}
+.display{font-family:var(--display);font-weight:400;line-height:1.1;letter-spacing:-2.5px}
+.eyebrow{font-family:var(--mono);font-size:13px;line-height:1.2;text-transform:uppercase;letter-spacing:.02em}
+.mono{font-family:var(--mono)}
+
+/* NAV */
+.nav{
+  position:sticky;top:0;z-index:50;
+  width:100%;height:84px;
+  border-radius:0;
+  background:transparent;
+  backdrop-filter:blur(8px);
+  display:flex;align-items:center;
+}
+.nav-inner{max-width:1440px;margin:0 auto;width:100%;padding:0 var(--section-padding);display:flex;align-items:center;gap:32px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:600;font-size:20px;letter-spacing:-1px}
+.logo-mark{
+  width:26px;height:26px;border-radius:50%;
+  background:radial-gradient(circle at 35% 35%,#000,#0f0f0f 40%,#fff);
+  position:relative;overflow:hidden;
+}
+.logo-mark::after{content:"";position:absolute;inset:0;background-image:radial-gradient(var(--brand-accent) .8px,transparent .9px);background-size:5px 5px;opacity:.5}
+.nav-links{display:flex;gap:8px;margin-left:auto}
+.nav-util{
+  background:transparent;color:#000;border:none;border-radius:0;
+  height:41px;padding:0 12px;font-family:var(--display);font-size:16px;
+  cursor:pointer;transition:color .2s ease;
+}
+.nav-util:hover{color:var(--brand-accent)}
+.nav-right{display:flex;align-items:center;gap:12px}
+.btn-login{
+  height:36px;padding:0 16px;border:1px solid var(--border);background:transparent;
+  color:#000;border-radius:10px;font-family:var(--display);font-size:15px;cursor:pointer;
+  transition:border-color .2s ease;
+}
+.btn-login:hover{border-color:#000}
+.btn-nav-cta{
+  height:36px;padding:0 18px;background:var(--brand-accent);color:#000;
+  border:1px solid rgba(0,0,0,0);border-radius:10px;font-family:var(--display);
+  font-weight:500;font-size:15px;cursor:pointer;transition:filter .15s cubic-bezier(.17,.25,.3,1);
+}
+.btn-nav-cta:hover{filter:brightness(.92)}
+
+/* HERO */
+#hero{position:relative;overflow:hidden;padding-top:40px;padding-bottom:120px}
+.hero-wash{position:absolute;left:0;right:0;bottom:0;height:50%;background:linear-gradient(0deg,#F75D00,#EFF0F0 50%);z-index:0}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:center;min-height:560px}
+.hero-copy h1{font-size:76px}
+.hero-sub{font-size:20px;line-height:1.4;max-width:30ch;margin-top:24px;color:#000}
+.hero-cta-row{display:flex;gap:12px;margin-top:36px}
+.btn-hero-primary{
+  height:43px;padding:0 26px;background:var(--brand-accent);color:#000;
+  border:1px solid rgba(0,0,0,0);border-radius:10px;font-family:var(--display);
+  font-weight:500;font-size:17px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;
+  transition:filter .15s cubic-bezier(.17,.25,.3,1);
+}
+.btn-hero-primary:hover{filter:brightness(.92)}
+.btn-hero-secondary{
+  height:43px;padding:0 26px;background:#000;color:#fff;
+  border:1px solid rgba(0,0,0,0);border-radius:10px;font-family:var(--display);
+  font-weight:500;font-size:17px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;
+  transition:filter .15s cubic-bezier(.17,.25,.3,1);
+}
+.btn-hero-secondary:hover{filter:brightness(1.6)}
+.orb-wrap{position:relative;display:flex;justify-content:center;align-items:center;min-height:440px}
+.orb{
+  width:380px;height:380px;max-width:80vw;max-height:80vw;border-radius:50%;
+  background:radial-gradient(circle at 35% 35%,#000,#0f0f0f 30%,#fff);
+  position:relative;
+  box-shadow:rgba(255,255,255,0.75) 0px 4px 54px 40px, inset rgba(255,255,255,0.4) 0 0 40px;
+  overflow:hidden;
+}
+.orb::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(0,0,0,.55) 1px,transparent 1.4px);background-size:11px 11px;mix-blend-mode:overlay}
+.orb-dot{position:absolute;width:6px;height:6px;border-radius:50%;background:var(--brand-accent);box-shadow:0 0 8px var(--brand-accent)}
+.orb-capsule{
+  position:absolute;bottom:44px;left:50%;transform:translateX(-50%);
+  background:rgba(0,0,0,.7);backdrop-filter:blur(8px);color:#fff;
+  border-radius:50px;padding:9px 16px;font-family:var(--mono);font-size:13px;
+  display:flex;align-items:center;gap:8px;white-space:nowrap;
+}
+.orb-capsule iconify-icon{color:var(--brand-accent)}
+@media(max-width:1024px){.hero-copy h1{font-size:60px}.hero-grid{gap:40px}}
+@media(max-width:768px){
+  .wrap,.nav-inner,.hero-grid{padding-left:24px;padding-right:24px}
+  :root{--section-padding:24px}
+  .hero-grid{grid-template-columns:1fr;min-height:auto}
+  .hero-copy h1{font-size:44px;letter-spacing:-1.5px}
+  .nav-links{display:none}
+}
+@media(max-width:640px){.hero-copy h1{font-size:36px}}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header>
+<nav class="nav" aria-label="Primary">
+  <div class="nav-inner">
+    <a class="logo" href="#hero" aria-label="Meridian home">
+      <span class="logo-mark" aria-hidden="true"></span>
+      <span>Meridian</span>
+    </a>
+    <div class="nav-links">
+      <button class="nav-util" type="button">Platform</button>
+      <button class="nav-util" type="button">Docs</button>
+      <button class="nav-util" type="button">Resources</button>
+      <button class="nav-util" type="button">Careers</button>
+    </div>
+    <div class="nav-right">
+      <button class="btn-login" type="button">Login</button>
+      <button class="btn-nav-cta" type="button">Get Started</button>
+    </div>
+  </div>
+</nav>
+</header>
+
+<main>
+
+<section id="hero" aria-labelledby="hero-title">
+  <div class="hero-wash" aria-hidden="true"></div>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <h1 id="hero-title" class="display">One signal against a quiet field.</h1>
+      <p class="hero-sub">Meridian renders the whole picture — data, models, and momentum — in a single lit surface. Everything else stays out of the way.</p>
+      <div class="hero-cta-row">
+        <button class="btn-hero-primary" type="button">Get Started <iconify-icon icon="lucide:arrow-right" aria-hidden="true"></iconify-icon></button>
+        <button class="btn-hero-secondary" type="button">Book a Demo</button>
+      </div>
+    </div>
+    <div class="orb-wrap">
+      <div class="orb" role="img" aria-label="Illuminated dot-matrix sphere lit by orange data points">
+        <span class="orb-dot" style="top:30%;left:60%"></span>
+        <span class="orb-dot" style="top:45%;left:70%"></span>
+        <span class="orb-dot" style="top:58%;left:52%"></span>
+        <span class="orb-dot" style="top:38%;left:44%"></span>
+        <span class="orb-dot" style="top:66%;left:64%"></span>
+        <div class="orb-capsule"><iconify-icon icon="lucide:search" aria-hidden="true"></iconify-icon> forecast: Q3 revenue lift</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style data-section-styles="palette">
+#palette{padding-top:var(--section-gap-sm);padding-bottom:var(--section-gap-sm)}
+.sec-head{margin-bottom:48px}
+.sec-head h2{font-size:50px}
+.sec-head .eyebrow{color:var(--brand-accent);margin-bottom:12px}
+.sec-head p{max-width:52ch;font-size:16px;margin-top:14px;color:#000}
+.pal-group{margin-top:40px}
+.pal-group h3{font-size:20px;letter-spacing:-.5px;margin-bottom:16px}
+.swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:20px}
+.swatch{border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--surface)}
+.swatch .chip{height:96px}
+.checker{background-image:linear-gradient(45deg,#ccc 25%,transparent 25%),linear-gradient(-45deg,#ccc 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#ccc 75%),linear-gradient(-45deg,transparent 75%,#ccc 75%);background-size:16px 16px;background-position:0 0,0 8px,8px -8px,-8px 0}
+.swatch .meta{padding:14px 16px}
+.swatch .name{font-weight:500;font-size:15px}
+.swatch .val{font-family:var(--mono);font-size:13px;color:#000;margin-top:4px}
+.swatch .note{font-size:14px;color:#000;margin-top:8px;opacity:.75}
+</style>
+<section id="palette" aria-labelledby="palette-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">01 · Palette</div>
+      <h2 id="palette-title" class="display">Monochrome, plus one.</h2>
+      <p>Near-white does the heavy lifting. Black carries structure. Orange is rationed — buttons, chart lines, and the wash beneath the orb.</p>
+    </div>
+
+    <div class="pal-group">
+      <h3>Surfaces</h3>
+      <div class="swatches">
+        <div class="swatch"><div class="chip" style="background:#EFF0F0"></div><div class="meta"><div class="name">background</div><div class="val">#EFF0F0</div><div class="note">The near-white canvas — the true ground of the page.</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#FFFFFF;border-bottom:1px solid var(--border)"></div><div class="meta"><div class="name">surface</div><div class="val">#FFFFFF</div><div class="note">Pure-white editorial cards.</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#EFF0F0"></div><div class="meta"><div class="name">surface-sunken</div><div class="val">#EFF0F0</div><div class="note">Utility and analytics panels sink softly.</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#000000"></div><div class="meta"><div class="name">neutral-black</div><div class="val">#000000</div><div class="note">Navbar text, dark cards, footer band.</div></div></div>
+      </div>
+    </div>
+
+    <div class="pal-group">
+      <h3>Text</h3>
+      <div class="swatches">
+        <div class="swatch"><div class="chip" style="background:#000000"></div><div class="meta"><div class="name">text-primary</div><div class="val">#000000</div><div class="note">Black ink for all copy on light ground.</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#000000;color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:13px">Aa</div><div class="meta"><div class="name">text-on-dark</div><div class="val">#FFFFFF</div><div class="note">White ink on the black bands and quote card.</div></div></div>
+        <div class="swatch"><div class="chip checker" style="position:relative"><div style="position:absolute;inset:0;background:#C5C7C8"></div></div><div class="meta"><div class="name">border</div><div class="val">#C5C7C8</div><div class="note">Pale hairline dividers and outlined controls.</div></div></div>
+      </div>
+    </div>
+
+    <div class="pal-group">
+      <h3>Accents</h3>
+      <div class="swatches">
+        <div class="swatch"><div class="chip" style="background:#F75D00"></div><div class="meta"><div class="name">brand-accent</div><div class="val">#F75D00</div><div class="note">The single saturated signal. Under 1% of the surface by design.</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#00502F"></div><div class="meta"><div class="name">success</div><div class="val">#00502F</div><div class="note">Dark-green pill badges for metric lift.</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style data-section-styles="type-scale">
+#type-scale{padding-top:var(--section-gap-sm);padding-bottom:var(--section-gap-sm);background:var(--surface)}
+.spec{border-top:1px solid var(--border);padding:32px 0;display:grid;grid-template-columns:180px 1fr;gap:32px;align-items:baseline}
+.spec:last-child{border-bottom:1px solid var(--border)}
+.spec .m{font-family:var(--mono);font-size:13px;line-height:1.6;color:#000}
+.spec .m b{display:block;font-weight:500;text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px}
+.sp-display{font-family:var(--display);font-weight:400;font-size:50px;line-height:1.1;letter-spacing:-2.5px}
+.sp-label{font-family:var(--display);font-weight:400;font-size:36px;line-height:1.1;letter-spacing:-1.8px}
+.sp-body{font-family:var(--display);font-weight:400;font-size:20px;line-height:1.4}
+.sp-bodysm{font-family:var(--display);font-weight:400;font-size:16px;line-height:1.4}
+.sp-mono{font-family:var(--mono);font-size:13px;line-height:1.2;text-transform:uppercase;letter-spacing:.02em}
+@media(max-width:768px){.spec{grid-template-columns:1fr;gap:12px}.sp-display{font-size:34px;letter-spacing:-1.2px}.sp-label{font-size:28px}}
+</style>
+<section id="type-scale" aria-labelledby="type-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow" style="color:var(--brand-accent)">02 · Type scale</div>
+      <h2 id="type-title" class="display">Formular, tightly wound.</h2>
+      <p>One grotesque at radically different tracking. Display compresses to −2.5px; body relaxes for reading; the mono cut appears only as small all-caps eyebrows.</p>
+    </div>
+
+    <div class="spec">
+      <div class="m"><b>display-lg</b>50px / 400<br>lh 1.1 · −2.5px</div>
+      <div class="sp-display">Render the whole picture.</div>
+    </div>
+    <div class="spec">
+      <div class="m"><b>headline-md</b>50px / 400<br>lh 1.1 · −2.5px</div>
+      <div class="sp-display">A single lit surface.</div>
+    </div>
+    <div class="spec">
+      <div class="m"><b>label-md</b>36px / 400<br>lh 1.1 · −1.8px</div>
+      <div class="sp-label">Section titles sit here.</div>
+    </div>
+    <div class="spec">
+      <div class="m"><b>body-md</b>20px / 400<br>lh 1.4</div>
+      <div class="sp-body">Lead paragraphs relax into loose, readable leading — a conversational counterweight to the engineered display type above it.</div>
+    </div>
+    <div class="spec">
+      <div class="m"><b>body-sm</b>16px / 400<br>lh 1.4</div>
+      <div class="sp-bodysm">Dense card copy runs at sixteen pixels, keeping panels calm and legible without crowding.</div>
+    </div>
+    <div class="spec">
+      <div class="m"><b>label-mono</b>13px / 400<br>lh 1.2 · uppercase</div>
+      <div class="sp-mono">ANALYTICS · RATIONED ACCENT</div>
+    </div>
+  </div>
+</section>
+
+<style data-section-styles="components">
+#components{padding-top:var(--section-gap-md);padding-bottom:var(--section-gap-md)}
+.cfam{margin-top:96px}
+.cfam:first-of-type{margin-top:40px}
+.cfam-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:28px}
+.cfam-head h3{font-size:36px;letter-spacing:-1.8px;font-weight:400}
+.cfam-head .cnt{font-family:var(--mono);font-size:13px;color:var(--brand-accent);text-transform:uppercase}
+.spec-card{
+  font-family:var(--mono);font-size:12.5px;line-height:1.7;color:#000;
+  background:var(--surface-sunken);border:1px solid var(--border);border-radius:10px;
+  padding:16px 18px;margin-top:24px;
+}
+.spec-card b{color:var(--brand-accent);font-weight:500}
+.demo{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:32px}
+
+/* button matrix */
+.matrix{width:100%;border-collapse:collapse}
+.matrix th,.matrix td{text-align:left;padding:16px;border-bottom:1px solid var(--border);vertical-align:middle}
+.matrix th{font-family:var(--mono);font-size:12px;text-transform:uppercase;color:#000;font-weight:500}
+.matrix td:first-child{font-family:var(--mono);font-size:12px;text-transform:uppercase}
+.b-primary,.b-secondary,.b-navcta,.b-login,.b-util{
+  font-family:var(--display);cursor:pointer;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;
+  transition:filter .15s cubic-bezier(.17,.25,.3,1);
+}
+.b-primary{height:43px;padding:0 22px;background:var(--brand-accent);color:#000;border:1px solid rgba(0,0,0,0);font-size:16px;font-weight:500}
+.b-secondary{height:43px;padding:0 22px;background:#000;color:#fff;border:1px solid rgba(0,0,0,0);font-size:16px;font-weight:500}
+.b-navcta{height:36px;padding:0 18px;background:var(--brand-accent);color:#000;border:1px solid rgba(0,0,0,0);font-size:15px;font-weight:500}
+.b-login{height:36px;padding:0 16px;background:transparent;color:#000;border:1px solid var(--border);font-size:15px}
+.b-util{height:41px;padding:0 12px;background:transparent;color:#000;border:none;border-radius:0;font-size:16px}
+.st-hover{filter:brightness(.92)}
+.b-secondary.st-hover{filter:brightness(1.6)}
+.b-login.st-hover{border-color:#000}
+.b-util.st-hover{color:var(--brand-accent)}
+.st-active{transform:translateY(1px)}
+.st-disabled{opacity:.4;cursor:not-allowed;pointer-events:none}
+
+/* case-study rail */
+.cs-rail{display:grid;grid-template-columns:.7fr 1.4fr .7fr;gap:20px;align-items:start}
+.cs-card{background:transparent;border-radius:0;overflow:hidden}
+.cs-photo{height:200px;border-radius:0;background:
+  linear-gradient(0deg,rgba(0,0,0,.25),transparent),
+  linear-gradient(135deg,#F75D00,#000)}
+.cs-photo.pool{background:linear-gradient(160deg,#F75D00 0%,#EFF0F0 55%,#C5C7C8)}
+.cs-photo.hands{background:linear-gradient(126deg,#F75D00 10%,#000)}
+.cs-card h4{font-family:var(--display);font-size:24px;letter-spacing:-1px;font-weight:400;margin-top:16px}
+.cs-meta{font-family:var(--mono);font-size:13px;color:#000;margin-top:8px}
+.cs-card .b-primary{margin-top:16px}
+
+/* bento */
+.bento{display:grid;grid-template-columns:1.07fr 1fr;gap:20px}
+.bpanel{background:var(--surface-sunken);border-radius:10px;padding:28px;overflow:hidden}
+.bpanel.wash{background:linear-gradient(0deg,rgba(247,93,0,.9),#EFF0F0 55%)}
+.bpanel.dark{background:#000;color:#fff}
+.bpanel .beye{font-family:var(--mono);font-size:13px;text-transform:uppercase;display:flex;align-items:center;gap:8px;color:#000}
+.bpanel.wash .beye,.bpanel.dark .beye{color:#fff}
+.bpanel h4{font-family:var(--display);font-size:24px;letter-spacing:-1px;font-weight:400;margin-top:14px}
+.bpanel p{font-size:16px;margin-top:10px}
+.chart{margin-top:20px;position:relative;height:120px;background:linear-gradient(0deg,rgba(247,93,0,.18),transparent);border-radius:10px}
+.chart svg{position:absolute;inset:0;width:100%;height:100%}
+.stat-badge{position:absolute;top:12px;right:12px;background:#fff;border:1px solid var(--border);border-radius:10px;padding:6px 10px;font-family:var(--mono);font-size:13px}
+.thumb{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--border);border-radius:10px;padding:12px;margin-top:12px}
+.thumb .t-ico{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#F75D00,#000);flex:none}
+.thumb .stars{color:var(--brand-accent);margin-left:auto;font-size:12px;letter-spacing:2px}
+.thumb .num{font-family:var(--mono);font-size:13px;background:var(--brand-accent);color:#000;border-radius:9999px;width:22px;height:22px;display:flex;align-items:center;justify-content:center}
+.chatmock{display:flex;gap:10px;margin-top:18px}
+.chatmock input{flex:1;height:43px;border:1px solid var(--border);border-radius:10px;padding:0 14px;font-family:var(--display);font-size:16px;background:#fff}
+.chat-send{height:43px;width:43px;border:1px solid rgba(0,0,0,0);border-radius:10px;background:var(--brand-accent);color:#000;display:flex;align-items:center;justify-content:center;cursor:pointer}
+
+/* proof metric */
+.proof{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.pcard{border-radius:0;padding:24px;background:var(--surface)}
+.pcard.sunken{background:var(--surface-sunken)}
+.pcard .plabel{font-family:var(--mono);font-size:13px;text-transform:uppercase;letter-spacing:.04em}
+.pcard .pbody{font-size:16px;margin-top:8px;color:#000}
+.bar{margin-top:16px}
+.bar .brow{display:flex;align-items:center;gap:10px;margin-top:10px;font-family:var(--mono);font-size:13px}
+.track{flex:1;height:10px;border-radius:9999px;background-image:repeating-linear-gradient(45deg,#C5C7C8 0 4px,transparent 4px 8px);position:relative;overflow:hidden}
+.track i{position:absolute;left:0;top:0;bottom:0;background:var(--brand-accent);border-radius:9999px;transition:width .5s cubic-bezier(.165,.84,.44,1)}
+.check{display:flex;align-items:center;gap:10px;margin-top:12px;font-size:16px}
+.check .ci{color:var(--brand-accent);font-size:20px;flex:none}
+.mvc{width:100%;border-collapse:collapse;margin-top:12px;font-size:15px}
+.mvc td{padding:8px 0;border-bottom:1px solid var(--border)}
+.mvc .pill{background:var(--success);color:#fff;font-family:var(--mono);font-size:12px;padding:3px 10px;border-radius:9999px}
+
+/* testimonial mosaic */
+.mosaic{display:flex;gap:20px;align-items:stretch}
+.tile{background:var(--surface-sunken);border-radius:10px;min-height:220px;display:flex;align-items:center;justify-content:center}
+.tile.t1{flex:0 0 15%}.tile.t2{flex:0 0 15%}.tile.t3{flex:0 0 12%}.tile.t4{flex:0 0 12%}
+.tile .logo-ph{width:48px;height:48px;border-radius:50%;background:var(--border)}
+.qcard{flex:1 1 40%;background:#000;color:#fff;border-radius:10px;overflow:hidden;display:flex;flex-direction:column;min-height:220px}
+.qphoto{height:88px;background:linear-gradient(126deg,#F75D00 10%,#000)}
+.qbody{padding:22px;display:flex;flex-direction:column;gap:12px;flex:1}
+.qglyph{font-family:var(--display);font-size:48px;line-height:.6;color:var(--brand-accent)}
+.qbody p{font-size:16px}
+.qattr{font-family:var(--mono);font-size:13px;color:#fff;margin-top:auto;opacity:.85}
+@media(max-width:1024px){.bento,.proof{grid-template-columns:repeat(2,1fr)}.cs-rail{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){.cfam-head h3{font-size:26px}.proof,.cs-rail,.bento{grid-template-columns:1fr}.mosaic{flex-wrap:wrap}.tile,.qcard{flex:1 1 100%}.matrix,.matrix tbody,.matrix tr,.matrix td,.matrix th{display:block}.matrix td{border:none}.matrix tr{border-bottom:1px solid var(--border);padding:12px 0}}
+</style>
+<section id="components" aria-labelledby="comp-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow" style="color:var(--brand-accent)">03 · Components</div>
+      <h2 id="comp-title" class="display">The inventory.</h2>
+      <p>Every family built from the system's own tokens — square nav, the two-height button set, bleeding editorial cards, and the mosaic that never equalizes.</p>
+    </div>
+
+    <!-- NAVBAR -->
+    <div class="cfam" data-tier-a-component="navbar">
+      <div class="cfam-head"><h3>Navbar</h3><span class="cnt">×1 · 17 items · 84px</span></div>
+      <div class="demo" style="padding:0;overflow:hidden">
+        <div style="height:84px;display:flex;align-items:center;background:transparent;border-radius:0">
+          <div style="display:flex;align-items:center;gap:32px;width:100%;padding:0 24px">
+            <a class="logo" href="#hero" aria-label="Meridian home" style="text-decoration:none"><span class="logo-mark" aria-hidden="true"></span><span>Meridian</span></a>
+            <div style="display:flex;gap:8px;margin-left:auto">
+              <button class="b-util" type="button">Platform</button>
+              <button class="b-util" type="button">Docs</button>
+              <button class="b-util" type="button">Resources</button>
+              <button class="b-util" type="button">Careers</button>
+            </div>
+            <div style="display:flex;gap:12px">
+              <button class="b-login" type="button">Login</button>
+              <button class="b-navcta" type="button">Get Started</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="spec-card">--navbar · height <b>84</b> · radius <b>r-0 (square, all corners)</b> · bg <b>transparent</b> · sticky · nav-cta fill <b>brand-accent</b> · text <b>text-primary</b> · r-control <b>10</b> · height <b>36</b></div>
+    </div>
+
+    <!-- BUTTON MATRIX -->
+    <div class="cfam" data-tier-a-component="hero-primary-button">
+      <div class="cfam-head"><h3>Buttons — variant × state</h3><span class="cnt">rest · hover · active · disabled</span></div>
+      <div class="demo">
+        <table class="matrix">
+          <thead><tr><th>Variant</th><th>Rest</th><th>Hover</th><th>Active</th><th>Disabled</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>Hero primary<br>43px</td>
+              <td><button class="b-primary" type="button">Get Started</button></td>
+              <td><button class="b-primary st-hover" type="button">Get Started</button></td>
+              <td><button class="b-primary st-active" type="button">Get Started</button></td>
+              <td><button class="b-primary st-disabled" type="button" disabled>Get Started</button></td>
+            </tr>
+            <tr data-tier-a-component="hero-secondary-button">
+              <td>Hero secondary<br>43px</td>
+              <td><button class="b-secondary" type="button">Book a Demo</button></td>
+              <td><button class="b-secondary st-hover" type="button">Book a Demo</button></td>
+              <td><button class="b-secondary st-active" type="button">Book a Demo</button></td>
+              <td><button class="b-secondary st-disabled" type="button" disabled>Book a Demo</button></td>
+            </tr>
+            <tr>
+              <td>Nav CTA<br>36px</td>
+              <td><button class="b-navcta" type="button">Get Started</button></td>
+              <td><button class="b-navcta st-hover" type="button">Get Started</button></td>
+              <td><button class="b-navcta st-active" type="button">Get Started</button></td>
+              <td><button class="b-navcta st-disabled" type="button" disabled>Get Started</button></td>
+            </tr>
+            <tr>
+              <td>Login (outline)<br>36px</td>
+              <td><button class="b-login" type="button">Login</button></td>
+              <td><button class="b-login st-hover" type="button">Login</button></td>
+              <td><button class="b-login st-active" type="button">Login</button></td>
+              <td><button class="b-login st-disabled" type="button" disabled>Login</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="spec-card">--btn-hero-primary · fill <b>brand-accent</b> · text <b>text-primary</b> · radius <b>r-control 10</b> · height <b>43</b> · type <b>body-sm</b> · motion <b>0.15s cubic-bezier(.17,.25,.3,1)</b><br>--btn-hero-secondary · fill <b>neutral-black</b> · text <b>text-on-dark</b> · height <b>43</b><br>--btn-nav-cta · fill <b>brand-accent</b> · height <b>36</b> · disabled <b>opacity ladder</b></div>
+    </div>
+
+    <!-- NAV UTILITY LINKS -->
+    <div class="cfam" data-tier-a-component="nav-utility-link">
+      <div class="cfam-head"><h3>Nav utility links</h3><span class="cnt">×14 · 41px · 0px</span></div>
+      <div class="demo" style="display:flex;flex-wrap:wrap;gap:4px">
+        <button class="b-util" type="button">Platform</button>
+        <button class="b-util" type="button">Docs</button>
+        <button class="b-util" type="button">Resources</button>
+        <button class="b-util" type="button">Careers</button>
+        <button class="b-util" type="button">Pricing</button>
+        <button class="b-util" type="button">Changelog</button>
+        <button class="b-util" type="button">Security</button>
+        <button class="b-util" type="button">Status</button>
+        <button class="b-util" type="button">Blog</button>
+        <button class="b-util" type="button">Support</button>
+        <button class="b-util" type="button">Terms</button>
+        <button class="b-util" type="button">Privacy</button>
+        <button class="b-util" type="button">Contact</button>
+        <button class="b-util" type="button">About</button>
+      </div>
+      <div class="spec-card">--btn-nav-utility · fill <b>transparent</b> · text <b>text-primary</b> · radius <b>r-0</b> · height <b>41</b> · border <b>none</b> · hover <b>color brand-accent 0.2s ease</b></div>
+    </div>
+
+    <!-- CASE STUDY MEDIA CARDS -->
+    <div class="cfam" data-tier-a-component="case-study-media-card">
+      <div class="cfam-head"><h3>Case-study media cards</h3><span class="cnt">×3 · unequal rail · bleed</span></div>
+      <div class="cs-rail">
+        <div class="cs-card">
+          <div class="cs-photo hands" role="img" aria-label="Hands exchanging"></div>
+          <h4>Handoffs, halved.</h4>
+          <div class="cs-meta">240 employees · EMEA</div>
+          <button class="b-primary" type="button">Read study</button>
+        </div>
+        <div class="cs-card">
+          <div class="cs-photo pool" role="img" aria-label="Sunset over pool"></div>
+          <h4>From forecast to close in a single afternoon.</h4>
+          <div class="cs-meta">1,100 employees · North America</div>
+          <button class="b-primary" type="button">Read study</button>
+        </div>
+        <div class="cs-card">
+          <div class="cs-photo" role="img" aria-label="Product imagery"></div>
+          <h4>Signal over noise.</h4>
+          <div class="cs-meta">88 employees · APAC</div>
+          <button class="b-primary" type="button">Read study</button>
+        </div>
+      </div>
+      <div class="spec-card">--card-editorial-media · bg <b>transparent</b> · radius <b>r-0</b> · padding <b>0</b> · headline <b>label-md scale</b> · meta <b>label-mono</b> · cta <b>btn-hero-primary</b></div>
+    </div>
+
+    <!-- ANALYTICS BENTO -->
+    <div class="cfam" data-tier-a-component="analytics-bento-panel">
+      <div class="cfam-head"><h3>Analytics / bento panels</h3><span class="cnt">×6 · asymmetric</span></div>
+      <div class="bento">
+        <div class="bpanel">
+          <div class="beye"><iconify-icon icon="lucide:trending-up" aria-hidden="true"></iconify-icon> REVENUE TREND</div>
+          <h4>Momentum, drawn in one line.</h4>
+          <p>Live forecasts fill under the curve so direction reads before the number does.</p>
+          <div class="chart">
+            <span class="stat-badge">+18.4%</span>
+            <svg viewBox="0 0 300 120" preserveAspectRatio="none" aria-hidden="true">
+              <defs><linearGradient id="cg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F75D00" stop-opacity=".35"/><stop offset="1" stop-color="#F75D00" stop-opacity="0"/></linearGradient></defs>
+              <path d="M0,90 L60,70 L120,80 L180,40 L240,50 L300,15 L300,120 L0,120 Z" fill="url(#cg)"/>
+              <path d="M0,90 L60,70 L120,80 L180,40 L240,50 L300,15" fill="none" stroke="#F75D00" stroke-width="2.5"/>
+            </svg>
+          </div>
+        </div>
+        <div class="bpanel">
+          <div class="beye"><iconify-icon icon="lucide:box" aria-hidden="true"></iconify-icon> PRODUCT TRACKING</div>
+          <h4>Every SKU, ranked.</h4>
+          <div class="thumb"><span class="t-ico" aria-hidden="true"></span><span>Meridian Core</span><span class="stars">★★★★★</span><span class="num">1</span></div>
+          <div class="thumb"><span class="t-ico" aria-hidden="true"></span><span>Forecast Cloud</span><span class="stars">★★★★☆</span><span class="num">2</span></div>
+        </div>
+        <div class="bpanel wash">
+          <div class="beye"><iconify-icon icon="lucide:sparkles" aria-hidden="true"></iconify-icon> ASK MERIDIAN</div>
+          <h4>Query anything in plain language.</h4>
+          <p>The orange wash recurs here at small scale — warmth without dominance.</p>
+          <div class="chatmock">
+            <input type="text" aria-label="Ask a question" placeholder="What changed last quarter?">
+            <button class="chat-send" type="button" aria-label="Send"><iconify-icon icon="lucide:send" aria-hidden="true"></iconify-icon></button>
+          </div>
+        </div>
+        <div class="bpanel dark">
+          <div class="beye"><iconify-icon icon="lucide:activity" aria-hidden="true"></iconify-icon> UPTIME</div>
+          <h4>Always slightly alive.</h4>
+          <p>Ambient signals keep the surface responsive without shouting for attention.</p>
+          <div class="chart">
+            <span class="stat-badge">99.98%</span>
+            <svg viewBox="0 0 300 120" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M0,70 L60,72 L120,60 L180,64 L240,55 L300,58" fill="none" stroke="#F75D00" stroke-width="2.5" stroke-dasharray="6 6"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="spec-card">--card-utility-panel · bg <b>surface-sunken / transparent</b> · radius <b>r-card 10</b> · eyebrow <b>label-mono</b> · chart line <b>brand-accent</b> · wash <b>linear-gradient(0deg,brand-accent,background 50%)</b> · reveal <b>0.5s cubic-bezier(.165,.84,.44,1)</b></div>
+    </div>
+
+    <!-- PROOF METRIC -->
+    <div class="cfam" data-tier-a-component="proof-metric-card">
+      <div class="cfam-head"><h3>Proof-metric cards</h3><span class="cnt">×4 · 24% spans · 20px gap</span></div>
+      <div class="proof">
+        <div class="pcard sunken">
+          <div class="plabel">ADOPTION</div>
+          <div class="pbody">Teams live within a week.</div>
+          <div class="bar">
+            <div class="brow"><span class="track"><i style="width:82%"></i></span><span>82%</span></div>
+            <div class="brow"><span class="track"><i style="width:64%"></i></span><span>64%</span></div>
+          </div>
+        </div>
+        <div class="pcard">
+          <div class="plabel">ONBOARDING</div>
+          <div class="pbody">A short, guided path.</div>
+          <div class="check"><iconify-icon class="ci" icon="lucide:check-circle" aria-hidden="true"></iconify-icon> Connect source</div>
+          <div class="check"><iconify-icon class="ci" icon="lucide:check-circle" aria-hidden="true"></iconify-icon> Map metrics</div>
+          <div class="check"><iconify-icon class="ci" icon="lucide:check-circle" aria-hidden="true"></iconify-icon> Publish view</div>
+          <div class="bar"><div class="brow"><span class="track"><i style="width:100%"></i></span><span>3/3</span></div></div>
+        </div>
+        <div class="pcard sunken">
+          <div class="plabel">GROWTH</div>
+          <div class="pbody">Quarter-over-quarter lift.</div>
+          <table class="mvc">
+            <tr><td>Pipeline</td><td style="text-align:right"><span class="pill">+31%</span></td></tr>
+            <tr><td>Close rate</td><td style="text-align:right"><span class="pill">+12%</span></td></tr>
+            <tr><td>Churn</td><td style="text-align:right"><span class="pill">−8%</span></td></tr>
+          </table>
+        </div>
+        <div class="pcard">
+          <div class="plabel">RELIABILITY</div>
+          <div class="pbody">Consistently on target.</div>
+          <div class="bar">
+            <div class="brow"><span class="track"><i style="width:99%"></i></span><span>99%</span></div>
+            <div class="brow"><span class="track"><i style="width:91%"></i></span><span>91%</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="spec-card">proof-metric · bg <b>surface-sunken / surface</b> · radius <b>r-0</b> · label <b>label-mono</b> · track <b>hatched border</b> · fill <b>brand-accent</b> · pill <b>success</b> r-pill · check <b>brand-accent</b></div>
+    </div>
+
+    <!-- TESTIMONIAL MOSAIC -->
+    <div class="cfam" data-tier-a-component="testimonial-logo-mosaic">
+      <div class="cfam-head"><h3>Testimonial / logo mosaic</h3><span class="cnt">×6 · tapering row</span></div>
+      <div class="mosaic">
+        <div class="tile t1"><span class="logo-ph" aria-hidden="true"></span></div>
+        <div class="tile t2"><span class="logo-ph" aria-hidden="true"></span></div>
+        <div class="qcard">
+          <div class="qphoto" role="img" aria-label="Close-up portrait"></div>
+          <div class="qbody">
+            <div class="qglyph" aria-hidden="true">&ldquo;</div>
+            <p>Meridian gave us one surface to trust. The noise finally went quiet.</p>
+            <div class="qattr">Priya Raman · VP Analytics, Northwind</div>
+          </div>
+        </div>
+        <div class="tile t3"><span class="logo-ph" aria-hidden="true"></span></div>
+        <div class="tile t4"><span class="logo-ph" aria-hidden="true"></span></div>
+      </div>
+      <div class="spec-card">--card-logo-tile · bg <b>surface-sunken</b> · radius <b>r-card 10</b> · quote card <b>card-dark-quote #000</b> · text <b>text-on-dark</b> · glyph <b>brand-accent</b> · scrim <b>linear-gradient(126deg,brand-accent 10%,#000)</b></div>
+    </div>
+  </div>
+</section>
+
+<style data-section-styles="surface-depth">
+#surface-depth{padding-top:var(--section-gap-sm);padding-bottom:var(--section-gap-sm);background:var(--surface)}
+.depth-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+.dcard{background:var(--surface);border:1px solid var(--border);padding:24px;min-height:150px}
+.dcard .dl{font-family:var(--mono);font-size:13px;text-transform:uppercase;color:#000}
+.dcard .dv{font-family:var(--display);font-size:20px;margin-top:8px}
+.r-chip{border-radius:4px}.r-control{border-radius:10px}.r-card{border-radius:10px}.r-capsule{border-radius:50px}.r-pill{border-radius:9999px}
+.glow{box-shadow:rgba(255,255,255,0.75) 0 4px 30px 10px}
+.scrim{background:linear-gradient(126deg,#F75D00 10%,#000);color:#fff;border:none}
+@media(max-width:768px){#surface-depth h2,.sec-head h2{font-size:34px}}
+</style>
+<section id="surface-depth" aria-labelledby="depth-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow" style="color:var(--brand-accent)">04 · Surface &amp; depth</div>
+      <h2 id="depth-title" class="display">Radii and the one soft glow.</h2>
+      <p>Corners run from a 4px chip to a full pill. Depth is spare — a white halo around the orb, an orange-to-black scrim behind quotes.</p>
+    </div>
+    <div class="depth-grid">
+      <div class="dcard r-chip"><div class="dl">r-chip</div><div class="dv">4px</div></div>
+      <div class="dcard r-control"><div class="dl">r-control</div><div class="dv">10px</div></div>
+      <div class="dcard r-card"><div class="dl">r-card</div><div class="dv">10px</div></div>
+      <div class="dcard r-capsule"><div class="dl">r-capsule</div><div class="dv">50px</div></div>
+      <div class="dcard r-pill"><div class="dl">r-pill</div><div class="dv">pill</div></div>
+      <div class="dcard r-card glow"><div class="dl">glow halo</div><div class="dv">white 4px 54px 40px</div></div>
+      <div class="dcard r-card scrim"><div class="dl">corner scrim</div><div class="dv">126° orange → black</div></div>
+    </div>
+  </div>
+</section>
+
+<style data-section-styles="motion">
+#motion{padding-top:var(--section-gap-sm);padding-bottom:var(--section-gap-sm)}
+.motion-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.mcard{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:24px}
+.mcard .dl{font-family:var(--mono);font-size:13px;text-transform:uppercase;color:#000}
+.mdemo{height:70px;display:flex;align-items:center;margin:18px 0}
+.mbox{width:44px;height:44px;border-radius:10px;background:var(--brand-accent)}
+.play{margin-top:8px;font-family:var(--mono);font-size:13px;background:#000;color:#fff;border:none;border-radius:10px;height:36px;padding:0 16px;cursor:pointer}
+.anim-link.run{animation:mlink .2s ease}
+.anim-card.run{animation:mcardk .3s cubic-bezier(.17,.25,.3,1)}
+.anim-reveal .track2{height:10px;border-radius:9999px;background:var(--surface-sunken);overflow:hidden}
+.anim-reveal .track2 i{display:block;height:100%;width:20%;background:var(--brand-accent);border-radius:9999px}
+.anim-reveal.run .track2 i{animation:mreveal .5s cubic-bezier(.165,.84,.44,1) forwards}
+@keyframes mlink{from{color:#000}50%{color:var(--brand-accent)}to{color:#000}}
+@keyframes mcardk{from{transform:scale(1)}50%{transform:scale(.95);opacity:.8}to{transform:scale(1)}}
+@keyframes mreveal{from{width:20%}to{width:92%}}
+</style>
+<section id="motion" aria-labelledby="motion-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow" style="color:var(--brand-accent)">05 · Motion</div>
+      <h2 id="motion-title" class="display">Quick states, ambient drift.</h2>
+      <p>Discrete UI transitions stay short and snappy; reveals ease out slowly. Click to replay.</p>
+    </div>
+    <div class="motion-grid">
+      <div class="mcard">
+        <div class="dl">link hover · color 0.2s ease</div>
+        <div class="mdemo"><span class="anim-link" style="font-size:20px">Hover signal</span></div>
+        <button class="play" type="button" data-target="anim-link">Replay</button>
+      </div>
+      <div class="mcard">
+        <div class="dl">card micro · 0.3s cubic-bezier(.17,.25,.3,1)</div>
+        <div class="mdemo"><span class="mbox anim-card" aria-hidden="true"></span></div>
+        <button class="play" type="button" data-target="anim-card">Replay</button>
+      </div>
+      <div class="mcard anim-reveal">
+        <div class="dl">width reveal · 0.5s cubic-bezier(.165,.84,.44,1)</div>
+        <div class="mdemo" style="display:block"><div class="track2"><i></i></div></div>
+        <button class="play" type="button" data-target="anim-reveal">Replay</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style data-section-styles="composition">
+#composition{padding-top:var(--section-gap-sm);padding-bottom:var(--section-gap-sm);background:var(--surface)}
+.mock{border:1px solid var(--border);border-radius:10px;overflow:hidden;background:var(--background)}
+.mock-nav{height:64px;display:flex;align-items:center;gap:24px;padding:0 24px;background:transparent}
+.mock-hero{position:relative;padding:48px 24px 80px;overflow:hidden}
+.mock-hero .wash2{position:absolute;left:0;right:0;bottom:0;height:55%;background:linear-gradient(0deg,#F75D00,#EFF0F0 55%)}
+.mock-hero .inner{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center}
+.mock-hero h3{font-family:var(--display);font-size:44px;letter-spacing:-2.5px;font-weight:400}
+.mock-hero p{font-size:16px;max-width:34ch;margin-top:14px}
+.mock-cta{display:flex;gap:12px;margin-top:24px}
+.mock-orb{width:180px;height:180px;border-radius:50%;margin:0 auto;background:radial-gradient(circle at 35% 35%,#000,#0f0f0f 30%,#fff);box-shadow:rgba(255,255,255,0.75) 0 4px 40px 20px}
+.mock-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:32px 24px}
+.mock-card{background:var(--surface-sunken);border-radius:10px;padding:20px}
+.mock-card .plabel{font-family:var(--mono);font-size:13px;text-transform:uppercase}
+.mock-card h4{font-family:var(--display);font-size:22px;letter-spacing:-1px;font-weight:400;margin-top:8px}
+.mock-card p{font-size:15px;margin-top:8px}
+.mock-close{background:#000;color:#fff;text-align:center;padding:48px 24px}
+.mock-close h3{font-family:var(--display);font-size:34px;letter-spacing:-2px;font-weight:400}
+.mock-close .mock-cta{justify-content:center;margin-top:20px}
+@media(max-width:768px){.mock-hero .inner{grid-template-columns:1fr}.mock-cards{grid-template-columns:1fr}.mock-hero h3{font-size:30px}}
+</style>
+<section id="composition" aria-labelledby="comp2-title">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow" style="color:var(--brand-accent)">06 · In composition</div>
+      <h2 id="comp2-title" class="display">Held together.</h2>
+      <p>One screen from the parts above — square nav, orb hero, three sunken panels, and a black closing band.</p>
+    </div>
+    <div class="mock">
+      <div class="mock-nav">
+        <a class="logo" href="#composition" aria-label="Meridian" style="text-decoration:none"><span class="logo-mark" aria-hidden="true"></span><span>Meridian</span></a>
+        <div style="margin-left:auto;display:flex;gap:8px;align-items:center">
+          <button class="b-util" type="button">Platform</button>
+          <button class="b-util" type="button">Docs</button>
+          <button class="b-navcta" type="button">Get Started</button>
+        </div>
+      </div>
+      <div class="mock-hero">
+        <div class="wash2" aria-hidden="true"></div>
+        <div class="inner">
+          <div>
+            <h3>See the signal.</h3>
+            <p>Everything that matters, on one lit surface — nothing that doesn't.</p>
+            <div class="mock-cta">
+              <button class="b-primary" type="button">Get Started</button>
+              <button class="b-secondary" type="button">Book a Demo</button>
+            </div>
+          </div>
+          <div class="mock-orb" role="img" aria-label="Illuminated sphere"></div>
+        </div>
+      </div>
+      <div class="mock-cards">
+        <div class="mock-card"><div class="plabel">FORECAST</div><h4>Direction first.</h4><p>The curve reads before the number does.</p></div>
+        <div class="mock-card"><div class="plabel">TRACKING</div><h4>Every SKU ranked.</h4><p>Numbered, rated, always current.</p></div>
+        <div class="mock-card"><div class="plabel">RELIABILITY</div><h4>On target.</h4><p>99.98% uptime, quietly.</p></div>
+      </div>
+      <div class="mock-close">
+        <h3>Ready when you are.</h3>
+        <div class="mock-cta">
+          <button class="b-primary" type="button">Get Started</button>
+          <button class="b-util" type="button" style="color:#fff">Talk to sales</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style data-section-styles="footer">
+#footer{background:#000;color:#fff}
+.preband{background:#000;height:60px}
+.footer-inner{padding:80px var(--section-padding)}
+.footer-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;align-items:flex-start}
+.footer-brand{display:flex;align-items:center;gap:12px;font-family:var(--display);font-size:24px;letter-spacing:-1px}
+.footer-globe{width:40px;height:40px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#000,#0f0f0f 30%,#fff);position:relative;overflow:hidden}
+.footer-globe::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(247,93,0,.6) 1px,transparent 1.2px);background-size:6px 6px}
+.footer-cols{display:grid;grid-template-columns:repeat(3,auto);gap:40px 60px}
+.footer-cols a{display:block;color:#fff;text-decoration:none;font-size:15px;padding:6px 0;transition:color .2s ease}
+.footer-cols a:hover{color:var(--brand-accent)}
+.footer-cols .h{font-family:var(--mono);font-size:13px;text-transform:uppercase;color:#fff;opacity:.6;margin-bottom:8px}
+.footer-base{margin-top:60px;padding-top:24px;border-top:1px solid #333;font-family:var(--mono);font-size:13px;color:#fff;opacity:.75;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-base a{color:var(--brand-accent);text-decoration:none}
+@media(max-width:768px){.footer-cols{grid-template-columns:repeat(2,auto)}}
+</style>
+<footer id="footer">
+  <div class="preband" aria-hidden="true"></div>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="footer-globe" aria-hidden="true"></span>
+        <span>Meridian</span>
+      </div>
+      <nav class="footer-cols" aria-label="Footer">
+        <div>
+          <div class="h">Product</div>
+          <a href="#">Platform</a><a href="#">Forecast Cloud</a><a href="#">Analytics</a><a href="#">Pricing</a><a href="#">Changelog</a><a href="#">Security</a>
+        </div>
+        <div>
+          <div class="h">Company</div>
+          <a href="#">About</a><a href="#">Careers</a><a href="#">Blog</a><a href="#">Customers</a><a href="#">Contact</a><a href="#">Status</a>
+        </div>
+        <div>
+          <div class="h">Resources</div>
+          <a href="#">Docs</a><a href="#">Support</a><a href="#">Community</a><a href="#">Terms</a><a href="#">Privacy</a><a href="#">Trust</a>
+        </div>
+      </nav>
+    </div>
+    <div class="footer-base">
+      <span>Meridian · <a href="https://trymeridian.com/?ref=fountn.design">trymeridian.com</a></span>
+      <span>Design system captured and rendered by superdesign.dev</span>
+    </div>
+  </div>
+</footer>
+
+</main>
+
+<script>
+document.querySelectorAll('.play').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var card=btn.closest('.mcard');
+    var el=card.querySelector('.'+btn.dataset.target);
+    el.classList.remove('run');
+    void el.offsetWidth;
+    el.classList.add('run');
+  });
+});
+</script>
+</body>
+</html>
