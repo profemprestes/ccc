@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Envíos DosRuedas: El motor de tu última milla",
+    "prompt": "Portada del Manual de Marca Completo v1.0 de Envíos DosRuedas (Mar del Plata — Base Friuli 1972). Fondo Azul Eléctrico #0950F6 con grilla de puntos sutiles y trazos discontinuos en Amarillo Vial #FFEC01. Mostrar el logo oficial de Envíos DosRuedas, titular impactante en Anton con 'ÚLTIMA MILLA' destacado en bloque amarillo #FFEC01 y texto azul #0950F6, más ficha técnica rápida (MDQ · Flota propia · Cero tercerización)."
+  },
+  {
+    "title": "01 · Identidad y Posicionamiento",
+    "prompt": "Explicar el propósito y posicionamiento de Envíos DosRuedas: mensajería en moto y logística e-commerce en Mar del Plata con flota propia y cero tercerización. Destacar +7 años de trayectoria, calificación 5.0/5.0 en Google (+120 valoraciones) y los 3 pilares de marca: Rapidez urbana, Cercanía comercial y Trazabilidad total (código EDR)."
+  },
+  {
+    "title": "02 · Uso del Logotipo y Resguardos",
+    "prompt": "Guía de aplicación del logotipo oficial de Envíos DosRuedas. Mostrar versiones válidas sobre fondo Azul Eléctrico #0950F6 y fondo Blanco #FFFFFF, área de seguridad mínima alrededor del isotipo, tamaño mínimo legible en web (32px) e impreso, y lista clara de usos prohibidos (no estirar ni deformar, no recolorear, no aplicar sombras negras duras ni colocar sobre fondos de bajo contraste)."
+  },
+  {
+    "title": "03 · Paleta Cromática Oficial (Ley de Tres Colores)",
+    "prompt": "Documentar la paleta canónica con muestras (swatches) y códigos hex exactos: Brand Blue (#0950F6 primario/tinta máxima, #3570F8, #628FF9, #8EAFFB, #BACEFD borde sutil, #E6EEFE superficie suave); Brand Yellow (#FFEC01 CTA primario, #FFF12E hover, #E6D400 pressed, #FFFDE6, máximo 15% de cobertura); Blanco Puro (#FFFFFF lienzo único); y regla estricta para #2ECC85 (solo WhatsApp y MarDelivery)."
+  },
+  {
+    "title": "04 · Sistema Tipográfico (4 Familias)",
+    "prompt": "Mostrar las 4 familias tipográficas oficiales y su jerarquía: Anton / Anton SC (Display 72px, line-height 0.92, tracking -2.2px, mayúsculas con una cláusula corta en amarillo); Bebas Neue (Subtítulos y etiquetas 18px, tracking 0.9px); Outfit / IBM Plex Sans (Cuerpo 16px–18px, pesos 300 a 800 para lectura y UI); Geist Mono (datos operativos, códigos EDR00003071MDQ, horarios 13:00/20:00 hs y tarifas)."
+  },
+  {
+    "title": "05 · Composición, Grilla y Textura Visual",
+    "prompt": "Explicar la arquitectura de layout: contenedor máximo 1280px, padding de sección generoso (112px en desktop), alternancia de bloques de color sólido (#0950F6 vs #FFFFFF vs #E6EEFE) sin degradados continuos, grilla de 3 columnas (32px/24px gap), textura técnica de grilla/puntos sutiles, trazos de ruta discontinuos y tarjetas double-bezel (marco exterior #E6EEFE, borde #BACEFD, interior #FFFFFF, radios 24px/16px)."
+  },
+  {
+    "title": "06 · Componentes UI, Botones y Sombras Azules",
+    "prompt": "Especificar los componentes clave del sistema: botones en píldora completa (9999px) — CTA Amarillo #FFEC01 con glow (--shadow-cta-glow: 0 0 28px #ffec0173), Secundario Azul #0950F6, Outline / Ghost transparente y WhatsApp #2ECC85 — junto con la regla de elevación: todas las sombras teñidas en #0950F6 (rgba(9,80,246,0.06–0.22)), nunca sombras negras o grises."
+  },
+  {
+    "title": "07 · Tono de Voz y Copywriting Rioplatense",
+    "prompt": "Definir la voz de marca: español rioplatense cercano, directo y resolutivo ('vos'). Mostrar ejemplos reales aprobados ('Cotizá tu envío', 'Vos vendés, nosotros lo entregamos hoy en Mar del Plata', 'Escribinos, te respondemos al toque') frente a lo que debe evitarse (lenguaje corporativo frío, tutear con 'tú', promesas vagas sin horarios)."
+  },
+  {
+    "title": "08 · Ecosistema de Servicios y Portales",
+    "prompt": "Mapa visual del catálogo de unidades de negocio con su naming y etiqueta oficial: Envíos Express (franja de 3 hs, $3.700 base), Envíos LowCost (en el día, $3.000 base), Mercado Envíos Flex (entregas antes de 20:00 hs), E-Commerce Same Day / 24HS (Depósito Friuli 1972), Cuenta Corriente B2B, Logística DosRuedas (Portal EDR) y MarDelivery (Carta Digital QR)."
+  },
+  {
+    "title": "09 · Guardrails y Canales Oficiales",
+    "prompt": "Slide de cierre con checklist de control de calidad (SÍ: mantener #0950F6 como tope de oscuridad, racionar #FFEC01 a CTAs/cláusulas, usar sombras azules y radios 16px/24px; NO: usar negro o grises neutros, usar #2ECC85 fuera de WhatsApp/MarDelivery, redondear el navbar full-bleed) más bloque de contacto oficial: Friuli 1972 Mar del Plata, WhatsApp +54 223 660-2699, @enviosdosruedas, matiascejas@enviosdosruedas.com."
+  }
+]
