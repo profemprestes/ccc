@@ -4,13 +4,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a **multi-theme design system** repository containing 6 distinct visual languages (design systems) specified in the `disenos/` directory. Each system is a complete, self-contained design language with its own color palette, typography, spacing, components, motion curves, and guardrails.
+This repository contains **6 design system specifications** in the `disenos/` directory, plus a **Tailwind CSS v4 configuration** in `contexto/globals.css` for a specific brand implementation, and a **static HTML site** in `envios/`.
 
-**Purpose**: Build a design system platform that can serve all 6 visual languages, enabling theme switching, component variants per theme, and strict adherence to each system's guardrails.
+**Current State**: This is a reference/spec repository — the design system platform described in the architecture notes below has **not been implemented yet**. There is no `package.json`, no `src/`, no build tooling.
 
-## Design Systems Reference
+## Design Systems Reference (`disenos/`)
 
-Located in `disenos/` — each `.md` file follows the `superdesign-alpha` schema with YAML frontmatter + prose documentation:
+Each `.md` file follows the `superdesign-alpha` schema with YAML frontmatter + prose documentation. Each has a corresponding `.html` visual reference.
 
 | System | Mode | Accent | Display Font | Container | Key Characteristic |
 |--------|------|--------|--------------|-----------|-------------------|
@@ -23,55 +23,40 @@ Located in `disenos/` — each `.md` file follows the `superdesign-alpha` schema
 
 Each system defines: `colors`, `typography`, `spacing`, `rounded`, `components` (buttons, cards, navbars), `graphics`, `motion` (cubic-bezier curves, keyframes), and `guardrails` (strict do-not rules).
 
-## Development Commands
+## Existing Files
 
-*Assumed modern web stack: TypeScript + React + Vite + Tailwind CSS + Storybook + Vitest*
-
-```bash
-# Install dependencies
-npm install
-
-# Development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Preview production build
-npm run preview
-
-# Run tests
-npm run test
-
-# Run tests in watch mode
-npm run test:watch
-
-# Run tests with coverage
-npm run test:coverage
-
-# Type checking
-npm run typecheck
-
-# Lint
-npm run lint
-
-# Format code
-npm run format
-
-# Storybook
-npm run storybook
-
-# Build Storybook
-npm run build-storybook
-
-# Generate design tokens (from disenos/ specs)
-npm run tokens:generate
-
-# Validate tokens against guardrails
-npm run tokens:validate
+```
+ccc/
+├── disenos/                    # 6 design system specs (.md + .html each)
+│   ├── apple-design.md / .html
+│   ├── framer-design.md / .html
+│   ├── compute-noir-lime-design.md / .html
+│   ├── clay-design.md / .html
+│   ├── orb-lit-orange-minimalism-design.md / .html
+│   └── wine-and-ember-ledger-ed9e8d-design.md / .html
+├── contexto/
+│   └── globals.css             # Tailwind CSS v4 config for a specific brand (blue/yellow palette)
+├── envios/                     # Static HTML site (15 pages)
+│   ├── home.html, contacto.html, cotizar.html, etc.
+└── CLAUDE.md                   # This file
 ```
 
-## Architecture Notes
+### `contexto/globals.css` — Brand Tailwind Config
+
+A complete Tailwind CSS v4 `@theme` configuration for a specific brand identity:
+- **Palette**: Blue (`#0950F6` max) + Yellow (`#FFEC01`) + White only — all other palettes neutralized
+- **Fonts**: Anton SC (display), Bebas Neue (subheading), Outfit (sans), Geist Mono (mono)
+- **Motion**: Custom easings (`--ease-out`, `--ease-snappy`, etc.), durations, keyframes
+- **Utilities**: `double-bezel-*`, `cta-nested-*`, `text-display`, `text-h1`, `text-h2`, kinetic animations
+- **Shadows**: Tinted only with brand colors (no grays/blacks)
+
+### `envios/` — Static HTML Site
+
+15 production HTML pages for a logistics/shipping website. Not part of the design system platform.
+
+## Planned Architecture (Not Yet Implemented)
+
+The following describes the intended design system platform to be built from these specs:
 
 ### High-Level Structure
 
@@ -168,13 +153,13 @@ Two layers:
 ## Adding a New Design System
 
 1. Add `.md` spec to `disenos/` following `superdesign-alpha` schema
-2. Run `npm run tokens:generate`
+2. Run `npm run tokens:generate` (after platform is initialized)
 3. Add theme entry to `src/themes/theme-registry.ts`
 4. Create guard file in `src/guards/`
 5. Add motion config in `src/motion/`
 6. Document component variants in Storybook
 
-## Testing Strategy
+## Testing Strategy (Planned)
 
 - **Unit**: Token generation, theme context, guard validation
 - **Integration**: Theme switching, component variant resolution
@@ -183,4 +168,4 @@ Two layers:
 
 ---
 
-*This CLAUDE.md was created during project initialization and updated after analyzing all 6 design specifications in `disenos/`. Update as the codebase evolves.*
+*This CLAUDE.md reflects the actual repository state as of 2026-11-12. The "Planned Architecture" section describes intended future work — none of it exists yet.*

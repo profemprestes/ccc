@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src data: blob: https://vgbujcuwptvheqijyjbe.supabase.co; media-src data: blob:; script-src 'unsafe-inline' https://code.iconify.design; connect-src https://api.iconify.design https://api.simplesvg.com https://api.unisvg.com; frame-src 'none'; object-src 'none'; form-action 'none'; base-uri 'none'">
+<meta name="referrer" content="no-referrer">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DosRuedas Electric Dispatch — Design System | Envíos DosRuedas</title>
+<script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Geist+Mono:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --brand-blue-50:#E6EEFE;
+  --brand-blue-100:#BACEFD;
+  --brand-blue-200:#8EAFFB;
+  --brand-blue-300:#628FF9;
+  --brand-blue-400:#3570F8;
+  --brand-blue-500:#0950F6;
+  --brand-yellow-50:#FFFDE6;
+  --brand-yellow-100:#FFFAB8;
+  --brand-yellow-200:#FFF78A;
+  --brand-yellow-300:#FFF45C;
+  --brand-yellow-400:#FFF12E;
+  --brand-yellow-500:#FFEC01;
+  --brand-yellow-600:#E6D400;
+  --brand-white:#FFFFFF;
+  --brand-ink:#0950F6;
+  --wa-green:#2ECC85;
+  --wa-dark:#031811;
+  --r-sm:6px;
+  --r-md:8px;
+  --r-lg:12px;
+  --r-xl:16px;
+  --r-2xl:24px;
+  --r-3xl:32px;
+  --r-pill:9999px;
+  --shadow-sm:0 2px 4px #0950f60f, 0 1px 2px #0950f608;
+  --shadow-md:0 4px 8px #0950f614, 0 2px 4px #0950f60a;
+  --shadow-lg:0 8px 16px #0950f61a, 0 4px 8px #0950f60f;
+  --shadow-xl:0 16px 32px #0950f61f, 0 8px 16px #0950f614;
+  --shadow-elevated:0 16px 40px #0950f62e;
+  --shadow-deep:0 24px 64px #0950f638;
+  --shadow-cta-glow:0 0 28px #ffec0173, 0 8px 24px #0950f62e;
+  --shadow-glow-yellow:0 0 25px #fff12e73;
+  --font-sans:"Outfit",sans-serif;
+  --font-display:"Anton",sans-serif;
+  --font-subheading:"Bebas Neue",sans-serif;
+  --font-mono:"Geist Mono",monospace;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+body{margin:0;background:var(--brand-white);color:var(--brand-ink);font-family:var(--font-sans);font-size:16px;line-height:1.5;}
+::selection{background:var(--brand-yellow-500);color:var(--brand-blue-500);}
+a{color:inherit;text-decoration:none;}
+.container{max-width:1280px;margin:0 auto;padding-left:24px;padding-right:24px;}
+.sec-head{text-align:center;margin-bottom:48px;}
+.sec-kicker{font-family:var(--font-subheading);font-size:20px;letter-spacing:1.4px;color:var(--brand-blue-400);text-transform:uppercase;display:inline-block;background:var(--brand-blue-50);padding:4px 14px;border-radius:var(--r-pill);border:1px solid var(--brand-blue-100);margin-bottom:12px;}
+.sec-head h2{font-family:var(--font-display);font-size:44px;font-weight:400;line-height:1.05;letter-spacing:0.4px;text-transform:uppercase;margin:0;color:var(--brand-blue-500);}
+.sec-head p{max-width:640px;margin:14px auto 0;font-size:17px;color:var(--brand-blue-400);}
+
+/* Navbar */
+.topnav{position:sticky;top:0;z-index:50;background:var(--brand-blue-500);color:var(--brand-white);border-bottom:1px solid rgba(255,255,255,0.14);box-shadow:var(--shadow-md);}
+.nav-inner{height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px;}
+.nav-brand{display:flex;align-items:center;gap:12px;font-family:var(--font-display);font-size:22px;letter-spacing:0.6px;text-transform:uppercase;}
+.nav-brand img{width:38px;height:38px;border-radius:var(--r-pill);object-fit:contain;background:var(--brand-white);padding:2px;}
+.nav-links{display:flex;gap:22px;font-size:14px;font-weight:600;}
+.nav-links a{opacity:0.9;transition:opacity 0.2s,color 0.2s;}
+.nav-links a:hover{opacity:1;color:var(--brand-yellow-500);}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:var(--font-sans);font-weight:700;font-size:15px;border-radius:var(--r-pill);padding:12px 26px;cursor:pointer;border:1px solid transparent;transition:transform 0.25s ease,background-color 0.25s ease,box-shadow 0.25s ease;}
+.btn:hover{transform:translateY(-2px);}
+.btn-yellow{background:var(--brand-yellow-500);color:var(--brand-blue-500);box-shadow:var(--shadow-cta-glow);}
+.btn-yellow:hover{background:var(--brand-yellow-400);}
+.btn-blue{background:var(--brand-blue-500);color:var(--brand-white);box-shadow:var(--shadow-lg);}
+.btn-blue:hover{background:var(--brand-blue-400);}
+.btn-outline-white{background:transparent;color:var(--brand-white);border-color:rgba(255,255,255,0.45);}
+.btn-outline-white:hover{background:rgba(255,255,255,0.1);border-color:var(--brand-white);}
+.btn-outline-blue{background:transparent;color:var(--brand-blue-500);border-color:var(--brand-blue-500);}
+.btn-outline-blue:hover{background:var(--brand-blue-50);}
+.btn-wa{background:var(--wa-green);color:var(--wa-dark);box-shadow:var(--shadow-md);}
+.btn-wa:hover{filter:brightness(1.06);}
+
+/* Hero */
+#hero{position:relative;overflow:hidden;background:var(--brand-blue-500);color:var(--brand-white);padding:76px 0 84px;}
+.hero-bg-dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,236,1,0.22) 1.5px, transparent 1.5px);background-size:24px 24px;pointer-events:none;}
+.hero-route-svg{position:absolute;inset:0;width:100%;height:100%;opacity:0.24;pointer-events:none;}
+.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.2fr 0.9fr;gap:48px;align-items:center;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,236,1,0.14);border:1px solid rgba(255,236,1,0.45);color:var(--brand-yellow-500);padding:6px 14px;border-radius:var(--r-pill);font-family:var(--font-mono);font-size:13px;font-weight:500;margin-bottom:20px;}
+.hero-title{font-family:var(--font-display);font-size:60px;line-height:1.02;letter-spacing:0.6px;text-transform:uppercase;margin:0;}
+.hero-title span{color:var(--brand-yellow-500);}
+.hero-sub{margin:18px 0 28px;font-size:19px;color:var(--brand-blue-50);max-width:560px;}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;}
+.hero-card{background:var(--brand-white);color:var(--brand-blue-500);border-radius:var(--r-3xl);padding:28px;box-shadow:var(--shadow-deep);border:4px solid var(--brand-yellow-500);}
+.hero-card-head{display:flex;justify-content:space-between;align-items:center;padding-bottom:16px;border-bottom:1px solid var(--brand-blue-100);margin-bottom:18px;}
+.hero-card-title{font-family:var(--font-subheading);font-size:24px;letter-spacing:0.8px;}
+.mono-pill{font-family:var(--font-mono);font-size:12px;background:var(--brand-blue-50);color:var(--brand-blue-500);padding:4px 10px;border-radius:var(--r-pill);border:1px solid var(--brand-blue-100);}
+.metric-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.metric-box{background:var(--brand-blue-50);border:1px solid var(--brand-blue-100);border-radius:var(--r-xl);padding:14px;}
+.metric-box .val{font-family:var(--font-display);font-size:28px;line-height:1.1;}
+.metric-box .lbl{font-size:13px;font-weight:600;color:var(--brand-blue-400);margin-top:4px;}
+
+/* Palette */
+#palette{padding:80px 0;background:var(--brand-white);}
+.pal-group{margin-bottom:40px;}
+.pal-group h3{font-family:var(--font-subheading);font-size:26px;letter-spacing:0.8px;margin:0 0 16px;color:var(--brand-blue-500);}
+.swatch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:16px;}
+.swatch{border-radius:var(--r-xl);overflow:hidden;border:1px solid var(--brand-blue-100);box-shadow:var(--shadow-sm);background:var(--brand-white);}
+.swatch .chip{height:84px;}
+.swatch .meta{padding:12px 14px;}
+.swatch .name{font-weight:700;font-size:14px;}
+.swatch .hex{font-family:var(--font-mono);font-size:12px;color:var(--brand-blue-400);margin-top:2px;}
+
+/* Type scale */
+#type-scale{padding:80px 0;background:var(--brand-blue-50);}
+.type-list{display:grid;gap:16px;}
+.type-row{background:var(--brand-white);border:1px solid var(--brand-blue-100);border-radius:var(--r-2xl);padding:24px 28px;display:grid;grid-template-columns:220px 1fr;gap:24px;align-items:center;box-shadow:var(--shadow-sm);}
+.type-meta .role{font-family:var(--font-subheading);font-size:22px;letter-spacing:0.6px;}
+.type-meta .spec{font-family:var(--font-mono);font-size:12px;color:var(--brand-blue-400);margin-top:4px;}
+
+/* Components */
+#components{padding:80px 0;background:var(--brand-white);}
+.comp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;}
+.comp-card{background:var(--brand-white);border:1px solid var(--brand-blue-100);border-radius:var(--r-2xl);padding:28px;box-shadow:var(--shadow-lg);}
+.comp-card h3{font-family:var(--font-subheading);font-size:26px;letter-spacing:0.6px;margin:0 0 14px;}
+.btn-stack{display:flex;flex-wrap:wrap;gap:12px;align-items:center;}
+.double-bezel{background:var(--brand-blue-50);border:1px solid var(--brand-blue-100);border-radius:var(--r-2xl);padding:8px;}
+.double-bezel-inner{background:var(--brand-white);border-radius:var(--r-xl);padding:20px;box-shadow:var(--shadow-sm);}
+
+/* Surface & Depth */
+#surface-depth{padding:80px 0;background:var(--brand-blue-50);}
+.depth-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;}
+.depth-card{background:var(--brand-white);border-radius:var(--r-2xl);padding:24px;border:1px solid var(--brand-blue-100);}
+.depth-card .t{font-family:var(--font-mono);font-size:13px;font-weight:700;margin-bottom:6px;}
+.depth-card .d{font-family:var(--font-mono);font-size:11px;color:var(--brand-blue-400);word-break:break-word;}
+
+/* Motion */
+#motion{padding:80px 0;background:var(--brand-white);}
+.motion-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;}
+.motion-card{background:var(--brand-blue-50);border:1px solid var(--brand-blue-100);border-radius:var(--r-2xl);padding:24px;transition:transform 0.3s ease,box-shadow 0.3s ease;}
+.motion-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-elevated);}
+.motion-card h4{font-family:var(--font-subheading);font-size:22px;margin:0 0 8px;}
+
+/* Composition */
+#composition{padding:80px 0;background:var(--brand-blue-500);color:var(--brand-white);}
+#composition .sec-head h2{color:var(--brand-white);}
+#composition .sec-head p{color:var(--brand-blue-100);}
+.srv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;}
+.srv-card{background:var(--brand-white);color:var(--brand-blue-500);border-radius:var(--r-2xl);padding:24px;box-shadow:var(--shadow-elevated);}
+.srv-tag{display:inline-block;background:var(--brand-yellow-500);color:var(--brand-blue-500);font-family:var(--font-mono);font-size:11px;font-weight:700;padding:4px 10px;border-radius:var(--r-pill);margin-bottom:12px;}
+.srv-card h3{font-family:var(--font-display);font-size:24px;margin:0 0 8px;text-transform:uppercase;}
+.srv-card p{margin:0;font-size:15px;color:var(--brand-blue-400);}
+
+/* Footer */
+#footer{background:var(--brand-blue-500);color:var(--brand-white);border-top:1px solid rgba(255,255,255,0.18);padding:44px 0;}
+.foot-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+.foot-meta{font-family:var(--font-mono);font-size:13px;color:var(--brand-blue-100);}
+
+@media (max-width:860px){
+  .hero-grid{grid-template-columns:1fr;}
+  .hero-title{font-size:44px;}
+  .type-row{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;}
+}
+</style>
+</head>
+<body>
+
+<header class="topnav">
+  <div class="container nav-inner">
+    <a href="#hero" class="nav-brand">
+      <img src="https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/clone-assets/488abaaa02c40bfde312a7a42dbef04d6361c03854ffa1e3435baa00e6ddaf6e.webp" alt="Logo Envíos Dos Ruedas">
+      <span>Envíos DosRuedas</span>
+    </a>
+    <nav class="nav-links" aria-label="Secciones del sistema">
+      <a href="#palette">Paleta</a>
+      <a href="#type-scale">Tipografía</a>
+      <a href="#components">Componentes</a>
+      <a href="#surface-depth">Sombras</a>
+      <a href="#motion">Motion</a>
+      <a href="#composition">Servicios</a>
+    </nav>
+    <a href="#composition" class="btn btn-yellow" style="padding:9px 18px;font-size:13px;">Cotizá tu envío</a>
+  </div>
+</header>
+
+<main>
+
+<section id="hero" aria-label="Hero">
+  <div class="hero-bg-dots"></div>
+  <svg class="hero-route-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 600" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M -100 450 Q 400 200 900 380 T 1600 150" fill="none" stroke="#FFEC01" stroke-width="2.5" stroke-dasharray="12 16"></path>
+    <path d="M -100 300 Q 500 480 1000 250 T 1600 350" fill="none" stroke="#628FF9" stroke-width="1.5" stroke-dasharray="8 12"></path>
+    <circle cx="450" cy="240" r="5" fill="#FFEC01"></circle>
+    <circle cx="950" cy="360" r="6" fill="#FFEC01"></circle>
+  </svg>
+  <div class="container hero-grid">
+    <div>
+      <div class="hero-badge"><iconify-icon icon="lucide:bike"></iconify-icon> DESIGN SYSTEM · MAR DEL PLATA</div>
+      <h1 class="hero-title">El motor de tu <span>última milla</span></h1>
+      <p class="hero-sub">Sistema visual de alto contraste para mensajería en moto: azul eléctrico como tinta y autoridad, amarillo vibrante para acción inmediata y blanco puro para máxima legibilidad.</p>
+      <div class="hero-actions">
+        <a href="#palette" class="btn btn-yellow">Ver Paleta Oficial</a>
+        <a href="#components" class="btn btn-outline-white">Explorar Componentes</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-card-head">
+        <span class="hero-card-title">TOKENS DE MARCA</span>
+        <span class="mono-pill">v1.0 · MDQ</span>
+      </div>
+      <div class="metric-row">
+        <div class="metric-box">
+          <div class="val">#0950F6</div>
+          <div class="lbl">Brand Blue &amp; Ink</div>
+        </div>
+        <div class="metric-box">
+          <div class="val" style="color:#E6D400;">#FFEC01</div>
+          <div class="lbl">Brand Yellow CTA</div>
+        </div>
+        <div class="metric-box">
+          <div class="val">4</div>
+          <div class="lbl">Familias Tipográficas</div>
+        </div>
+        <div class="metric-box">
+          <div class="val">20:00 hs</div>
+          <div class="lbl">Ventana Flex</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="palette" aria-label="Palette">
+  <div class="container">
+    <div class="sec-head">
+      <span class="sec-kicker">01 · Color System</span>
+      <h2>Paleta Cromática Oficial</h2>
+      <p>Escala completa extraída de los tokens CSS de producción, con azul eléctrico como base cromática y amarillo reservado para conversión.</p>
+    </div>
+
+    <div class="pal-group">
+      <h3>Escala Brand Blue (Primario &amp; Tinta)</h3>
+      <div class="swatch-grid">
+        <div class="swatch"><div class="chip" style="background:#0950F6"></div><div class="meta"><div class="name">brand-blue-500 (Primary)</div><div class="hex">#0950F6</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#3570F8"></div><div class="meta"><div class="name">brand-blue-400</div><div class="hex">#3570F8</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#628FF9"></div><div class="meta"><div class="name">brand-blue-300</div><div class="hex">#628FF9</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#8EAFFB"></div><div class="meta"><div class="name">brand-blue-200</div><div class="hex">#8EAFFB</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#BACEFD"></div><div class="meta"><div class="name">brand-blue-100</div><div class="hex">#BACEFD</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#E6EEFE"></div><div class="meta"><div class="name">brand-blue-50</div><div class="hex">#E6EEFE</div></div></div>
+      </div>
+    </div>
+
+    <div class="pal-group">
+      <h3>Escala Brand Yellow (Acento &amp; CTA) + Funcionales</h3>
+      <div class="swatch-grid">
+        <div class="swatch"><div class="chip" style="background:#FFEC01"></div><div class="meta"><div class="name">brand-yellow-500 (CTA)</div><div class="hex">#FFEC01</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#FFF12E"></div><div class="meta"><div class="name">brand-yellow-400 (Hover)</div><div class="hex">#FFF12E</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#E6D400"></div><div class="meta"><div class="name">brand-yellow-600</div><div class="hex">#E6D400</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#FFFDE6"></div><div class="meta"><div class="name">brand-yellow-50</div><div class="hex">#FFFDE6</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#2ECC85"></div><div class="meta"><div class="name">WhatsApp / MarDelivery</div><div class="hex">#2ECC85</div></div></div>
+        <div class="swatch"><div class="chip" style="background:#031811"></div><div class="meta"><div class="name">Dark Ink (MarDelivery)</div><div class="hex">#031811</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="type-scale" aria-label="Type scale">
+  <div class="container">
+    <div class="sec-head">
+      <span class="sec-kicker">02 · Typography</span>
+      <h2>Sistema Tipográfico</h2>
+      <p>Cuatro familias coordinadas para titulares de impacto urbano, bajadas condensadas, lectura fluida y datos operativos.</p>
+    </div>
+    <div class="type-list">
+      <div class="type-row">
+        <div class="type-meta"><div class="role">Display · Anton</div><div class="spec">56px / 400 / lh 1.02 / uppercase</div></div>
+        <div style="font-family:var(--font-display);font-size:44px;line-height:1.05;text-transform:uppercase;">Mensajería en moto en Mar del Plata</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><div class="role">Subheading · Bebas Neue</div><div class="spec">32px / 400 / lh 1.1 / ls 0.8px</div></div>
+        <div style="font-family:var(--font-subheading);font-size:32px;letter-spacing:0.8px;">ENTREGAMOS TU VENTA FLEX ANTES DE LAS 20:00 HS</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><div class="role">Body · Outfit</div><div class="spec">16px–18px / 400–700 / lh 1.5</div></div>
+        <div style="font-family:var(--font-sans);font-size:18px;">Vos vendés, nosotros lo entregamos hoy en Mar del Plata. Cotizá tu envío puerta a puerta sin vueltas.</div>
+      </div>
+      <div class="type-row">
+        <div class="type-meta"><div class="role">Mono · Geist Mono</div><div class="spec">14px / 500 / tabular telemetry</div></div>
+        <div style="font-family:var(--font-mono);font-size:15px;">TRACK #MDQ-2026-841 · CORTE 13:00 HS · TEL 2236602699</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="components" aria-label="Components">
+  <div class="container">
+    <div class="sec-head">
+      <span class="sec-kicker">03 · Components</span>
+      <h2>Botones y Contenedores</h2>
+      <p>Controles en píldora completa (`9999px`) y tarjetas `double-bezel` con bordes azul claro (`#BACEFD`).</p>
+    </div>
+    <div class="comp-grid">
+      <div class="comp-card">
+        <h3>Jerarquía de Botones</h3>
+        <div class="btn-stack">
+          <button class="btn btn-yellow">Cotizá tu envío</button>
+          <button class="btn btn-blue">Ingresar al Portal</button>
+          <button class="btn btn-outline-blue">Ver Cobertura</button>
+          <button class="btn btn-wa"><iconify-icon icon="lucide:message-circle"></iconify-icon> WhatsApp</button>
+        </div>
+      </div>
+      <div class="comp-card">
+        <h3>Tarjeta Double-Bezel</h3>
+        <div class="double-bezel">
+          <div class="double-bezel-inner">
+            <span class="mono-pill">ENVÍOS FLEX</span>
+            <h4 style="font-family:var(--font-display);font-size:24px;margin:12px 0 6px;text-transform:uppercase;">Entrega en el día</h4>
+            <p style="margin:0;font-size:14px;color:var(--brand-blue-400);">Recorridos optimizados en moto por toda Mar del Plata con seguimiento en tiempo real.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="surface-depth" aria-label="Surface and depth">
+  <div class="container">
+    <div class="sec-head">
+      <span class="sec-kicker">04 · Elevation</span>
+      <h2>Sombras Tintadas en Azul</h2>
+      <p>Todas las sombras utilizan transparencia de `#0950F6` (o `#FFEC01` para glows CTA) en lugar de negro neutro.</p>
+    </div>
+    <div class="depth-grid">
+      <div class="depth-card" style="box-shadow:var(--shadow-sm);"><div class="t">--shadow-sm</div><div class="d">0 2px 4px #0950f60f, 0 1px 2px #0950f608</div></div>
+      <div class="depth-card" style="box-shadow:var(--shadow-lg);"><div class="t">--shadow-lg</div><div class="d">0 8px 16px #0950f61a, 0 4px 8px #0950f60f</div></div>
+      <div class="depth-card" style="box-shadow:var(--shadow-elevated);"><div class="t">--shadow-elevated</div><div class="d">0 16px 40px #0950f62e</div></div>
+      <div class="depth-card" style="box-shadow:var(--shadow-cta-glow);border-color:var(--brand-yellow-500);"><div class="t">--shadow-cta-glow</div><div class="d">0 0 28px #ffec0173, 0 8px 24px #0950f62e</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="motion" aria-label="Motion">
+  <div class="container">
+    <div class="sec-head">
+      <span class="sec-kicker">05 · Motion</span>
+      <h2>Micro-interacciones</h2>
+      <p>Transiciones rápidas (`250ms–300ms`) con elevación sutil en hover y respeto estricto de `prefers-reduced-motion`.</p>
+    </div>
+    <div class="motion-grid">
+      <div class="motion-card">
+        <h4>Hover Lift (-4px)</h4>
+        <p style="margin:0;font-size:14px;color:var(--brand-blue-400);">Pasá el cursor sobre esta tarjeta para probar `--shadow-elevated` y desplazamiento vertical.</p>
+      </div>
+      <div class="motion-card">
+        <h4>CTA Yellow Glow</h4>
+        <p style="margin:0;font-size:14px;color:var(--brand-blue-400);">Los botones principales iluminan el borde con `#FFF12E` manteniendo contraste azul `#0950F6`.</p>
+      </div>
+      <div class="motion-card">
+        <h4>Ruta SVG Discontinua</h4>
+        <p style="margin:0;font-size:14px;color:var(--brand-blue-400);">Trazos `stroke-dasharray="12 16"` en `#FFEC01` evocan el recorrido urbano en dos ruedas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="composition" aria-label="In composition">
+  <div class="container">
+    <div class="sec-head">
+      <span class="sec-kicker" style="background:rgba(255,236,1,0.16);color:#FFEC01;border-color:rgba(255,236,1,0.4);">06 · In Composition</span>
+      <h2>Arquitectura de Servicios</h2>
+      <p>Aplicación directa del sistema sobre las unidades de negocio de Envíos DosRuedas.</p>
+    </div>
+    <div class="srv-grid">
+      <div class="srv-card"><span class="srv-tag">EXPRESS</span><h3>Puerta a Puerta</h3><p>Cadetería urgente en moto punto a punto dentro de Mar del Plata.</p></div>
+      <div class="srv-card"><span class="srv-tag">LOWCOST</span><h3>Entregas en el Día</h3><p>Cortás el pedido y lo entregamos en la misma jornada con tarifa económica.</p></div>
+      <div class="srv-card"><span class="srv-tag">FLEX</span><h3>Mercado Envíos Flex</h3><p>Despacho diario antes de las 20:00 hs para vendedores de Mercado Libre.</p></div>
+      <div class="srv-card"><span class="srv-tag">FULFILLMENT</span><h3>Depósito PyMEs</h3><p>Almacenamiento, armado y distribución local sin costos fijos de depósito propio.</p></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer id="footer">
+  <div class="container foot-inner">
+    <div class="nav-brand">
+      <img src="https://vgbujcuwptvheqijyjbe.supabase.co/storage/v1/object/public/clone-assets/488abaaa02c40bfde312a7a42dbef04d6361c03854ffa1e3435baa00e6ddaf6e.webp" alt="Logo Envíos Dos Ruedas">
+      <span>Envíos DosRuedas</span>
+    </div>
+    <div class="foot-meta">Mar del Plata (MDQ) · WhatsApp 2236602699 · @enviosdosruedas · DosRuedas Electric Dispatch System</div>
+  </div>
+</footer>
+
+</body>
+</html>
